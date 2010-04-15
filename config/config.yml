@@ -1,0 +1,8 @@
+development: &defaults
+  site_name: "Мегаблог"
+  site_url: "http://localhost"
+  noreply_email: "noreply@localhost"
+  default_url_options: "localhost:3000"
+
+production:
+  <<: *defaults

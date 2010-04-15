@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :persistence_token, :null => false
       t.string :perishable_token, :null => false
       t.string :email, :null => false
-      t.boolean :active, :null => false, :default => false
     end
     
     add_index :users, :login

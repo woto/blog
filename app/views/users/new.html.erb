@@ -1,0 +1,7 @@
+<h2>Регистрация</h2>
+
+<% form_for @user, :url => user_path do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Зарегистрироваться" %>
+<% end %>
