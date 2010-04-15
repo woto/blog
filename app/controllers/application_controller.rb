@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       store_location
-      flash[:notice] = "Вы должны быть зарегистрированы чтобы получить доступ к этой странице"
-      redirect_to new_user_session_url
+      flash[:notice] = "Вы должны войти под своим аккаунтом прежде чем получите доступ к запрошенной странице"
+      redirect_to login_url
       return false
     end
   end
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   def require_no_user
     if current_user
       store_location
-      flash[:notice] = "Вы должны быть не зарегистрированным чтобы получить доступ к этой странице"
+      flash[:notice] = "Вы должны выйти из под своего аккаунта прежде чем получите доступ к запрошенной странице"
       redirect_to user_url
       return false
     end
