@@ -4382,3 +4382,1911 @@ Processing UsersController#show (for 127.0.1.1 at 2010-04-15 17:18:47) [GET]
 Rendering template within layouts/application
 Rendering users/show
 Completed in 141ms (View: 8, DB: 2) | 200 OK [http://woto-netbook/user]
+  [4;36;1mSQL (3.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100414144425)
+Migrating to CreateSessions (20100414163435)
+Migrating to CreateRoles (20100415183559)
+  [4;36;1mSQL (1.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100415183559')[0m
+Migrating to CreateAssignments (20100415183658)
+  [4;35;1mSQL (1.4ms)[0m   [0mCREATE TABLE "assignments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100415183658')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_list("assignments")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("roles")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_list("sessions")[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_email')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_info('index_users_on_perishable_token')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mPRAGMA index_info('index_users_on_persistence_token')[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 20:54:04) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+
+NoMethodError (private method `current_user' called for #<PostsController:0xb6cf74b4>):
+  app/controllers/application_controller.rb:11
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (171.1ms)
+Rendered rescues/_request_and_response (21.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 20:54:56) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+
+NoMethodError (private method `current_user' called for #<PostsController:0xb6d43a94>):
+  app/controllers/application_controller.rb:12
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (157.1ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 20:56:15) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+
+NoMethodError (private method `current_user' called for #<PostsController:0xb6abfe08>):
+  app/controllers/application_controller.rb:12
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (302.4ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 20:57:19) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+Authorization::Reader::DSLSyntaxError (Illegal DSL syntax: compile error
+/home/woto/rails/uniqsystems/config/authorization_rules.rb:17: syntax error, unexpected kEND, expecting $end):
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:65:in `parse'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:74:in `load'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:73:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:73:in `load'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:70:in `initialize'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:261:in `new'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:261:in `instance'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:32:in `authorization_engine'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:587:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (188.9ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 20:58:02) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Load (4.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+Authorization::Reader::DSLSyntaxError (Illegal DSL syntax: compile error
+/home/woto/rails/uniqsystems/config/authorization_rules.rb:17: syntax error, unexpected kEND, expecting $end):
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:65:in `parse'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:74:in `load'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:73:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/reader.rb:73:in `load'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:70:in `initialize'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:261:in `new'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:261:in `instance'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:32:in `authorization_engine'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:587:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (346.1ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 20:58:55) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Load (2.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+NameError (uninitialized constant User::Assignment):
+  app/models/user.rb:8:in `role_symbols'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:242:in `roles_for'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:296:in `user_roles_privleges_from_options'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:161:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:587:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (204.6ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:01:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Load (1.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+LoadError (Expected /home/woto/rails/uniqsystems/app/models/assignment.rb to define Assignment):
+  app/models/user.rb:8:in `role_symbols'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:242:in `roles_for'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:296:in `user_roles_privleges_from_options'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:161:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:587:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (599.7ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:03:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+LoadError (Expected /home/woto/rails/uniqsystems/app/models/role.rb to define Role):
+  app/models/user.rb:8:in `role_symbols'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:242:in `roles_for'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:296:in `user_roles_privleges_from_options'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:161:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:587:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (422.8ms)
+Rendered rescues/_request_and_response (23.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:03:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Load (2.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+LoadError (Expected /home/woto/rails/uniqsystems/app/models/role.rb to define Role):
+  app/models/user.rb:8:in `role_symbols'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:242:in `roles_for'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:296:in `user_roles_privleges_from_options'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/authorization.rb:161:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:587:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:109:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (361.8ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:04:53) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;35;1mRole Load (0.7ms)[0m   [0mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles".id = "assignments".role_id WHERE (("assignments".user_id = 5)) [0m
+Permission denied: No matching rules found for index for #<User id: 5, created_at: "2010-04-15 13:18:42", updated_at: "2010-04-15 13:18:42", login: "woto17", crypted_password: "86015e9a958a40f9abf89581d192c2f22b1c28ef8c2a477bc61...", password_salt: "5TbK-i5DGhEoQQ-zzI6k", persistence_token: "a20444c0483c141c23b53592a4f4480e2907289320b54f1e083...", perishable_token: "qFrAQFdxpjl4T7VTxG-k", email: "oganer@gmail.com"> (roles [:guest], privileges [:index], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 365ms (View: 45, DB: 3) | 403 Forbidden [http://woto-netbook/posts/]
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:05:43) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Load (1.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;35;1mRole Load (0.6ms)[0m   [0mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles".id = "assignments".role_id WHERE (("assignments".user_id = 5)) [0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (219.3ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 21:06:01) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+
+ActiveRecord::StatementInvalid (Could not find table 'posts'):
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:154:in `new'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:154:in `new_controller_object_from_params'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:485:in `send'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:485:in `filter_resource_access'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (377.3ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (3.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100414144425)
+Migrating to CreateSessions (20100414163435)
+Migrating to CreateRoles (20100415183559)
+Migrating to CreateAssignments (20100415183658)
+Migrating to CreatePosts (20100416165219)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (3.4ms)[0m   [0mCREATE TABLE "posts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100416165219')[0m
+  [4;35;1mSQL (1.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (19.7ms)[0m   [0;1mPRAGMA index_list("assignments")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("posts")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mPRAGMA index_list("roles")[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mPRAGMA index_list("sessions")[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mPRAGMA index_info('index_sessions_on_updated_at')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mPRAGMA index_info('index_sessions_on_session_id')[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mPRAGMA index_info('index_users_on_email')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mPRAGMA index_info('index_users_on_perishable_token')[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mPRAGMA index_info('index_users_on_persistence_token')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 21:06:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Load (1.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mRole Load (0.5ms)[0m   [0;1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles".id = "assignments".role_id WHERE (("assignments".user_id = 5)) [0m
+Permission denied: No matching rules found for new for #<User id: 5, created_at: "2010-04-15 13:18:42", updated_at: "2010-04-15 13:18:42", login: "woto17", crypted_password: "86015e9a958a40f9abf89581d192c2f22b1c28ef8c2a477bc61...", password_salt: "5TbK-i5DGhEoQQ-zzI6k", persistence_token: "a20444c0483c141c23b53592a4f4480e2907289320b54f1e083...", perishable_token: "qFrAQFdxpjl4T7VTxG-k", email: "oganer@gmail.com"> (roles [:guest], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 164ms (View: 4, DB: 2) | 403 Forbidden [http://woto-netbook/posts/new]
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 21:06:49) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Load (2.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mRole Load (0.8ms)[0m   [0;1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles".id = "assignments".role_id WHERE (("assignments".user_id = 5)) [0m
+Permission denied: No matching rules found for new for #<User id: 5, created_at: "2010-04-15 13:18:42", updated_at: "2010-04-15 13:18:42", login: "woto17", crypted_password: "86015e9a958a40f9abf89581d192c2f22b1c28ef8c2a477bc61...", password_salt: "5TbK-i5DGhEoQQ-zzI6k", persistence_token: "a20444c0483c141c23b53592a4f4480e2907289320b54f1e083...", perishable_token: "qFrAQFdxpjl4T7VTxG-k", email: "oganer@gmail.com"> (roles [:guest], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 183ms (View: 4, DB: 3) | 403 Forbidden [http://woto-netbook/posts/new]
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:06:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Load (1.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mRole Load (0.7ms)[0m   [0;1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles".id = "assignments".role_id WHERE (("assignments".user_id = 5)) [0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (237.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 21:07:02) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."persistence_token" = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mRole Load (0.6ms)[0m   [0;1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles".id = "assignments".role_id WHERE (("assignments".user_id = 5)) [0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (231.9ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (42.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (516.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1122.4ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (915.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (10.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100414144425)
+  [4;35;1mSQL (273.1ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime, `login` varchar(255) NOT NULL, `crypted_password` varchar(255) NOT NULL, `password_salt` varchar(255) NOT NULL, `persistence_token` varchar(255) NOT NULL, `perishable_token` varchar(255) NOT NULL, `email` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (513.2ms)[0m   [0;1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;35;1mSQL (545.7ms)[0m   [0mCREATE INDEX `index_users_on_persistence_token` ON `users` (`persistence_token`)[0m
+  [4;36;1mSQL (423.7ms)[0m   [0;1mCREATE INDEX `index_users_on_perishable_token` ON `users` (`perishable_token`)[0m
+  [4;35;1mSQL (401.9ms)[0m   [0mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;36;1mSQL (120.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100414144425')[0m
+Migrating to CreateSessions (20100414163435)
+  [4;35;1mSQL (245.1ms)[0m   [0mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (334.8ms)[0m   [0;1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [4;35;1mSQL (356.5ms)[0m   [0mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [4;36;1mSQL (64.2ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100414163435')[0m
+Migrating to CreateRoles (20100415183559)
+  [4;35;1mSQL (185.9ms)[0m   [0mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (53.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100415183559')[0m
+Migrating to CreateAssignments (20100415183658)
+  [4;35;1mSQL (166.4ms)[0m   [0mCREATE TABLE `assignments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_id` int(11), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (62.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100415183658')[0m
+Migrating to CreatePosts (20100416165219)
+  [4;35;1mSQL (272.6ms)[0m   [0mCREATE TABLE `posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (53.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100416165219')[0m
+  [4;35;1mSQL (37.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (160.3ms)[0m   [0;1mSHOW FIELDS FROM `assignments`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `assignments`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `assignments`[0m
+  [4;35;1mSQL (25.2ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `posts`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW KEYS FROM `posts`[0m
+  [4;36;1mSQL (24.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mdescribe `roles`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW KEYS FROM `roles`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `sessions`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `sessions`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `sessions`[0m
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (6.9ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 22:27:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (25.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) LIMIT 1[0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (286.8ms)
+Rendered rescues/_request_and_response (6.7ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 22:27:45) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) LIMIT 1[0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (371.1ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:27:57) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (2.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) LIMIT 1[0m
+  [4;35;1mPost Columns (2.9ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+Permission denied: No matching rules found for new for #<Authorization::GuestUser:0xb6c77ebc @role_symbols=[:guest]> (roles [:guest], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 115ms (View: 3, DB: 9) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.1.1 at 2010-04-16 22:29:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+  [4;36;1mUser Columns (3.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 5) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/new
+Rendered users/_form (31.9ms)
+Completed in 280ms (View: 184, DB: 5) | 200 OK [http://woto-netbook/register/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#create (for 127.0.1.1 at 2010-04-16 22:30:01) [POST]
+  Parameters: {"commit"=>"Зарегистрироваться", "action"=>"create", "authenticity_token"=>"fVSl3/sEbeDmPbjuhtHQx228+7LEZ1AnlBCELJc90DI=", "controller"=>"users", "user"=>{"password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "login"=>"woto", "email"=>"woto@example.com"}}
+  [4;35;1mUser Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (68.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'woto@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (10.9ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'woto') LIMIT 1[0m
+  [4;35;1mUser Load (10.2ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = 'a20444c0483c141c23b53592a4f4480e2907289320b54f1e0830d4a741e6c5c38cb8c027ee97df449112de26ac47ed5d13d3d3afcbe37070bbf4deb2d5aa3a05') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 5) LIMIT 1[0m
+  [4;36;1mUser Create (43.7ms)[0m   [0;1mINSERT INTO `users` (`created_at`, `crypted_password`, `updated_at`, `perishable_token`, `password_salt`, `persistence_token`, `login`, `email`) VALUES('2010-04-16 18:30:02', '52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3ac', '2010-04-16 18:30:02', 'nrVOBFYEl-Ui2BY-6G3Z', 'MkhMXnAbLc245SiyhGSb', '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3', 'woto', 'woto@example.com')[0m
+  [4;35;1mSQL (103.8ms)[0m   [0mCOMMIT[0m
+Sent mail to woto@example.com
+
+Date: Fri, 16 Apr 2010 22:30:03 +0400
+From: noreply@localhost
+To: woto@example.com
+Subject: =?utf-8?Q?=D0=A0=D0=B5=D0=B3=D0=B8=D1=81=D1=82=D1=80=D0=B0=D1=86=D0=B8=D1=8F_=D0=BD=D0=B0_=D1=81=D0=B0=D0=B9=D1=82=D0=B5?=
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Спасибо за регистрацию на сайте Мегаблог
+
+<a href="Перейти на сайт">http://localhost</a>
+Redirected to http://woto-netbook:3000/user
+Completed in 2870ms (DB: 241) | 302 Found [http://woto-netbook/user]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.1.1 at 2010-04-16 22:30:05) [GET]
+  Parameters: {"action"=>"show", "controller"=>"users"}
+  [4;36;1mUser Columns (5.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (11.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering users/show
+Completed in 310ms (View: 52, DB: 17) | 200 OK [http://woto-netbook/user]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 22:30:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (26.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mRole Load (11.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (204.6ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#index (for 127.0.1.1 at 2010-04-16 22:30:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"posts"}
+  [4;35;1mUser Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+Rendering template within layouts/posts
+Rendering posts/index
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.each) on line #9 of app/views/posts/index.html.erb:
+6:     <th>Body</th>
+7:   </tr>
+8: 
+9: <% @posts.each do |post| %>
+10:   <tr>
+11:     <td><%=h post.title %></td>
+12:     <td><%=h post.body %></td>
+
+    app/views/posts/index.html.erb:9
+    app/controllers/posts_controller.rb:8:in `index'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (210.1ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:30:51) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:guest], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 153ms (View: 2, DB: 6) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:33:43) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (3.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.9ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 329ms (View: 2, DB: 9) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:33:45) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (4.2ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 187ms (View: 3, DB: 11) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:33:53) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 145ms (View: 4, DB: 8) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:34:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+TypeError (can't dump anonymous class Class):
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:6:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:110:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:110:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:110:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:109:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:109:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:108:in `seq'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:108:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:107:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:15:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:41:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:41:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:41:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:40:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:40:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:39:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:39:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:38:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:15:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:110:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:110:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:110:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:109:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:109:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:108:in `seq'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:108:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:107:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:15:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:15:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:41:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:41:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:41:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:40:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:40:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:39:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:39:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:38:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:15:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `node_export'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `add'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:18:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `each'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:17:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `map'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:16:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `call'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `emit'
+  /usr/lib/ruby/1.8/yaml.rb:391:in `quick_emit'
+  /usr/lib/ruby/1.8/yaml/rubytypes.rb:15:in `to_yaml'
+  /usr/lib/ruby/1.8/yaml.rb:117:in `dump'
+  app/controllers/application_controller.rb:13
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (313.8ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (1.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:34:51) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+NoMethodError (undefined method `debug' for ApplicationController:Class):
+  app/controllers/application_controller.rb:13
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (152.4ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:36:08) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+NoMethodError (undefined method `debug' for ApplicationController:Class):
+  app/controllers/application_controller.rb:13
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (182.4ms)
+Rendered rescues/_request_and_response (1.6ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:36:23) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (3.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (8.6ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 242ms (View: 3, DB: 16) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:36:40) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+ThreadError (return can't jump across threads):
+  app/controllers/application_controller.rb:14
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (412.2ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:37:09) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+ArgumentError (Cannot yield from a Proc type filter. The Proc must take two arguments and execute #call on the second argument.):
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (150.4ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:37:22) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mPost Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 179ms (View: 4, DB: 8) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (1.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:38:17) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+NoMethodError (undefined method `debug' for #<PostsController:0xb72be514>):
+  app/controllers/application_controller.rb:20:in `current_user'
+  app/controllers/application_controller.rb:12
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (335.7ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-16 22:38:29) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 151ms (View: 3, DB: 7) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (55.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:20:03) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+  [4;36;1mUser Columns (144.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+#<User:0xb73de034>
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 854ms (View: 29, DB: 207) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:20:55) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+#<User:0xb7028084>
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (6.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 406ms (View: 3, DB: 13) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (3.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:21:56) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+1111111111111111111111111111
+  [4;36;1mUser Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (3.7ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+1111111111111111111111111111
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 157ms (View: 3, DB: 13) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:22:17) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+  [4;35;1mUser Columns (22.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (2.7ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+#<User:0xb6a104a8>
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 210ms (View: 3, DB: 28) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:23:19) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.attributes):
+  app/controllers/application_controller.rb:20:in `current_user'
+  app/controllers/application_controller.rb:12
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (253.4ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+/!\ FAILSAFE /!\  Sat Apr 17 13:23:55 +0400 2010
+  Status: 500 Internal Server Error
+  /home/woto/rails/uniqsystems/app/controllers/application_controller.rb:55: syntax error, unexpected $end, expecting kEND
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+/!\ FAILSAFE /!\  Sat Apr 17 13:23:57 +0400 2010
+  Status: 500 Internal Server Error
+  /home/woto/rails/uniqsystems/app/controllers/application_controller.rb:55: syntax error, unexpected $end, expecting kEND
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+/!\ FAILSAFE /!\  Sat Apr 17 13:24:01 +0400 2010
+  Status: 500 Internal Server Error
+  /home/woto/rails/uniqsystems/app/controllers/application_controller.rb:55: syntax error, unexpected $end, expecting kEND
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+/!\ FAILSAFE /!\  Sat Apr 17 13:24:18 +0400 2010
+  Status: 500 Internal Server Error
+  /home/woto/rails/uniqsystems/app/controllers/application_controller.rb:55: syntax error, unexpected $end, expecting kEND
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+/!\ FAILSAFE /!\  Sat Apr 17 13:24:39 +0400 2010
+  Status: 500 Internal Server Error
+  /home/woto/rails/uniqsystems/app/controllers/application_controller.rb:20: syntax error, unexpected tIDENTIFIER, expecting kTHEN or ':' or '\n' or ';'
+    if defined?(@current_user) logger.debug(@current_user.attributes)
+                                     ^
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:24:58) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;35;1mRole Load (0.2ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (11.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 162ms (View: 3, DB: 17) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:25:46) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+
+TypeError (can't convert Hash into String):
+  app/controllers/application_controller.rb:20:in `current_user'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:588:in `send'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:588:in `permit!'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:111:in `filter_access_filter'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:111:in `each'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:111:in `all?'
+  /var/lib/gems/1.8/gems/declarative_authorization-0.4.1/lib/declarative_authorization/in_controller.rb:111:in `filter_access_filter'
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (183.8ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:25:59) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;36;1mPost Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;35;1mRole Load (0.4ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 184ms (View: 3, DB: 9) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:26:18) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (2.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+  [4;35;1mPost Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 339ms (View: 3, DB: 10) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:26:47) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (3.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;36;1mPost Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.5ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 162ms (View: 4, DB: 9) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:26:53) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;35;1mPost Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 161ms (View: 4, DB: 8) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:27:04) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (5.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;36;1mPost Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (3.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 365ms (View: 4, DB: 12) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:27:40) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;35;1mPost Columns (4.1ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.5ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 170ms (View: 4, DB: 11) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:28:01) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (3.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+#<User:0xb6a4e050>
+  [4;36;1mPost Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.4ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 180ms (View: 2, DB: 10) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:28:02) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (4.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+#<User:0xb6a1f4a8>
+  [4;35;1mPost Columns (2.4ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (7.8ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 438ms (View: 4, DB: 16) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:29:06) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (4.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+
+NoMethodError (undefined method `debu' for #<ActiveSupport::BufferedLogger:0xb6afc3f8>):
+  app/controllers/application_controller.rb:22:in `current_user'
+  app/controllers/application_controller.rb:12
+  /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+  /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+  /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+
+Rendered rescues/_trace (166.9ms)
+Rendered rescues/_request_and_response (1.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:29:16) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+aaaaaaaaaaaaa
+#<User:0xb72c9bf8>
+  [4;36;1mPost Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 147ms (View: 3, DB: 9) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:29:32) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+aaaaaaaaaaaaa
+created_atFri Apr 16 18:30:02 UTC 2010crypted_password52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3acupdated_atFri Apr 16 18:30:02 UTC 2010perishable_tokennrVOBFYEl-Ui2BY-6G3Zid1password_saltMkhMXnAbLc245SiyhGSbpersistence_token0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3loginwotoemailwoto@example.com
+  [4;35;1mPost Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.3ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 160ms (View: 2, DB: 8) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:30:03) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+aaaaaaaaaaaaa
+--- 
+created_at: 2010-04-16 18:30:02 Z
+crypted_password: 52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3ac
+updated_at: 2010-04-16 18:30:02 Z
+perishable_token: nrVOBFYEl-Ui2BY-6G3Z
+id: 1
+password_salt: MkhMXnAbLc245SiyhGSb
+persistence_token: 0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3
+login: woto
+email: woto@example.com
+  [4;36;1mPost Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (1.8ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 150ms (View: 2, DB: 8) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+/!\ FAILSAFE /!\  Sat Apr 17 13:31:01 +0400 2010
+  Status: 500 Internal Server Error
+  /home/woto/rails/uniqsystems/app/controllers/application_controller.rb:22: syntax error, unexpected ')', expecting kEND
+/home/woto/rails/uniqsystems/app/controllers/application_controller.rb:55: syntax error, unexpected $end, expecting kEND
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:380:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:379:in `load_file'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:80:in `const_missing'
+    /var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/dependencies.rb:92:in `const_missing'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+    /var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+    /var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+    /usr/lib/ruby/1.8/mongrel.rb:159:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `each'
+    /usr/lib/ruby/1.8/mongrel.rb:158:in `process_client'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:285:in `run'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `initialize'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `new'
+    /usr/lib/ruby/1.8/mongrel.rb:268:in `run'
+    /home/woto/.gem/ruby/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+    /var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib/ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:31:13) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (8.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+aaaaaaaaaaaaa
+--- &id002 !ruby/object:UserSession 
+attempted_record: &id001 !ruby/object:User 
+  attributes: 
+    created_at: 2010-04-16 18:30:02
+    crypted_password: 52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3ac
+    updated_at: 2010-04-16 18:30:02
+    perishable_token: nrVOBFYEl-Ui2BY-6G3Z
+    id: "1"
+    password_salt: MkhMXnAbLc245SiyhGSb
+    persistence_token: 0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3
+    login: woto
+    email: woto@example.com
+  attributes_cache: {}
+
+  changed_attributes: {}
+
+errors: !ruby/object:Authlogic::Session::Validation::Errors 
+  base: *id002
+  errors: !map:ActiveSupport::OrderedHash {}
+
+new_session: false
+priority_record: 
+record: *id001
+scope: {}
+
+stale_record: 
+unauthorized_record: *id001
+  [4;35;1mPost Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 376ms (View: 3, DB: 13) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:32:15) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+aaaaaaaaaaaaa
+--- !ruby/object:User 
+attributes: 
+  created_at: 2010-04-16 18:30:02
+  crypted_password: 52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3ac
+  updated_at: 2010-04-16 18:30:02
+  perishable_token: nrVOBFYEl-Ui2BY-6G3Z
+  id: "1"
+  password_salt: MkhMXnAbLc245SiyhGSb
+  persistence_token: 0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3
+  login: woto
+  email: woto@example.com
+attributes_cache: {}
+
+changed_attributes: {}
+
+  [4;36;1mPost Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
+  [4;35;1mRole Load (0.3ms)[0m   [0mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;36;1mRole Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 167ms (View: 3, DB: 9) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;35;1mSQL (0.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:33:09) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;35;1mUser Columns (1.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+current_user_session >>>>>>>>>>>>>>> 
+--- !ruby/object:User 
+attributes: 
+  created_at: 2010-04-16 18:30:02
+  crypted_password: 52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3ac
+  updated_at: 2010-04-16 18:30:02
+  perishable_token: nrVOBFYEl-Ui2BY-6G3Z
+  id: "1"
+  password_salt: MkhMXnAbLc245SiyhGSb
+  persistence_token: 0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3
+  login: woto
+  email: woto@example.com
+attributes_cache: {}
+
+changed_attributes: {}
+
+  [4;35;1mPost Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `posts`[0m
+  [4;36;1mRole Load (0.2ms)[0m   [0;1mSELECT `roles`.* FROM `roles` INNER JOIN `assignments` ON `roles`.id = `assignments`.role_id WHERE ((`assignments`.user_id = 1)) [0m
+  [4;35;1mRole Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `roles`[0m
+Permission denied: No matching rules found for new for #<User id: 1, created_at: "2010-04-16 18:30:02", updated_at: "2010-04-16 18:30:02", login: "woto", crypted_password: "52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095...", password_salt: "MkhMXnAbLc245SiyhGSb", persistence_token: "0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef...", perishable_token: "nrVOBFYEl-Ui2BY-6G3Z", email: "woto@example.com"> (roles [:administrator], privileges [:new], context :posts).
+Filter chain halted as [:filter_access_filter] rendered_or_redirected.
+Completed in 154ms (View: 3, DB: 7) | 403 Forbidden [http://woto-netbook/posts/new/]
+  [4;36;1mSQL (259.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (49.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PostsController#new (for 127.0.1.1 at 2010-04-17 13:53:18) [GET]
+  Parameters: {"action"=>"new", "controller"=>"posts"}
+  [4;36;1mUser Columns (2739.6ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (668.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`persistence_token` = '0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3') LIMIT 1[0m
+current_user_session >>>>>>>>>>>>>>> 
+--- !ruby/object:User 
+attributes: 
+  created_at: 2010-04-16 18:30:02
+  crypted_password: 52068af4f3a74ef199fc0ab8e1caabde5cd7844c41e5a7e7095609cb664002dbcf8435887528f7fadb36abb77f0953e44499c8b30277cc415cb501915f82a3ac
+  updated_at: 2010-04-16 18:30:02
+  perishable_token: nrVOBFYEl-Ui2BY-6G3Z
+  id: "1"
+  password_salt: MkhMXnAbLc245SiyhGSb
+  persistence_token: 0b9dd35181dd9dea7234b676b38cb844d40e365c999a803d2ef2bcf477739079ed22b9e163189fee279392839bd81f8fab4e71453652f04bb84bbff0227969f3
+  login: woto
+  email: woto@example.com
+attributes_cache: {}
+
+changed_attributes: {}
+
+  [4;36;1mPost Columns (1844.2ms)[0m   [0;1mSHOW FIELDS FROM `posts`[0m
