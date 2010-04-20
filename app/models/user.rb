@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :assignments, :dependent => :destroy
   has_many :roles, :through => :assignments
+  has_many :posts
  
   def role_symbols
     @role_symbols ||= (roles || []).map { |role| role.name.underscore.to_sym }

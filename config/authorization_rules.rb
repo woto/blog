@@ -5,8 +5,7 @@ authorization do
 
   role :guest do
     has_permission_on :posts, :to => [:index, :show]
-    has_permission_on :comments do
-      if_att
+    has_permission_on :comments :to => [:index, :show]
   end
 
 #privileges do

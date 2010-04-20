@@ -8,6 +8,18 @@
   <%=h @post.body %>
 </p>
 
+<p>
+  <b>Date:</b>
+  <%=h @post.date %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <% unless @post.user.nil? %>
+    <%= @post.user.login %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

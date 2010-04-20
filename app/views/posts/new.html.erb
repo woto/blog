@@ -1,19 +1,17 @@
 <h1>New post</h1>
 
-<% form_for(@post) do |f| %>
+<% semantic_form_for(@post) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+  <% f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :body %>
+    <%= f.input :visible %>
+    <%= f.input :date %>
+  <% end %>
+  <%= f.buttons %>
+
 <% end %>
+
 
 <%= link_to 'Back', posts_path %>

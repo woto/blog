@@ -1,0 +1,16 @@
+<h1>Editing captcha_test</h1>
+
+<% form_for(@captcha_test) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @captcha_test %> |
+<%= link_to 'Back', captcha_tests_path %>

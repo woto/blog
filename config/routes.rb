@@ -1,6 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :posts
 
+  map.resources :posts
+
+
+  map.resources :captcha_tests
+  map.resources :posts
+  map.root :posts
 
   map.register 'register', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
@@ -10,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.resources :password_resets
   #map.resources :users
-  map.root :controller => "user_sessions", :action => "new"
+  #map.root :controller => "user_sessions", :action => "new"
 
   #map.register '/register/:activation_code', :controller => 'activations', :action => 'new'
   #map.activate '/activate/:id', :controller => 'activations', :action => 'create'

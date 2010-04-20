@@ -12,6 +12,14 @@
     <%= f.text_area :body %>
   </p>
   <p>
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </p>
+  <p>
+    <%= f.label :author %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>

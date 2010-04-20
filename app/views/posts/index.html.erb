@@ -4,12 +4,18 @@
   <tr>
     <th>Title</th>
     <th>Body</th>
+    <th>Date</th>
+    <th>Author</th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
     <td><%=h post.title %></td>
     <td><%=h post.body %></td>
+    <td><%=h post.date %></td>
+    <td><% unless post.user.nil? %>
+      <%= post.user.login %>
+    <% end %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -1,0 +1,21 @@
+<h1>New captcha_test</h1>
+
+<% form_for(@captcha_test) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :captcha %> <br />
+    <%= f.captcha_challenge %> <br />
+    <%= f.captcha_field %> <br />
+    <%= f.regenerate_captcha_challenge_link :text => 'Another captcha, please' %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', captcha_tests_path %>

@@ -1,0 +1,20 @@
+<h1>Listing captcha_tests</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% @captcha_tests.each do |captcha_test| %>
+  <tr>
+    <td><%=h captcha_test.name %></td>
+    <td><%= link_to 'Show', captcha_test %></td>
+    <td><%= link_to 'Edit', edit_captcha_test_path(captcha_test) %></td>
+    <td><%= link_to 'Destroy', captcha_test, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New captcha_test', new_captcha_test_path %>
