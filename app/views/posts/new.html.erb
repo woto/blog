@@ -5,7 +5,7 @@
 
   <% f.inputs do %>
     <%= f.input :title %>
-    <%= f.input :body %>
+    <%= ckeditor_textarea("post", "body", :width => '100%', :height => '200px') %>
     <%= f.input :visible %>
     <%= f.input :date %>
   <% end %>
