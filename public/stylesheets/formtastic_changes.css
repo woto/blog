@@ -12,3 +12,17 @@ The following style may be *conditionally* included for improved support on olde
 form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
+
+form.formtastic fieldset > ol > li p.inline-hints {
+  margin: 0.5em 0 0 0;
+}
+
+form.formtastic fieldset > ol > li label {
+  padding-bottom: 0.5em;
+  float: none;
+}
+
+form.formtastic fieldset > ol > li.boolean label {
+  padding-left: 0;
+}
+

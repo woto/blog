@@ -2,6 +2,7 @@ class CreatePosts < ActiveRecord::Migration
   def self.up
     create_table :posts do |t|
       t.string :title
+      t.text :intro
       t.text :body
       t.boolean :visible
       t.datetime :date

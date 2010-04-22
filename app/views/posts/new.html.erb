@@ -4,10 +4,12 @@
   <%= f.error_messages %>
 
   <% f.inputs do %>
-    <%= f.input :title %>
-    <%= f.input :body, :as => :ckeditor %>
+    <%= f.input :title, :label => 'aaa', :hint => 'as' %>
+    <%= f.input :intro, :label => "intro", :as => :ckeditor, :input_html => {:language => "ru"} %>
+    <%= f.input :body, :label => "full", :as => :ckeditor, :input_html => {:language => "ru"} %>
     <%= f.input :visible %>
     <%= f.input :date %>
+    <%= calendar_date_select_tag "p_date_and_time", Russian::strftime(Time.now, "%d %B %Y %H:%m"), :time => true %>
   <% end %>
   <%= f.buttons %>
 
