@@ -26,3 +26,6 @@ form.formtastic fieldset > ol > li.boolean label {
   padding-left: 0;
 }
 
+form.formtastic fieldset > ol > li p.inline-errors {
+  margin-left: 0;
+}

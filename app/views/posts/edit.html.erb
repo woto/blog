@@ -1,5 +1,5 @@
 <h1>Editing post</h1>
-
+aaa
 <% form_for(@post) do |f| %>
   <%= f.error_messages %>
 
@@ -13,7 +13,7 @@
   </p>
   <p>
     <%= f.label :date %><br />
-    <%= f.datetime_select :date %>
+    <%= f.calendar_date_select :date %>
   </p>
   <p>
     <%= f.label :author %><br />

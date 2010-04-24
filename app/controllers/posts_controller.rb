@@ -25,6 +25,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
+    @post.date = Time.now
 
     respond_to do |format|
       format.html # new.html.erb

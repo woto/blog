@@ -1,1 +1,1 @@
-CalendarDateSelect.format = :euro_24hr
+CalendarDateSelect.format = :iso_date
