@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100422200307) do
+ActiveRecord::Schema.define(:version => 20100424163028) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(:version => 20100422200307) do
 
   create_table "captcha_tests", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
