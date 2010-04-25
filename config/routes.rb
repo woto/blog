@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :posts
-
+  map.resources :categories
   map.resources :posts
 
 

@@ -1,14 +1,39 @@
-<h1>New post</h1>
+<h1>Новый пост</h1>
+
+<script language="Javascript">
+
+  document.observe('dom:loaded', function(){
+    CKEDITOR.on('instanceReady', function() {
+      document.checkVisibility = function(){
+        if($('post_intro_input').visible())
+          $('toggle_post_intro_input').update("Выключить вступление");
+        else
+          $('toggle_post_intro_input').update("Включить вступление");
+      }
+      if(CKEDITOR.instances.post_intro_editor.getData().length <= 9)
+        $('post_intro_input').hide();
+      document.checkVisibility();
+    });
+
+    $('toggle_post_intro_input').observe('click', function(event){
+      $('post_intro_input').toggle();
+      document.checkVisibility();
+      event.stop();
+    });
+  });
+</script>
 
 <% semantic_form_for(@post) do |f| %>
   <%= f.error_messages %>
 
   <% f.inputs do %>
-    <%= f.input :title, :label => 'aaa', :hint => 'as' %>
-    <%= f.input :intro, :label => "intro", :as => :ckeditor, :input_html => {:language => "ru"} %>
-    <%= f.input :body, :label => "full", :as => :ckeditor, :input_html => {:language => "ru"} %>
+    <%= f.input :title %>
+    <a id="toggle_post_intro_input" class="ajax" href=""></a><br /><br />
+    <%= f.input :intro, :as => :ckeditor, :input_html => {:language => "ru"}, :hint => 'Пропустите вступление и переходите к следующему полю если не хотите чтобы пост содержал короткое вступление при просмотре в виде списка или выгрузки в rss' %>
+    <%= f.input :body, :as => :ckeditor, :input_html => {:language => "ru"} %>
     <%= f.input :visible %>
-    <%= f.input :date, :as => :calendar %>
+    <%= f.input :date, :as => :calendar, :hint => "Формальная дата публикации (не влияет на дату появления поста)" %>
+    <%= f.input :category_id, :as => :select, :collection => nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" } %>
   <% end %>
   <%= f.buttons %>
 

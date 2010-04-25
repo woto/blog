@@ -1,0 +1,14 @@
+<% form_for(@product) do |f| %>
+ <%= @product.category.self_and_ancestors.map(&:name).join(' > ') %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.select :category_id, nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" } %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

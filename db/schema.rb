@@ -51,14 +51,14 @@ ActiveRecord::Schema.define(:version => 20100424163028) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
+    t.text     "intro"
     t.text     "body"
     t.boolean  "visible"
     t.datetime "date"
     t.integer  "user_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "full"
-    t.text     "intro"
   end
 
   create_table "roles", :force => true do |t|

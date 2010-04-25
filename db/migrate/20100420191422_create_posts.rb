@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration
       t.boolean :visible
       t.datetime :date
       t.references :user
+      t.references :category
 
       t.timestamps
     end

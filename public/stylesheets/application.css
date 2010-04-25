@@ -12,6 +12,12 @@ a {
   color: #0000FF;
 }
 
+a.ajax {
+  border-bottom: dashed;
+  border-width: 1px;
+  text-decoration: none;
+}
+
 .clear {
   clear: both;
   height: 0;

@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            date:
+              invalid_datetime: указана неверно
+    labels:
+      title: Заголовок
+      body: Пост
+      intro: Вступление
+      visible: Опубликован
+      date: Дата
+      category_id: Категория
+    attributes:
+      post:
+        title: Заголовок
+        body: Пост
+        intro: Вступление
+        visible: Опубликован
+        date: Дата
+        category_id: Категория
