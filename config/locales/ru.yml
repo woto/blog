@@ -1,4 +1,10 @@
 ru:
+  weakling:
+    default: Используйте строчные и прописные буквы, числа и символы
+    error: Очень короткий пароль
+    weak: Легкий пароль
+    average: Устойчивый пароль
+    strong: Очень устойчивый пароль
   activerecord:
     errors:
       models:

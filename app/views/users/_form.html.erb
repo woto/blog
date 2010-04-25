@@ -6,6 +6,7 @@
 <br />
 <%= form.label :password, form.object.new_record? ? nil : "Новый пароль" %> <br />
 <%= form.password_field :password %> <br />
+<%= password_strength :password_strength, 'user_password' %>
 <br />
 <%= form.label :password_confirmation %> <br />
 <%= form.password_field :password_confirmation %> <br />

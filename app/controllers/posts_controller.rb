@@ -25,6 +25,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
+    @post.visible = true
     @post.date = Time.now
 
     respond_to do |format|
