@@ -34,6 +34,8 @@
     <%= f.input :visible %>
     <%= f.input :date, :as => :calendar, :hint => "Формальная дата публикации (не влияет на дату появления поста)" %>
     <%= f.input :category_id, :as => :select, :collection => nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" } %>
+    <%= f.input :tag_list %>
+
   <% end %>
   <%= f.buttons %>
 

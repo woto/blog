@@ -85,3 +85,11 @@ a.ajax {
   font-size: 12px;
   list-style: disc;
 }
+
+/* tags css */
+.tags { }
+.tag_level_1 { font-size: 12px; }
+.tag_level_2 { font-size: 14px; }
+.tag_level_3 { font-size: 16px; }
+.tag_level_4 { font-size: 18px; }
+.tag_level_5 { font-size: 20px; }

@@ -25,4 +25,8 @@
 
 <br />
 
+<div class="tags">
+  <%= render(:partial => "tags", :collection => @tags) %>
+</div>
+
 <%= link_to 'New post', new_post_path %>

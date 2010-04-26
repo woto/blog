@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :posts
   map.resources :categories
-  map.resources :posts
+  map.resources :posts, :member => {:filter => :any}
 
 
   map.resources :captcha_tests
