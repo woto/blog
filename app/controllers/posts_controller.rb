@@ -1,10 +1,9 @@
 class PostsController < ApplicationController
 
-  before_filter :tag
-
   # GET /posts
   # GET /posts.xml
   def index
+    @tags = Post.tag_counts
     @posts = Post.all
 
     respond_to do |format|
@@ -91,6 +90,7 @@ class PostsController < ApplicationController
 
   def filter
     @posts = Post.tagged_with(params[:id], :on => :tags)
+    @tags = @posts.tag_counts
 
     flash.now[:notice] = "Fitlering by #{params[:id]}"
    
@@ -99,11 +99,5 @@ class PostsController < ApplicationController
       format.xml  { render :xml => @cakes }
     end
   end 
-
-  private
-  
-  def tag
-    @tags = Post.tag_counts
-  end
 
 end

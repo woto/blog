@@ -6,6 +6,7 @@
     <th>Body</th>
     <th>Date</th>
     <th>Author</th>
+    <th>Tags</th>
   </tr>
 
 <% @posts.each do |post| %>
@@ -16,6 +17,7 @@
     <td><% unless post.user.nil? %>
       <%= post.user.login %>
     <% end %></td>
+    <td><%= post.tag_list %></td>
     <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -28,5 +30,7 @@
 <div class="tags">
   <%= render(:partial => "tags", :collection => @tags) %>
 </div>
+
+<br />
 
 <%= link_to 'New post', new_post_path %>

@@ -1,1 +1,20 @@
-<span class="tag_level_<%= tags.count %>"><%= link_to tags.name, filter_post_path(tags.name) %> </span>
+<span class="tag_level_<%= tags.count %>">
+
+  <% if params[:id] %>
+    <% aTags = params[:id].split(',') %>
+
+    <% if(aTags).include?(tags.name) %>
+      <% aTags.delete(tags.name) %>
+      <% if(aTags.count == 0) %>
+        <%= link_to "-", posts_path %>
+      <% else %>
+        <%= link_to "-", filter_post_path(aTags.join(',')) %>
+      <% end %>
+    <% else %>
+      <% aTags << tags.name %>
+      <%= link_to "+", filter_post_path(aTags.join(',')) %>
+    <% end %>
+  <% end %>
+
+  <%= link_to tags.name, filter_post_path(tags.name) %>
+</span>
