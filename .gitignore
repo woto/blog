@@ -4,4 +4,4 @@ tmp/**/*
 nbproject
 *.swp
 *~
-public/assets/pictures/*
+public/assets/*
