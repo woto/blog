@@ -3,3 +3,5 @@ tmp/**/*
 .idea
 nbproject
 *.swp
+*~
+public/assets/pictures/*

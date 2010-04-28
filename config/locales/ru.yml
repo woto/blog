@@ -19,6 +19,7 @@ ru:
       visible: Опубликован
       date: Дата
       category_id: Категория
+      tag_list: Теги
     attributes:
       post:
         title: Заголовок
@@ -27,3 +28,4 @@ ru:
         visible: Опубликован
         date: Дата
         category_id: Категория
+        tag_list: Теги

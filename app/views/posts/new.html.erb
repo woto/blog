@@ -33,9 +33,12 @@
     <%= f.input :visible %>
     <%= f.input :date, :as => :calendar, :hint => "Формальная дата публикации (не влияет на дату появления поста)" %>
     <%= f.input :category_id, :as => :select, :collection => nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" } %>
-    
-    <%= text_field_with_auto_complete :post, :tag_list, {:autocomplete => "off"}, {:indicator =>'searchIndicator', :tokens => [',']} %>
-    <%= image_tag('/images/ajax-indicator.gif', :id => 'searchIndicator', :style => 'display:none;') %>
+    <li id="post_tag_list_input" class="string optional">
+      <%= f.label :tag_list %>
+      <%= text_field_with_auto_complete :post, :tag_list, {:autocomplete => "off"}, {:indicator =>'searchIndicator', :tokens => [',']} %>
+      <%= image_tag('/images/ajax-indicator.gif', :id => 'searchIndicator', :style => 'display:none;') %>
+      <p class="inline-hints">Используйте запятую для разделения тегов</p>
+    </li>
 
   <% end %>
   <%= f.buttons %>
