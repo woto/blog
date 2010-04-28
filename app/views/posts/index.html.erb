@@ -1,22 +1,26 @@
 <% @posts.each do |post| %>
-  <b><%=h post.title %></b><br />
+  <p>
+    <b><%=h post.title %></b> <br />
     <%= post.body %> <br />
-    <%= l(post.date, :format => :long) %> <br />
     <% unless post.user.nil? %>
-      <%= post.user.login %> <br />
+      <b>Написал: </b> <%= post.user.login %>,
     <% end %>
-    <%= post.tag_list %></td> <br />
+    <%= l(post.date, :format => :long) %> <br />
+    <b>Теги:</b> <%= post.tag_list %></td> <br /><br />
     <%= link_to 'Show', post %>
     <%= link_to 'Edit', edit_post_path(post) %>
     <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+  </p>
 <% end %>
 
 <br />
 
 <div class="tags">
-  <%= render(:partial => "tags", :collection => @tags) %>
+  <b>Облако тегов:</b><%= render(:partial => "tags", :collection => @tags) %>
 </div>
 
 <br />
+<%= will_paginate @posts %>
 
+<br />
 <%= link_to 'New post', new_post_path %>

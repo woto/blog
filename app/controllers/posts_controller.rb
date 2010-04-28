@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     @tags = Post.tag_counts
-    @posts = Post.all
+    @posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,8 +89,9 @@ class PostsController < ApplicationController
   end
 
   def filter
-    @posts = Post.tagged_with(params[:id], :on => :tags)
-    @tags = @posts.tag_counts
+    scope = Post.tagged_with(params[:id], :on => :tags)
+    @posts = scope.paginate(:page => params[:page], :order => 'created_at DESC')
+    @tags = scope.tag_counts
 
     flash.now[:notice] = "Fitlering by #{params[:id]}"
    

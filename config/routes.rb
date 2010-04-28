@@ -3,10 +3,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories
   map.resources :posts, :member => {:filter => :any}
 
+  map.root :posts
 
   map.resources :captcha_tests
   map.resources :posts
-  map.root :posts
 
   map.register 'register', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'

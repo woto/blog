@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 2
+
   belongs_to :user
   belongs_to :category
   validates_presence_of :title, :body
