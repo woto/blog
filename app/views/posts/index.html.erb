@@ -1,26 +1,23 @@
 <% @posts.each do |post| %>
-  <p>
-    <b><%=h post.title %></b> <br />
-    <%= post.body %> <br />
-    <% unless post.user.nil? %>
-      <b>Написал: </b> <%= post.user.login %>,
-    <% end %>
-    <%= l(post.date, :format => :long) %> <br />
-    <b>Теги:</b> <%= post.tag_list %></td> <br /><br />
-    <%= link_to 'Show', post %>
+  <div class="post">
+    <h3><%= link_to h(post.title), post %></h3>
+    <%= post.body %>
+    <ul class="post_info">
+      <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a> в категории <a href="">Интересно</a></li>
+      <li class="comments"><a href="">2 комментария</a></li>
+    </ul>
+    <b>Теги:</b> <%= post.tag_list %><br />
     <%= link_to 'Edit', edit_post_path(post) %>
     <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
-  </p>
+  </div>
+  
+  <br class="clear" />
+
 <% end %>
 
-<br />
-
-<div class="tags">
-  <b>Облако тегов:</b><%= render(:partial => "tags", :collection => @tags) %>
+<div class="flickr_pagination">
+  <%= will_paginate @posts, :container => false %>
 </div>
-
-<br />
-<%= will_paginate @posts %>
 
 <br />
 <%= link_to 'New post', new_post_path %>

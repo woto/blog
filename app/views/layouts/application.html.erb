@@ -1,31 +1,151 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag :defaults %>
-    <%= formtastic_stylesheet_link_tag %>
-    <%= javascript_include_tag :ckeditor %>   
-    <%= calendar_date_select_includes :style => "default", :locale => "ru" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-    <%= javascript_include_tag 'weakling' %>
-    <%= stylesheet_link_tag 'weakling.css' %>
+    <head>
+      <title><%= h(yield(:title) || "Untitled") %></title>
+      <%= stylesheet_link_tag 'application' %>
+      <%= javascript_include_tag :defaults %>
+      <%= formtastic_stylesheet_link_tag %>
+      <%= javascript_include_tag :ckeditor %>
+      <%= calendar_date_select_includes :style => "default", :locale => "ru" %>
 
- <%= yield(:head) %>
+      <%= javascript_include_tag 'weakling' %>
+      <%= stylesheet_link_tag 'weakling.css' %>
 
-  </head>
-  <body>
-    <div id="container">
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <%- end -%>
-      
-      <%- if show_title? -%>
-        <h1><%=h yield(:title) %></h1>
-      <%- end -%>
-      
-      <%= yield %>
-    </div>
-  </body>
+      <%= yield(:head) %>
+
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+</head>
+<body>
+
+
+<div id="header">
+
+	<div id="header_inner" class="fixed">
+
+		<div id="logo">
+      <a href="/">
+        <h1><span>Персональный сайт woto</span></h1>
+			  <h2>(Корнев Руслан)</h2>
+      </a>
+		</div>
+		
+		<div id="menu">
+			<ul>
+				<li><a href="#">Главная</a></li>
+				<li><a href="#" class="active">Обо мне</a></li>
+				<li><a href="#">Обратная связь</a></li>
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+<div id="main">
+
+	<div id="main_inner" class="fixed">
+
+		<div id="primaryContent_3columns">
+
+			<div id="columnA_3columns">
+        
+        <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <%- end -%>
+
+        <%- if show_title? -%>
+          <h1><%=h yield(:title) %></h1>
+        <%- end -%>
+
+
+	<!--		<h3>A free design by NodeThirtyThree</h3>
+				<img src="/images/pic.gif" class="floatTL" alt="Something scenic" />
+
+				<p>
+					Nonzero<sup>1.0</sup> is a free, lightweight, tableless, fluid/fixed W3C-valid 
+					website design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>. 
+					The scenic photo to the left is from <a href="http://www.pdphoto.org/">PDPhoto</a>. 
+					You're free to dissect, manipulate and use this design to your heart's content. We only ask 
+					that you link back to <a href="http://www.nodethirtythree.com/">our site</a> in some 
+					way. And if you find this design useful, feel free to let us know :)
+				</p>
+				
+				<p>
+					You can find more of our free work at this site or <a href="http://www.nodethirtythree.com/">our site</a>,
+					or some of our commercial work on <a href="http://www.4templates.com/?aff=n33">4Templates.com</a>,
+					a commercial website template site.
+				</p>
+				
+	      <br class="clear" />
+  -->	
+        <%= yield %>
+		
+			</div>
+	
+		</div>
+		
+		<div id="secondaryContent_3columns">
+		
+			<div id="columnB_3columns">
+		
+				<h4><span>Поиск</span></h4>
+				
+				<form method="post" action="">
+				<div id="search">
+					<input type="text" class="text" name="keywords" />
+					<input type="submit" class="button" value="Ок" />
+					<br class="clear" />
+				</div>
+				</form>
+				
+				<h4><span>Родственные</span> теги</h4>
+        <p>
+          <%= render(:partial => "tags", :collection => @tags) %>
+        </p>
+
+			</div>
+			
+      <div id="columnC_3columns">
+
+        <h4><span>Категории</span></h4>
+        <%=format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| "<a href=''>" + i.name + '</a>'} %>
+			<!--	<ul class="links">
+          <li class="first">
+            <a href="#">Velit molestie</a>
+          </li>
+          <li>
+            <a href="#">Consequat cursus</a>
+          </li>
+          <li>
+            <a href="#">Tempus nullam</a>
+          </li>
+          <li>
+            <a href="#">Magna sed mauris</a>
+          </li>
+          <li>
+            <a href="#">Semper molestie</a>
+          </li>
+        </ul>
+      -->
+				
+				<h4><span>Популярные</span> теги</h4>
+				<ul class="links">
+				<li class="first"><a href="http://www.nodethirtythree.com/">NodeThirtyThree</a></li>				<li><a href="http://www.4templates.com/?aff=n33">4Templates.com</a></li>				<li><a href="http://www.wpthemepark.com/">WPThemePark</a></li>				<li><a href="http://www.openwebdesign.org/userinfo.phtml?user=node33">OpenWebDesign</a></li>				<li><a href="http://www.zeroweb.org/">Zeroweb.org</a></li>				</ul>
+			</div>
+
+		</div>
+
+		<br class="clear" />
+
+	</div>
+
+</div>
+
+<div id="footer" class="fixed">
+  Дизайн от <a href="http://www.nodethirtythree.com">nodethirtythree</a> и <a href="http://www.freecsstemplates.org">Free CSS Templates</a>.
+</div>
+
+</body>
 </html>
