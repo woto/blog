@@ -2,4 +2,4 @@
     <%- aTags = params[:id].split(',') -%>
     <%- if(aTags).include?(tags.name) -%>
       <% return %>
-      <%- else -%><%- aTags << tags.name -%><%= link_to "+", filter_post_path(aTags.join(',')) %><%- end -%><%- end -%>&nbsp;<%= link_to tags.name, filter_post_path(tags.name) %>&nbsp;(<%= tags.count %>)</span>
+      <%- else -%><%- aTags << tags.name -%><%= link_to "+", filter_post_path(aTags.join(',')), :title => "Щелкнув на плюсик вы отфильтруете посты которые содержат " + Russian.p(params[:id].split(',').count, "тег", "теги", "теги") + " \"" + params[:id].gsub(/,/, ", ") + "\"" + " и тег \"" + tags.name + "\"" %><%- end -%><%- end -%>&nbsp;<%= link_to tags.name, filter_post_path(tags.name) %></span>

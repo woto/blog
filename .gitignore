@@ -6,3 +6,4 @@ nbproject
 *~
 public/assets/*
 db/sphinx
+db/development.sqlite3

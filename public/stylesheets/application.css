@@ -391,7 +391,7 @@ margin-bottom: 0.8em;
 #main_inner h4
 {
   font-size: 1.2em;
-  margin-top: 2em;
+  margin-top: 0;
 }
 
 #main_inner .post
@@ -470,7 +470,7 @@ height: 2.0em;
 
 input.text
 {
-border: solid 1px #F1F1F1;
+border: solid 1px #DDD;
 font-size: 1.0em;
 padding: 0.25em 0.25em 0.25em 0.25em;
 }
@@ -497,6 +497,8 @@ top: 0em;
 right: 0em;
 min-width: 2.0em;
 max-width: 2.5em;
+width: 4em;
+height: 2.3em;
 }
 
 /* LAYOUT - 3 COLUMNS */
@@ -594,4 +596,8 @@ max-width: 2.5em;
 {
   background-color: #EED; 
   padding: 10px;
+}
+
+.block {
+  margin-bottom: 2.5em;
 }
