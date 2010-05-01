@@ -20,15 +20,14 @@
 </head>
 <body>
 
-
 <div id="header">
 
 	<div id="header_inner" class="fixed">
 
 		<div id="logo">
       <a href="/">
-        <h1><span>Персональный сайт woto</span></h1>
-			  <h2>(Корнев Руслан)</h2>
+        <h1><span>Lorem ipsum</span></h1>
+			  <h2>(в процессе разработки)</h2>
       </a>
 		</div>
 		
@@ -59,27 +58,20 @@
           <h1><%=h yield(:title) %></h1>
         <%- end -%>
 
-
-	<!--		<h3>A free design by NodeThirtyThree</h3>
-				<img src="/images/pic.gif" class="floatTL" alt="Something scenic" />
-
-				<p>
-					Nonzero<sup>1.0</sup> is a free, lightweight, tableless, fluid/fixed W3C-valid 
-					website design by <a href="http://www.nodethirtythree.com/">NodeThirtyThree Design</a>. 
-					The scenic photo to the left is from <a href="http://www.pdphoto.org/">PDPhoto</a>. 
-					You're free to dissect, manipulate and use this design to your heart's content. We only ask 
-					that you link back to <a href="http://www.nodethirtythree.com/">our site</a> in some 
-					way. And if you find this design useful, feel free to let us know :)
-				</p>
-				
-				<p>
-					You can find more of our free work at this site or <a href="http://www.nodethirtythree.com/">our site</a>,
-					or some of our commercial work on <a href="http://www.4templates.com/?aff=n33">4Templates.com</a>,
-					a commercial website template site.
-				</p>
+      <div id="filter">
+        <p>
+          Просмотр происходит внутри категории: <a href="">Фреймворки</a> → <a href="">Ruby on Rails</a> 
+        </p>
+        <p>
+          Включен фильтр по тегам: </a><a href="">Арбуз</a>&nbsp;<a href=""><sup>x</sup>, <a href="">Ампула</a>&nbsp;<a href=""><sup>x</sup></a>
+        </p>
+        <p>
+          Включен фильтр по источникам данных: <a href="">Twitter</a>&nbsp;<a href=""><sup>x</sup>, <a href="">Delicious</a>&nbsp;<a href=""><sup>x</sup></a>
+        </p>
+      </div>
 				
 	      <br class="clear" />
-  -->	
+  	
         <%= yield %>
 		
 			</div>
@@ -102,37 +94,40 @@
 				
 				<h4><span>Родственные</span> теги</h4>
         <p>
-          <%= render(:partial => "tags", :collection => @tags) %>
+          <%= render(:partial => "related_tags", :collection => @tags, :as => :tags) %>
         </p>
 
-			</div>
+        <h4><span>Источники</span> данных</h4>
+        <p>
+          <ul class="links">
+            <li><a href="">-</a> <a href="">Этот сайт</a> <a href="">→</a></li>
+            <li><a href="">+</a> <a href="">Twitter</a> <a href="">→</a></li>
+            <li><a href="">-</a> <a href="">Youtube</a> <a href="">→</a></li>
+            <li><a href="">-</a> <a href="">Blogspot</a> <a href="">→</a></li>
+            <li>+ <a href="">Vimeo</a> <a href="">→</a></li>
+            <li><a href="">+</a> <a href="">Flickr</a> <a href="">→</a></li>
+            <li>+ Head Hunter <a href="http://hh.ru/resume/472e8180008173f5">→</a></li>
+            <li>+ Мой Круг <a href="http://kornevruslan.moikrug.ru/">→</a></li>
+            <li><a href="">+</a> <a href="">Delicious</a> <a href="http://delicious.com/woto">→</a></li>
+            <li><a href="">+</a> <a href="">Github</a> <a href="http://github.com/woto">→</a></li>
+            <li><a href="">+</a> <a href="">Buzz</a> <a href="">→</a></li>
+            <li><a href="">+</a> <a href="">Google Reader</a> <a href="">→</a></li>
+          </ul>
+ 			</div>
 			
       <div id="columnC_3columns">
 
         <h4><span>Категории</span></h4>
         <%=format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| "<a href=''>" + i.name + '</a>'} %>
-			<!--	<ul class="links">
-          <li class="first">
-            <a href="#">Velit molestie</a>
-          </li>
-          <li>
-            <a href="#">Consequat cursus</a>
-          </li>
-          <li>
-            <a href="#">Tempus nullam</a>
-          </li>
-          <li>
-            <a href="#">Magna sed mauris</a>
-          </li>
-          <li>
-            <a href="#">Semper molestie</a>
-          </li>
-        </ul>
-      -->
-				
-				<h4><span>Популярные</span> теги</h4>
-				<ul class="links">
-				<li class="first"><a href="http://www.nodethirtythree.com/">NodeThirtyThree</a></li>				<li><a href="http://www.4templates.com/?aff=n33">4Templates.com</a></li>				<li><a href="http://www.wpthemepark.com/">WPThemePark</a></li>				<li><a href="http://www.openwebdesign.org/userinfo.phtml?user=node33">OpenWebDesign</a></li>				<li><a href="http://www.zeroweb.org/">Zeroweb.org</a></li>				</ul>
+
+       <h4><span>Популярные</span> теги</h4>
+        <% @popular_tags = Post.tag_counts(:limit => 20, :at_least => 2) %>
+        <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
+ 
+        <h4><span>Обо</span> мне</h4>
+        <img style="margin: 0 7px 0 0; float: left;" width="45px" height="60px" src="http://farm5.static.flickr.com/4039/4566917565_c6ec85c2d3_o.jpg" alt="Корнев Руслан aka woto" />
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book <a href="">Обо мне...</a>
+ 
 			</div>
 
 		</div>

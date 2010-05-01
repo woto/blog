@@ -89,7 +89,8 @@ class PostsController < ApplicationController
   end
 
   def filter
-    scope = Post.by_category.tagged_with(params[:id], :on => :tags)
+    #scope = Post.by_category.tagged_with(params[:id], :on => :tags)
+    scope = Post.tagged_with(params[:id], :on => :tags)
     @posts = scope.paginate(:page => params[:page], :order => 'created_at DESC')
     @tags = scope.tag_counts
 

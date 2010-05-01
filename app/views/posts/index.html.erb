@@ -1,6 +1,6 @@
 <% @posts.each do |post| %>
   <div class="post">
-    <h3><%= link_to h(post.title), post %></h3>
+    <h3 class="title"><%= link_to h(post.title), post %></h3>
     <%= post.body %>
     <ul class="post_info">
       <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a> в категории <a href="">Интересно</a></li>

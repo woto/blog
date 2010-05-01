@@ -38,6 +38,7 @@ font-family: "trebuchet ms", helvetica, sans-serif;
 
 h1,h2,h3,h4,h5,h6
 {
+margin: 1em 0;
 font-weight: normal;
 letter-spacing: -1px;
 text-transform: lowercase;
@@ -100,20 +101,30 @@ a.ajax
   text-decoration: none;
 }
 
+#main_inner ul li
+{
+  margin-left: 1.5em;
+}
+
 #main_inner ul.links
 {
 list-style: none;
 margin-bottom: 0px;
 }
 
-ul.links li
+#main_inner ul.links li
 {
-  padding-left: 7px;
-  line-height: 2em;
+  margin-left: 0px;
+  margin-top: 0.8em;
+  font-size: 110%;
+  font-weight: bold;
 }
 
-ul.links li.first
+#main_inner ul.links ul.links li
 {
+  margin-left: 0.8em;
+  font-size: 95%;
+  font-weight: normal;
 }
 
 p
@@ -348,12 +359,11 @@ background: #fff url('/images/template/n2.gif') 0px 1px repeat-x;
 #main_inner p
 {
 text-align: justify;
-#margin-bottom: 2.0em;
+margin: 1.0em 0em;
 }
 
 #main_inner ul
 {
-margin-bottom: 2.0em;
 }
 
 #main_inner
@@ -364,13 +374,14 @@ margin: 0 auto;
 padding-top: 3.5em;
 }
 
-#main_inner h3,h4
+#main_inner h3.title,h4.title
 {
 border-bottom: dotted 1px #E1E1E1;
 position: relative;
+margin: 0;
 }
 
-#main_inner h3
+#main_inner h3.title
 {
 font-size: 2.1em;
 padding-bottom: 0.1em;
@@ -379,10 +390,8 @@ margin-bottom: 0.8em;
 
 #main_inner h4
 {
-font-size: 1.2em;
-padding-bottom: 0.175em;
-margin-bottom: 1.4em;
-margin-top: 0.95em;
+  font-size: 1.2em;
+  margin-top: 2em;
 }
 
 #main_inner .post
@@ -390,14 +399,14 @@ margin-top: 0.95em;
 position: relative;
 }
 
-#main_inner .post h3
+#main_inner .post h3.title
 {
 position: relative;
 font-size: 1.7em;
 padding-bottom: 1.2em;
 }
 
-#main_inner .post h3 a
+#main_inner .post h3.title a
 {
   text-decoration: none;
   color: #000;
@@ -417,6 +426,7 @@ background-position: 0em 0.2em;
 background-repeat: no-repeat;
 display: inline;
 padding-left: 18px;
+margin-left: 0;
 }
 
 #main_inner .post ul.post_info li.date
@@ -579,3 +589,9 @@ max-width: 2.5em;
 	position: relative;
 	width: 100%;
 	}
+
+#filter
+{
+  background-color: #EED; 
+  padding: 10px;
+}
