@@ -103,7 +103,7 @@ a.ajax
 
 #main_inner ul li
 {
-  margin-left: 1.5em;
+  /* margin-left: 1.5em; */
 }
 
 #main_inner ul.links

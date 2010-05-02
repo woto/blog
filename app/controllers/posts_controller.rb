@@ -88,14 +88,17 @@ class PostsController < ApplicationController
     end
   end
 
-  def filter
+  def search
     #scope = Post.by_category.tagged_with(params[:id], :on => :tags)
-    scope = Post.tagged_with(params[:id], :on => :tags)
+    scope = Post
+    category_id = Category.find_by_name(params[:category]).self_and_descendants if params[:category] 
+    scope = scope.scoped(:conditions => ["posts.category_id IN (?)", category_id]) if category_id
+    #scope = scope.scoped(:conditions => ["posts.category_id = ?", category_id]).tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags) if params[:tags]
+    scope = scope.tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags) if params[:tags]
+
     @posts = scope.paginate(:page => params[:page], :order => 'created_at DESC')
     @tags = scope.tag_counts
 
-    flash.now[:notice] = "Fitlering by #{params[:id]}"
-   
     respond_to do |format|
       format.html { render :action => "index" }
       format.xml  { render :xml => @cakes }

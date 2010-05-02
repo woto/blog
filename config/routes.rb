@@ -1,12 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :posts
+
+  #map.filter '/browse/*params', :controller => 'posts', :action => 'index'
+  #map.resources :posts
   map.resources :categories
-  map.resources :posts, :member => {:filter => :any}
+  map.resources :posts, :collection => {:search => [:get]}
 
   map.root :posts
 
   map.resources :captcha_tests
-  map.resources :posts
 
   map.register 'register', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'

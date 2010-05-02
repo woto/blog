@@ -1,23 +1,34 @@
-<% @posts.each do |post| %>
-  <div class="post">
-    <h3 class="title"><%= link_to h(post.title), post %></h3>
-    <%= post.body %>
-    <ul class="post_info">
-      <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a> в категории <a href="">Интересно</a></li>
-      <li class="comments"><a href="">2 комментария</a></li>
-    </ul>
-    <b>Теги:</b> <%= post.tag_list %><br />
-    <%= link_to 'Edit', edit_post_path(post) %>
-    <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+<% if @posts.count > 0 %>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <h3 class="title"><%= link_to h(post.title), post %></h3>
+      <%= post.body %>
+      <ul class="post_info">
+        <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a>
+          в категории 
+          <%= link_to("Главная", search_posts_path(:tags => params[:tags])) %>
+          <% if post.category %> 
+            →
+            <%= post.category.self_and_ancestors.map{|item| link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name))}.join(' → ') %>
+          <% end %>
+        </li>
+        <li class="comments"><a href="">2 комментария</a></li>
+      </ul>
+      <b>Теги:</b> <%= post.tag_list %><br />
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
+    
+    <br class="clear" />
+
+  <% end %>
+
+  <div class="flickr_pagination">
+    <%= will_paginate @posts, :container => false %>
   </div>
-  
-  <br class="clear" />
 
+  <br />
+  <%= link_to 'New post', new_post_path %>
+<% else %>
+  Не найдено ни одного поста удовлетворяющих требованию, попробуйте выбрать другие параметры фильтрации
 <% end %>
-
-<div class="flickr_pagination">
-  <%= will_paginate @posts, :container => false %>
-</div>
-
-<br />
-<%= link_to 'New post', new_post_path %>
