@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   cattr_reader :per_page
-  @@per_page = 2
+  @@per_page = 10
 
   belongs_to :user
   belongs_to :category
