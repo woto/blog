@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/calendar_date_select_test"]
 	path = vendor/plugins/calendar_date_select_test
 	url = git://github.com/woto/calendar_date_select.git
+[submodule "vendor/plugins/calendar_date_select"]
+	path = vendor/plugins/calendar_date_select
+	url = git://github.com/woto/calendar_date_select.git
