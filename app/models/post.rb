@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   cattr_reader :per_page
-  @@per_page = 2
+  @@per_page = 10
 
   belongs_to :user
   belongs_to :category
@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates_length_of :body, :minimum => 9
   validates_datetime :date
   acts_as_taggable_on :tags
-  named_scope :by_category, :conditions => {:category_id => 1}
+  #named_scope :by_category, :conditions => {:category_id => 1}
 
   define_index do
     indexes title

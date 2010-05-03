@@ -57,17 +57,35 @@
         <%- if show_title? -%>
           <h1><%=h yield(:title) %></h1>
         <%- end -%>
+      
+      <% if params[:category] || params[:tags] %>
+        <div id="filter">
+            <% if params[:category] and category = Category.find_by_name(params[:category]) %>
+              <p>
+                Просмотр происходит внутри категории: 
+                <%= link_to "Главная", search_posts_path(:tags => params[:tags]) %> → 
+                <% category.self_and_ancestors.each do |item| %>
+                  <%= link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name)) %>
+                  <%= " → " unless category.self_and_ancestors.last == item %>
+                <% end %>
+              </p>
+            <% end %>
+          <p>
+            <% if params[:tags] %>
+              <% tags = Array.[](params[:tags]).flatten %>
+              Включен фильтр по  <%= Russian.p(tags.count, "тегу", "тегам", "тегам") %>:
+              <% tags.each { |tag| %>
+              <%= link_to tag, search_posts_path(:tags => tag, :category => params[:category]) %>
+              <%= link_to "<sup>x</sup>", search_posts_path(:tags => tags.reject{|item| item == tag}, :category => params[:category]) %>
+                <%= ", " unless tags.last == tag %> 
+              <% } %>
+            <% end %>
+          </p>
+        </div>
 
-      <div id="filter">
-        <p>
-          Просмотр происходит внутри категории: <a href="">Фреймворки</a> → <a href="">Ruby on Rails</a> 
-        </p>
-        <p>
-          Включен фильтр по тегам: </a><a href="">Арбуз</a>&nbsp;<a href=""><sup>x</sup>, <a href="">Ампула</a>&nbsp;<a href=""><sup>x</sup></a>
-        </p>
-      </div>
-				
-	      <br class="clear" />
+        <br class="clear" />
+
+			<% end %>
   	
         <%= yield %>
 		
@@ -79,17 +97,9 @@
 		
       <div id="columnB_3columns">
 
-	      <% if params[:action] == "filter" %>
-          <h4><span>Родственные</span> теги</h4>
-          <div class="block">
-            <%= render(:partial => "related_tags", :collection => @tags, :as => :tags) %>
-          </div>
-        <% end %>
-
-	
         <h4><span>Категории</span> постов</h4>
         <div class="block">
-          <%=format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| "<a href=''>" + i.name + '</a>'} %>
+          <%=format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:tags => params[:tags], :category => i.name))} %>
         </div>
         
         <h4><span>Популярные</span> теги</h4>
@@ -97,6 +107,13 @@
           <% @popular_tags = Post.tag_counts(:limit => 20, :at_least => 2) %>
           <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
         </div>
+
+        <% if params[:action] == "search" && @tags.count > 0 %>
+          <h4><span>Родственные</span> теги</h4>
+          <div class="block">
+            <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>
+          </div>
+        <% end %>
         
  			</div>
 			
@@ -121,7 +138,7 @@
             <img width="120" height="160" src="http://farm4.static.flickr.com/3539/4567817472_f107697a88_o.jpg" alt="Корнев Руслан aka woto" />
           </div>
           <br style="clear" />
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book <a href="">Обо мне...</a>
+          Разрешите представиться, я, Корнев Руслан aka woto. Веб программист, занимаюсь разработкой сайтов на Ruby on Rails и PHP. Стараюсь делать интересные, в меру уникальные сайты, ищу работу. Подробнее на странице <a href="">Обо мне...</a>
         </div>
 
         <h4><span>Я в других</span> местах</h4>
@@ -138,6 +155,8 @@
             <li><a href="http://github.com/woto">Github</a></li>
             <li><a href="http://www.google.com/profiles/107009283623209618815">Google Buzz</a></li>
             <li><a href="http://www.google.com/reader/shared/03958211105266633351">Google Reader</a></li>
+            <li><a href="http://friendfeed.com/woto">Friend Feed</a></li>
+            <li><a href="http://www.facebook.com/profile.php?id=100000295528262">Facebook</a></li>
           </ul>
         </div>
 
