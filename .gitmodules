@@ -4,3 +4,6 @@
 [submodule "vendor/plugins/calendar_date_select"]
 	path = vendor/plugins/calendar_date_select
 	url = git://github.com/woto/calendar_date_select.git
+[submodule "vendor/plugins/acts-as-taggable-on"]
+	path = vendor/plugins/acts-as-taggable-on
+	url = git://github.com/mbleigh/acts-as-taggable-on.git
