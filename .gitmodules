@@ -7,3 +7,51 @@
 [submodule "vendor/plugins/acts-as-taggable-on"]
 	path = vendor/plugins/acts-as-taggable-on
 	url = git://github.com/mbleigh/acts-as-taggable-on.git
+[submodule "vendor/plugins/authlogic"]
+	path = vendor/plugins/authlogic
+	url = git://github.com/binarylogic/authlogic.git
+[submodule "vendor/plugins/auto_complete"]
+	path = vendor/plugins/auto_complete
+	url = git://github.com/rails/auto_complete.git
+[submodule "vendor/plugins/awesome_nested_set"]
+	path = vendor/plugins/awesome_nested_set
+	url = git://github.com/collectiveidea/awesome_nested_set.git
+[submodule "vendor/plugins/declarative_authorization"]
+	path = vendor/plugins/declarative_authorization
+	url = git://github.com/stffn/declarative_authorization.git
+[submodule "vendor/plugins/formtastic_calendar_date_select"]
+	path = vendor/plugins/formtastic_calendar_date_select
+	url = git://github.com/dyohi/formtastic_calendar_date_select.git
+[submodule "vendor/plugins/formtastic"]
+	path = vendor/plugins/formtastic
+	url = git://github.com/justinfrench/formtastic.git
+[submodule "vendor/plugins/paperclip"]
+	path = vendor/plugins/paperclip
+	url = git://github.com/thoughtbot/paperclip.git
+[submodule "vendor/plugins/rails-ckeditor"]
+	path = vendor/plugins/rails-ckeditor
+	url = git://github.com/galetahub/rails-ckeditor.git
+[submodule "vendor/plugins/russian"]
+	path = vendor/plugins/russian
+	url = git://github.com/yaroslav/russian.git
+[submodule "vendor/plugins/sitemap_generator"]
+	path = vendor/plugins/sitemap_generator
+	url = git://github.com/adamsalter/sitemap_generator.git
+[submodule "vendor/plugins/thinking-sphinx"]
+	path = vendor/plugins/thinking-sphinx
+	url = git://github.com/freelancing-god/thinking-sphinx.git
+[submodule "vendor/plugins/validates_captcha"]
+	path = vendor/plugins/validates_captcha
+	url = git://github.com/m4n/validates_captcha.git
+[submodule "vendor/plugins/validates_timeliness"]
+	path = vendor/plugins/validates_timeliness
+	url = git://github.com/adzap/validates_timeliness.git
+[submodule "vendor/plugins/validation_reflection"]
+	path = vendor/plugins/validation_reflection
+	url = git://github.com/redinger/validation_reflection.git
+[submodule "vendor/plugins/weakling"]
+	path = vendor/plugins/weakling
+	url = git://github.com/omenking/weakling.git
+[submodule "vendor/plugins/will_paginate"]
+	path = vendor/plugins/will_paginate
+	url = git://github.com/mislav/will_paginate.git
