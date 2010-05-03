@@ -13,3 +13,11 @@ http://vimeo.com/11416735
 
 Фишечки/рюшечки: 
 Наша локализация, удобные элементы управления типа календаря, ckeditor'a, массовой загрузки файлов, автозаполнения тегов и т.д. 
+
+git clone git://github.com/woto/blog.git
+git submodule init
+git submodule update
+Проверьте настройки db/database.yml
+rake db:create
+rake db:migrate
+./script/server
