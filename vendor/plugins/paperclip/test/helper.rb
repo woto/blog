@@ -1,24 +1,54 @@
 require 'rubygems'
-require 'test/unit'
-require 'shoulda'
 require 'tempfile'
+require 'test/unit'
 
-gem 'jferris-mocha'
+require 'shoulda'
 require 'mocha'
 
-gem 'sqlite3-ruby'
-
-require 'active_record'
-require 'active_support'
-begin
-  require 'ruby-debug'
-rescue LoadError
-  puts "ruby-debug not loaded"
+case ENV['RAILS_VERSION']
+when '2.1' then
+  gem 'activerecord',  '~>2.1.0'
+  gem 'activesupport', '~>2.1.0'
+  gem 'actionpack',    '~>2.1.0'
+when '3.0' then
+  gem 'activerecord',  '~>3.0.0'
+  gem 'activesupport', '~>3.0.0'
+  gem 'actionpack',    '~>3.0.0'
+else
+  gem 'activerecord',  '~>2.3.0'
+  gem 'activesupport', '~>2.3.0'
+  gem 'actionpack',    '~>2.3.0'
 end
 
-ROOT       = File.join(File.dirname(__FILE__), '..')
-RAILS_ROOT = ROOT
-RAILS_ENV  = "test"
+require 'active_record'
+require 'active_record/version'
+require 'active_support'
+require 'action_pack'
+
+puts "Testing againt version #{ActiveRecord::VERSION::STRING}"
+
+begin
+  require 'ruby-debug'
+rescue LoadError => e
+  puts "debugger disabled"
+end
+
+ROOT = File.join(File.dirname(__FILE__), '..')
+
+def silence_warnings
+  old_verbose, $VERBOSE = $VERBOSE, nil
+  yield
+ensure
+  $VERBOSE = old_verbose
+end
+
+class Test::Unit::TestCase
+  def setup
+    silence_warnings do
+      Object.const_set(:Rails, stub('Rails', :root => ROOT, :env => 'test'))
+    end
+  end
+end
 
 $LOAD_PATH << File.join(ROOT, 'lib')
 $LOAD_PATH << File.join(ROOT, 'lib', 'paperclip')
@@ -70,17 +100,6 @@ def rebuild_class options = {}
   end
 end
 
-def temporary_rails_env(new_env)
-  old_env = Object.const_defined?("RAILS_ENV") ? RAILS_ENV : nil
-  silence_warnings do
-    Object.const_set("RAILS_ENV", new_env)
-  end
-  yield
-  silence_warnings do
-    Object.const_set("RAILS_ENV", old_env)
-  end
-end
-
 class FakeModel
   attr_accessor :avatar_file_name,
                 :avatar_file_size,
@@ -92,8 +111,9 @@ class FakeModel
     @errors ||= []
   end
 
-  def run_callbacks name, *args
+  def run_paperclip_callbacks name, *args
   end
+
 end
 
 def attachment options
