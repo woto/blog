@@ -1,13 +1,5 @@
 <div style="padding: 0 0 0 35px">
-
-  crypted_password.blank?:  <%= @user.crypted_password.blank? %><br/ >
-  crypted_password.nil?:  <%= @user.crypted_password.nil? %><br/ >
-
-  using_rpx?: <%= @user.using_rpx? %><br/ >
-  using_password?: <%= @user.using_password? %><br/ >
-  crypted_password_chagned?: <%= @user.crypted_password_changed? %><br/ >
-  new_record: <%= @user.new_record? %><br/ >
-  <br /><br />
+ <br />
 
   <% form.inputs do %>
     <%= form.error_messages %>
@@ -26,18 +18,13 @@
     <% else %>
       <%= form.submit "Обновить" %>
     <% end %>
+    
+    <% if @user.new_record? %>
+      <%= link_to "Войти", login_path %> или <%= link_to("Восстановить пароль", password_resets_path) %>
+    <% end %>
 
   <% end %>
 </div>
-
-<% if @user.new_record? %>
-  <br /><br /><br />
-  <h2>Регистрировались ранее или забыли пароль?</h2>
-  <br />
-  <div style="padding: 0 0 0 35px">
-      <%= link_to "Войти под своим аккаунтом если регистрировались ранее на сайте", login_path %><br /><br /><%= link_to("Восстановить пароль если забыли пароль", password_resets_path) %>
-  </div>
-<% end %>
 
 
 <% if @user.new_record? %>
@@ -54,3 +41,14 @@
   <br />
   <%= rpx_embed( :language => "ru", :app_name => AppConfig.rpx_app_name, :return_url => addrpxauth_url, :add_rpx => true, :unobtrusive => false ) %>
 <% end %>
+
+
+<br /><br />
+  crypted_password.blank?:  <%= @user.crypted_password.blank? %><br/ >
+  crypted_password.nil?:  <%= @user.crypted_password.nil? %><br/ >
+
+  using_rpx?: <%= @user.using_rpx? %><br/ >
+  using_password?: <%= @user.using_password? %><br/ >
+  crypted_password_chagned?: <%= @user.crypted_password_changed? %><br/ >
+  new_record: <%= @user.new_record? %><br/ >
+ 

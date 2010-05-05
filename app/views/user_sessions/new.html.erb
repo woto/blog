@@ -9,15 +9,9 @@
       <%= f.input :password, :label => "Пароль" %>
       <%= f.input :remember_me, :as => :boolean, :label => "Запомнить меня", :required => false %>
     <% end %>
-    <%= f.submit "Войти" %>
-  <% end %>
-</div>
+    <%= f.submit "Войти" %> <%= link_to "Зарегистрироваться", login_path %> или <%= link_to("Восстановить пароль", password_resets_path) %>
 
-<br /><br /><br />
-<h2>Новый пользователь или забыли пароль?</h2>
-<br /><br />
-<div style="padding: 0 0 0 35px"
-<%= link_to "Зарегистрируйтесь на сайте, если еще не регистрировались ранее на сайте", login_path %><br /><br /><%= link_to("Восстановить пароль если забыли пароль", password_resets_path) %>
+  <% end %>
 </div>
 
 <br /><br /><br />
