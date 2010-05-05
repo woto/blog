@@ -27,7 +27,6 @@ ru:
         #remeber_me: Запомнить меня
       user:
         email: Электронная почта
-        new_password: Новый пароль
         password_confirmation: Подтверждение пароля
         password: Пароль
         login: Логин

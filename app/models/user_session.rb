@@ -6,9 +6,9 @@ class UserSession < Authlogic::Session::Base
  
 private
 
-    def map_rpx_data
-		self.attempted_record.send("#{klass.login_field}=", @rpx_data['profile']['preferredUsername'] ) if attempted_record.send(klass.login_field).blank?
-		self.attempted_record.send("#{klass.email_field}=", @rpx_data['profile']['email'] ) if attempted_record.send(klass.email_field).blank?
-	  end
+  def map_rpx_data
+    self.attempted_record.send("#{klass.login_field}=", @rpx_data['profile']['displayName'] ) if attempted_record.send(klass.login_field).blank?
+    self.attempted_record.send("#{klass.email_field}=", @rpx_data['profile']['email'] ) if attempted_record.send(klass.email_field).blank?
+  end
 
 end

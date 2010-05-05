@@ -3,21 +3,28 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
 		c.account_mapping_mode :internal
 		c.account_merge_enabled true
-    c.validates_format_of_login_field_options({
-      :with => /\A\w[\w\.+\-_ ]+$/ ,
-      :message => "может содержать только буквы латинского алфавита, цифры, пробел и .-_"
-    })
+    c.validate_login_field = false
+    validates_uniqueness_of   :login, :case_sensitive => false
+    validates_format_of :login, 
+      :with => /^[0-9]*[a-zA-Z0-9]+$/,
+      :message => "может содержать только буквы латинского алфавита и цифры"
 	end
   
+  # true если будем проверять на валидность пароль и подтверждение пароля
   def validate_password_not_rpx?
-    if session_class.controller.params[:user] then
-      !session_class.controller.params[:user][:password].blank? or !session_class.controller.params[:user][:password_confirmation].blank?
+    # debugger
+    params = session_class.controller.params
+    if new_record?
+      return true
+    elsif params[:user] && (params[:user][:password].any? ^ params[:user][:password_confirmation].any?)
+      return true
+    elsif params[:add_rpx]
+      return false
     end
+
+    return false
   end
 
-	#validates_uniqueness_of   :login, :case_sensitive => false
-  #validates_presence_of :email
-  #validates_confirmation_of :password, :if => :using_password?
   #attr_accessible :login, :email, :password, :password_confirmation, :rpx_identifier 
 
   has_many :assignments, :dependent => :destroy
