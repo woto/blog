@@ -55,3 +55,12 @@
 [submodule "vendor/plugins/will_paginate"]
 	path = vendor/plugins/will_paginate
 	url = git://github.com/mislav/will_paginate.git
+[submodule "vendor/plugins/rpx_now"]
+	path = vendor/plugins/rpx_now
+	url = git://github.com/grosser/rpx_now.git
+[submodule "vendor/plugins/authlogic_rpx"]
+	path = vendor/plugins/authlogic_rpx
+	url = git://github.com/tardate/authlogic_rpx.git
+[submodule "vendor/plugins/rails-footnotes"]
+  path = vendor/plugins/rails-footnotes
+  url = git://github.com/josevalim/rails-footnotes.git

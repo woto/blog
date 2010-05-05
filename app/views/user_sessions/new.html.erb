@@ -1,14 +1,31 @@
-<h2>Вход</h2>
+<h2>Войдите на сайт используя аккаунт сайта</h2>
+<br /><br />
 
-<% form_for @user_session, :url => user_session_path do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :login %><br />
-  <%= f.text_field :login %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
-  <%= f.submit "Войти" %> <%= link_to "Еще не зарегистрированы?", register_path %>
-<% end %>
+<div style="padding: 0 0 0 35px">
+  <% semantic_form_for @user_session, :url => user_session_path do |f| %>
+    <% f.inputs do %>
+      <%= f.error_messages %>
+      <%= f.input :login, :label => "Логин или email" %>
+      <%= f.input :password, :label => "Пароль" %>
+      <%= f.input :remember_me, :as => :boolean, :label => "Запомнить меня", :required => false %>
+    <% end %>
+    <%= f.submit "Войти" %>
+  <% end %>
+</div>
+
+<br /><br /><br />
+<h2>Новый пользователь или забыли пароль?</h2>
+<br /><br />
+<div style="padding: 0 0 0 35px"
+<%= link_to "Зарегистрируйтесь на сайте, если еще не регистрировались ранее на сайте", login_path %><br /><br /><%= link_to("Восстановить пароль если забыли пароль", password_resets_path) %>
+</div>
+
+<br /><br /><br />
+<h2>или используйте аккаунт других популярных сайтов в интернете</h2>
+<br /><br />
+
+<div>
+  <%= rpx_embed( :language => 'ru', :link_text => "Register/Sign in with RPX..", :app_name => AppConfig.rpx_app_name, :return_url => user_session_url, :unobtrusive => false ) %>
+</div>
+
+

@@ -1,6 +1,3 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   helper_method :current_user, :current_user_session
@@ -19,24 +16,31 @@ class ApplicationController < ActionController::Base
   def current_user
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.user
-    #logger.debug("current_user_session >>>>>>>>>>>>>>> ") + logger.debug(YAML::dump(current_user_session.user))
   end
 
   private
 
     def require_user
       unless current_user
-        store_location
-        flash[:notice] = "Вы должны войти под своим аккаунтом прежде чем получите доступ к запрошенной странице"
+        store_location unless session[:return_to]
+        flash[:error] = "Вы должны войти под своим аккаунтом прежде чем получите доступ к запрошенной странице"
         redirect_to login_url
         return false
       end
     end
 
+    def require_full_filled_user
+      unless current_user && current_user.email
+        store_location unless session[:return_to]
+        flash[:error] = "Вы должны заполнить и подтвердить свой email адрес прежде чем сможете выполнить желаемое действие"
+        redirect_to edit_user_path
+        return false
+      end
+    end
 
     def require_no_user
       if current_user
-        store_location
+        store_location unless session[:return_to]
         flash[:notice] = "Вы должны выйти из под своего аккаунта прежде чем получите доступ к запрошенной странице"
         redirect_to user_url
         return false

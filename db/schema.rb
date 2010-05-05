@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100426223543) do
+ActiveRecord::Schema.define(:version => 20100504083610) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -67,6 +67,17 @@ ActiveRecord::Schema.define(:version => 20100426223543) do
     t.datetime "updated_at"
   end
 
+  create_table "rpx_identifiers", :force => true do |t|
+    t.string   "identifier",    :null => false
+    t.string   "provider_name"
+    t.integer  "user_id",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rpx_identifiers", ["identifier"], :name => "index_rpx_identifiers_on_identifier", :unique => true
+  add_index "rpx_identifiers", ["user_id"], :name => "index_rpx_identifiers_on_user_id"
+
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
@@ -98,11 +109,11 @@ ActiveRecord::Schema.define(:version => 20100426223543) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "login",             :null => false
-    t.string   "crypted_password",  :null => false
-    t.string   "password_salt",     :null => false
+    t.string   "crypted_password"
+    t.string   "password_salt"
     t.string   "persistence_token", :null => false
     t.string   "perishable_token",  :null => false
-    t.string   "email",             :null => false
+    t.string   "email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

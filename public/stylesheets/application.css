@@ -69,7 +69,7 @@ br.clear
 clear: both;
 }
 
-img
+.block img
 {
 padding: 3px;
 border: solid 1px #e1e1e1;
@@ -159,7 +159,6 @@ line-height: 1.8em;
 
 #errorExplanation 
 {
-  width: 400px;
   border: 2px solid #CF0000;
   padding: 0px;
   padding-bottom: 12px;
@@ -172,7 +171,6 @@ line-height: 1.8em;
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 12px;
   margin: 0;
   background-color: #c00;
   color: #fff;
@@ -192,18 +190,21 @@ line-height: 1.8em;
 
 #errorExplanation ul li 
 {
-  font-size: 12px;
   list-style: disc;
 }
 
 
 /* tags css */
+
 .tags { }
 .tag_level_1 { font-size: 12px; }
 .tag_level_2 { font-size: 14px; }
 .tag_level_3 { font-size: 16px; }
 .tag_level_4 { font-size: 18px; }
 .tag_level_5 { font-size: 20px; }
+.tag_level_6 { font-size: 21px; }
+.tag_level_7 { font-size: 22px; }
+.tag_level_8 { font-size: 23px; }
 
 /* pagination */
 

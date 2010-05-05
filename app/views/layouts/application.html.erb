@@ -26,7 +26,7 @@
 
 		<div id="logo">
       <a href="/">
-        <h1><span>Lorem ipsum</span></h1>
+        <h1><span>Персональный сайт</span></h1>
 			  <h2>(в процессе разработки)</h2>
       </a>
 		</div>
@@ -114,7 +114,19 @@
             <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>
           </div>
         <% end %>
-        
+
+        <h4><span>Временные</span> ссылки</h4>
+        <div class="block">
+          <ul class="links">
+            <li><%= link_to "Вход", login_path %></li>
+            <li><%= link_to "Регистрация", register_path %></li>
+            <li><%= link_to "Выход", logout_path %></li>
+            <li><%= link_to "Просмотр профиля", user_path %></li>
+            <li><%= link_to "Редактирование профиля", edit_user_path %></li>
+            <li><%= link_to "Тест каптчи", new_captcha_test_path %></li>
+          </ul>
+        </div>
+
  			</div>
 			
       <div id="columnC_3columns">

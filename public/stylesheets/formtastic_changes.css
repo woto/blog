@@ -29,3 +29,11 @@ form.formtastic fieldset > ol > li.boolean label {
 form.formtastic fieldset > ol > li p.inline-errors {
   margin-left: 0;
 }
+
+form.formtastic fieldset > ol > li.password input {
+max-width: 100%;
+}
+
+form.formtastic fieldset > ol > li label {
+  width:30%;
+}

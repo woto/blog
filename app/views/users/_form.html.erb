@@ -1,12 +1,40 @@
-<%= form.label :login %> <br />
-<%= form.text_field :login %> <br />
-<br />
-<%= form.label :email %> <br />
-<%= form.text_field :email %> <br />
-<br />
-<%= form.label :password, form.object.new_record? ? nil : "Новый пароль" %> <br />
-<%= form.password_field :password %> <br />
-<%= password_strength :password_strength, 'user_password' %>
-<br />
-<%= form.label :password_confirmation %> <br />
-<%= form.password_field :password_confirmation %> <br />
+<div style="padding: 0 0 0 35px">
+  <% form.inputs do %>
+    <%= form.error_messages %>
+    <%= form.input :login, :required => true, :input_html => form.object.new_record? ? nil : {:autocomplete => 'off'} %>
+    <%= form.input :email, :required => true, :input_html => form.object.new_record? ? nil : {:autocomplete => 'off'} %>
+    <%= form.input :password, :input_html => form.object.new_record? ? nil : {:autocomplete => 'off'}, :hint => !form.object.new_record? ? "Заполняйте поле пароля только если вы хотите поменть пароль или получить аккаунт на сайте, если вы воспользовались входом с помощью аккаунта на стороннем сервере" : nil, :required => form.object.new_record? ? true : false, :label => form.object.new_record? ? nil : :new_password %>
+    <%= form.input :password_confirmation, :input_html => form.object.new_record? ? nil : {:autocomplete => 'off'}, :required => form.object.new_record? ? true : false %>
+ 
+    <% if @user.new_record? %>
+      <%= form.submit "Зарегистрироваться" %>
+    <% else %>
+      <%= form.submit "Обновить" %>
+    <% end %>
+
+  <% end %>
+</div>
+
+<br /><br /><br />
+<h2>Регистрировались ранее или забыли пароль?</h2>
+<br /><br />
+<div style="padding: 0 0 0 35px">
+  <% if @user.new_record? %>
+    <%= link_to "Войти под своим аккаунтом если регистрировались ранее на сайте", login_path %><br /><br /><%= link_to("Восстановить пароль если забыли пароль", password_resets_path) %>
+  <% end %>
+</div>
+
+<% if @user.new_record? %>
+  <br /><br /><br />
+  <h2>или войдите используя аккаунт других популярных сайтов в интернете</h2>
+  <br /><br />
+
+  <div>
+    <%= rpx_embed( :language => 'ru', :app_name => AppConfig.rpx_app_name, :return_url => user_session_url) %>
+  </div>
+<% else %>
+  <br /><br /><br />
+  <h2>вы можете связать свой аккаунт с уже имеющимся у вас аккаунтом</h2>
+  <br /><br />
+  <%= rpx_embed( :language => "ru", :app_name => AppConfig.rpx_app_name, :return_url => addrpxauth_url, :add_rpx => true, :unobtrusive => false ) %>
+<% end %>

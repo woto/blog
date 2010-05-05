@@ -12,8 +12,11 @@ ActionController::Routing::Routes.draw do |map|
   map.register 'register', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.login 'login', :controller => 'user_sessions', :action => 'new'
+  map.addrpxauth "addrpxauth", :controller => "users", :action => "addrpxauth", :method => :post
+  map.resources :password_resets
   map.resource :user
   map.resource :user_session
+ 
 
   #map.resources :password_resets
   #map.resources :users

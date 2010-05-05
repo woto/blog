@@ -21,6 +21,17 @@ ru:
       category_id: Категория
       tag_list: Теги
     attributes:
+      #usersession:
+        #username: Логин
+        #password: Пароль
+        #remeber_me: Запомнить меня
+      user:
+        email: Электронная почта
+        new_password: Новый пароль
+        password_confirmation: Подтверждение пароля
+        password: Пароль
+        login: Логин
+        remember_me: Запомнить меня
       post:
         title: Заголовок
         body: Пост

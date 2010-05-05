@@ -1,5 +1,5 @@
 class CaptchaTestsController < ApplicationController
-
+  before_filter :require_full_filled_user, :only => [:new, :create]
   validates_captcha
 
   # GET /captcha_tests
