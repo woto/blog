@@ -61,3 +61,6 @@
 [submodule "vendor/plugins/rails-footnotes"]
 	path = vendor/plugins/rails-footnotes
 	url = git://github.com/josevalim/rails-footnotes.git
+[submodule "vendor/plugins/cancan"]
+	path = vendor/plugins/cancan
+	url = git://github.com/ryanb/cancan.git
