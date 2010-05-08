@@ -24,6 +24,10 @@
   <b>Tags</b>
   <%= @post.tag_list %>
 </p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if can? :update, @article %>
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
+<% if can? :destroy, @article %>
+  <%= link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?" %>
+<% end %>
 <%= link_to 'Back', posts_path %>

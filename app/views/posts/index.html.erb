@@ -15,20 +15,27 @@
         <li class="comments"><a href="">2 комментария</a></li>
       </ul>
       <b>Теги:</b> <%= post.tag_list %><br />
-      <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+      <% if can? :edit, @post %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+      <% end %>
+      <% if can? :destroy, @post %>
+        <%= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
     </div>
     
     <br class="clear" />
 
   <% end %>
+ 
+  <% if can? :create, @post %>
+    <%= link_to 'New post', new_post_path %>
+  <% end %>
+
 
   <div class="flickr_pagination">
     <%= will_paginate @posts, :container => false %>
   </div>
 
-  <br />
-  <%= link_to 'New post', new_post_path %>
 <% else %>
   Не найдено ни одного поста удовлетворяющих требованию, попробуйте выбрать другие параметры фильтрации
 <% end %>

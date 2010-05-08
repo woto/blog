@@ -35,8 +35,15 @@ class User < ActiveRecord::Base
     User.find_by_login(login) || User.find_by_email(login)
   end
 
+=begin
   def role_symbols
     @role_symbols ||= (roles || []).map { |role| role.name.underscore.to_sym }
+  end
+=end
+
+   def role?(role)
+    @roles ||= roles.map(&:name)
+    @roles.include? role.to_s
   end
 
   def deliver_register_complete!

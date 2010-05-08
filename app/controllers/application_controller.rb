@@ -5,9 +5,8 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
-
-  before_filter { |c| Authorization.current_user = c.current_user }
-
+  #before_filter { |c| Authorization.current_user = c.current_user }
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
@@ -19,7 +18,13 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
+    
+    rescue_from CanCan::AccessDenied do |exception|
+      # exception.subject
+      # exctption.action
+      redirect_to root_url
+    end
+    
     def require_user
       unless current_user
         store_location unless session[:return_to]
