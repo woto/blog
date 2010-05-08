@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
-  #before_filter { |c| Authorization.current_user = c.current_user }
   
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
