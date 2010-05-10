@@ -9,10 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      debugger
-      @user.deliver_register_complete!
+      #@user.deliver_register_complete!
       flash[:notice] = "Вы успешно зарегистрировались и вошли на сайт"
-      #@user.set_default_role
       redirect_back_or_default user_url
     else
       render :action => :new
@@ -21,7 +19,6 @@ class UsersController < ApplicationController
   
   def edit
     @user = @current_user
-    #@user.valid?
   end
 
   def show
@@ -37,6 +34,13 @@ class UsersController < ApplicationController
     else
       render :action => 'edit'
     end
+  end
+
+  def destroy
+    current_user.destroy
+    current_user_session.destroy
+    flash[:notice] = "Вы успешно удалили свой аккаунт"
+    redirect_back_or_default root_url
   end
 
   def addrpxauth

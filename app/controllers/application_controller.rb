@@ -3,6 +3,8 @@ class ApplicationController < BaseController
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   before_filter :current_user
+  
+  helper_method :current_user, :current_user_session
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
@@ -20,34 +22,35 @@ class ApplicationController < BaseController
   private
     
     rescue_from CanCan::AccessDenied do |exception|
-      debugger     
       subject = exception.subject
       action = exception.action
       @exception = exception
-      flash.now[:notice] = "Извините, у вас недостаточно прав чтобы сделать желаемое действие"
+      flash.now[:error] = "Извините, у вас недостаточно прав чтобы сделать желаемое действие"
       
       if subject.class == UserSession
         if action == :new
-          flash.now[:notice] = "Вы должны выйти из под своего аккаунта прежде чем сможете повторно войти"
+          flash.now[:error] = "Вы должны выйти из под своего аккаунта прежде чем сможете повторно войти"
         end
       elsif subject.class == User
         if action == :new
-          flash.now[:notice] = "Вы должны выйти из под своего аккаунта прежде чем сможете повторно зарегистрироваться"
+          flash.now[:error] = "Вы должны выйти из под своего аккаунта прежде чем сможете повторно зарегистрироваться"
         end
         store_location
       end
-
+      
       if subject == UserSession then 
         if action == :destroy
-          flash[:notice] = "Вы не находитесь под каким-либо аккаунтом чтобы имели возможность выйти"
+          flash[:error] = "Вы не находитесь под каким-либо аккаунтом чтобы имели возможность выйти"
         end
       elsif subject == User then
         if action == :edit
-          flash.now[:notice] = "Вы должны войти под своим аккаунтом прежде чем сможете отредактировать свой профиль"
+          flash.now[:error] = "Вы должны войти под своим аккаунтом прежде чем сможете отредактировать свой профиль"
           store_location
         elsif action == :show
-          flash.now[:notice] = "Вы должны войти под своим аккаунтом прежде чем сможете просматирваить свой профиль"
+          flash.now[:error] = "Вы должны войти под своим аккаунтом прежде чем сможете просматирваить свой профиль"
           store_location
+        elsif action == :destroy
+          flash.now[:error] = "Вы не можете удалить свой аккаунт, т.к. не залогинены на сайте"
         end
       end
 

@@ -124,6 +124,7 @@
             <li><%= link_to "Просмотр профиля", user_path %></li>
             <li><%= link_to "Выход", logout_path %></li>
             <li><%= link_to "Редактирование профиля", edit_user_path %></li>
+            <li><%= link_to "Удалить аккаунт", user_path, :confirm => "Вы действительно хотите удалить свой аккаунт?", :method => :delete %>
             <br />
             <li><%= link_to "Создать категорию", new_category_path %></li>
             <li><%= link_to "Написать пост", new_post_path %></li>
