@@ -14,6 +14,7 @@ class Ability
 
     if user.role? :user
       can :destroy, UserSession
+      can :edit, UserSession # Добавлено в отчаянии
       cannot :create, UserSession
       cannot :create, User
       can :edit, User

@@ -20,7 +20,7 @@ class ApplicationController < BaseController
   private
     
     rescue_from CanCan::AccessDenied do |exception|
-      
+      debugger     
       subject = exception.subject
       action = exception.action
       @exception = exception

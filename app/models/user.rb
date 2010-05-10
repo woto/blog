@@ -6,15 +6,15 @@ class User < ActiveRecord::Base
 		c.account_mapping_mode :internal
 		c.account_merge_enabled true
     c.validate_login_field = false
+    c.validate_email_field = false
+    validates_uniqueness_of :email, :case_sensitive => false
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
     validates_uniqueness_of :login, :case_sensitive => false
-    validates_format_of :login, 
-      :with => /^[0-9]*[a-zA-Z0-9]+$/,
-      :message => "может содержать только буквы латинского алфавита и цифры"
-	end
-  
+    validates_format_of :login, :with => /^[0-9]*[a-zA-Z0-9]+$/i
+  end
+
   # true если будем проверять на валидность пароль и подтверждение пароля
   def validate_password_not_rpx?
-    debugger
 
     # в script/console не создавалась роль, todo проверить
     params = session_class.controller.try(:params)
