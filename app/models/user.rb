@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-	
+
+	has_many :assignments, :dependent => :destroy
+  has_many :roles, :through => :assignments
+  has_many :posts
+
   acts_as_authentic do |c|
 	  c.account_mapping_mode :internal
 	  c.account_merge_enabled true
@@ -47,10 +51,6 @@ class User < ActiveRecord::Base
   end
 
   #attr_accessible :login, :email, :password, :password_confirmation, :rpx_identifier 
-
-  has_many :assignments, :dependent => :destroy
-  has_many :roles, :through => :assignments
-  has_many :posts
 
   def self.find_by_login_or_email(login)
     User.find_by_login(login) || User.find_by_email(login)

@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = @current_user
+    #@user.login = @user.login
   end
 
   def show

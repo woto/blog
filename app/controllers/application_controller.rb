@@ -41,16 +41,20 @@ class ApplicationController < BaseController
       if subject == UserSession then 
         if action == :destroy
           flash[:error] = "Вы не находитесь под каким-либо аккаунтом чтобы имели возможность выйти"
+          redirect_to login_url and return
         end
       elsif subject == User then
         if action == :edit
           flash.now[:error] = "Вы должны войти под своим аккаунтом прежде чем сможете отредактировать свой профиль"
           store_location
+          redirect_to login_url and return
         elsif action == :show
           flash.now[:error] = "Вы должны войти под своим аккаунтом прежде чем сможете просматирваить свой профиль"
           store_location
+          redirect_to login_url and return
         elsif action == :destroy
           flash.now[:error] = "Вы не можете удалить свой аккаунт, т.к. не залогинены на сайте"
+          redirect_to login_url and return
         end
       end
 

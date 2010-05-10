@@ -9,7 +9,7 @@
       <%= f.input :password, :label => "Пароль" %>
       <%= f.input :remember_me, :as => :boolean, :label => "Запомнить меня", :required => false %>
     <% end %>
-    <%= f.submit "Войти" %> <%= link_to "Зарегистрироваться", login_path %> или <%= link_to("Восстановить пароль", password_resets_path) %>
+    <%= f.submit "Войти" %> <%= link_to "Зарегистрироваться", register_path %> или <%= link_to("Восстановить пароль", password_resets_path) %>
 
   <% end %>
 </div>

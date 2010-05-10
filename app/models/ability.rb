@@ -15,7 +15,6 @@ class Ability
 
     if user.role? :user
       can :destroy, UserSession
-      #can :edit, UserSession # Добавлено в отчаянии
       can :update, User
       can :read, User
       can :addrpxauth, User
@@ -32,8 +31,6 @@ class Ability
     #can :create, CaptchaTest do |post|
     #  user.email.try(:any?)
     #end
-    
-    #can [:delete, :create], User
     
   end
 end
