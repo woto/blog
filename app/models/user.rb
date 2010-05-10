@@ -7,7 +7,13 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
 	  c.account_mapping_mode :internal
 	  c.account_merge_enabled true
-    
+  
+    # хммммммммм
+    validates_uniqueness_of :email, :case_sensitive => false
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+    validates_uniqueness_of :login, :case_sensitive => false
+    validates_format_of :login, :with => /^[0-9]*[a-zA-Z0-9]+$/i
+
     # Проверяем логин и мыло только если не входят через (или добавляют) rpx аккаунт
     begin
       add_rpx = session_class.controller.params[:add_rpx]
