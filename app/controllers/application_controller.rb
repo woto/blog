@@ -1,6 +1,5 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < BaseController
   helper :all # include all helpers, all the time
-  helper_method :current_user, :current_user_session
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
@@ -19,38 +18,46 @@ class ApplicationController < ActionController::Base
   private
     
     rescue_from CanCan::AccessDenied do |exception|
-      # exception.subject
-      # exctption.action
-      redirect_to root_url
+      
+      subject = exception.subject
+      action = exception.action
+      @exception = exception
+      flash.now[:notice] = "Извините, у вас недостаточно прав чтобы сделать желаемое действие"
+      
+      if subject.class == UserSession
+        if action == :new
+          flash.now[:notice] = "Вы должны выйти из под своего аккаунта прежде чем сможете повторно войти"
+        end
+      elsif subject.class == User
+        if action == :new
+          flash.now[:notice] = "Вы должны выйти из под своего аккаунта прежде чем сможете повторно зарегистрироваться"
+        end
+        store_location
+      end
+
+      if subject == UserSession then 
+        if action == :destroy
+          flash[:notice] = "Вы не находитесь под каким-либо аккаунтом чтобы имели возможность выйти"
+        redirect_to root_url and return
+        end
+      elsif subject == User then
+        if action == :new
+          flash[:notice] = "Вы должны выйти из под своего аккаунта чтобы прежде чем сможете повторно зарегистрироваться"
+          redirect_to root_url and return
+        elsif action == :edit
+          flash[:notice] = "Вы должны войти под своим аккаунтом прежде чем сможете отредактировать свой профиль"
+          store_location
+          redirect_to login_path and return
+        elsif action == :show
+          flash[:notice] = "Вы должны войти под своим аккаунтом прежде чем сможете просматирваить свой профиль"
+          store_location
+          redirect_to login_path and return
+        end
+      end
+
+      render 'errors/index'
     end
     
-    def require_user
-      unless current_user
-        store_location unless session[:return_to]
-        flash[:error] = "Вы должны войти под своим аккаунтом прежде чем получите доступ к запрошенной странице"
-        redirect_to login_url
-        return false
-      end
-    end
-
-    def require_full_filled_user
-      unless current_user && current_user.email
-        store_location unless session[:return_to]
-        flash[:error] = "Вы должны заполнить и подтвердить свой email адрес прежде чем сможете выполнить желаемое действие"
-        redirect_to edit_user_path
-        return false
-      end
-    end
-
-    def require_no_user
-      if current_user
-        store_location unless session[:return_to]
-        flash[:notice] = "Вы должны выйти из под своего аккаунта прежде чем получите доступ к запрошенной странице"
-        redirect_to user_url
-        return false
-      end
-    end
-
     def store_location
       session[:return_to] = request.request_uri
     end

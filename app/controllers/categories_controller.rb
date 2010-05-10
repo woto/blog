@@ -1,4 +1,7 @@
 class CategoriesController < ApplicationController
+
+  load_and_authorize_resource
+
   # GET /categories
   # GET /categories.xml
   def index

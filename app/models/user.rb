@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
   # true если будем проверять на валидность пароль и подтверждение пароля
   def validate_password_not_rpx?
     # debugger
-    params = session_class.controller.params
+
+    # в script/console не создавалась роль, todo проверить
+    params = session_class.controller.try(:params)
+    return false unless params
+
     if new_record?
       return true
     elsif params[:user] && (params[:user][:password].any? ^ params[:user][:password_confirmation].any?)
@@ -35,15 +39,17 @@ class User < ActiveRecord::Base
     User.find_by_login(login) || User.find_by_email(login)
   end
 
-=begin
-  def role_symbols
-    @role_symbols ||= (roles || []).map { |role| role.name.underscore.to_sym }
-  end
-=end
-
    def role?(role)
     @roles ||= roles.map(&:name)
     @roles.include? role.to_s
+  end
+
+  def set_default_role
+    if User.all.count == 1
+      role = Role.create(:role => "admin")
+    else
+      role = Role.find_or_create_by_name("user")
+    end
   end
 
   def deliver_register_complete!

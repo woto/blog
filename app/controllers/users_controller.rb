@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :update, :edit, :addrpxauth]
+  
+  load_and_authorize_resource
 
   def new
     @user = User.new
@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       @user.deliver_register_complete!
-      flash[:notice] = "Вы успешно зарегистрировались"
+      flash[:notice] = "Вы успешно зарегистрировались и вошли на сайт"
+      #@user.set_default_role
       redirect_back_or_default user_url
     else
       render :action => :new

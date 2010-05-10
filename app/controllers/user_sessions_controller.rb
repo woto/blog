@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => :destroy
+  
+  load_and_authorize_resource
 
   def new
     @user_session = UserSession.new
@@ -11,6 +11,7 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       if @user_session.new_registration?
         flash[:notice] = "Вы успешно зарегистрировались, и вошли на сайт"
+        #set_default_role
         redirect_back_or_default edit_user_url
       else
         if @user_session.registration_complete?
