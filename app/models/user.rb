@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   
   # true если будем проверять на валидность пароль и подтверждение пароля
   def validate_password_not_rpx?
-    # debugger
+    debugger
 
     # в script/console не создавалась роль, todo проверить
     params = session_class.controller.try(:params)

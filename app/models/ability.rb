@@ -2,12 +2,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-
     user ||= User.new
 
-    #user.current_user
-
-    # Правила для гостя
     can :read, :all
     can :create, UserSession
     cannot :destroy, UserSession
@@ -16,13 +12,13 @@ class Ability
     cannot :edit, User
     cannot :read, User
 
-    # Правила для пользователя
     if user.role? :user
       can :destroy, UserSession
       cannot :create, UserSession
       cannot :create, User
       can :edit, User
       can :read, User
+      can :addrpxauth, User
     end
    
 
