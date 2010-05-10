@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   def new
     @user = User.new
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      debugger
       @user.deliver_register_complete!
       flash[:notice] = "Вы успешно зарегистрировались и вошли на сайт"
       #@user.set_default_role

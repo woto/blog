@@ -11,4 +11,13 @@ private
     self.attempted_record.send("#{klass.email_field}=", @rpx_data['profile']['email'] ) if attempted_record.send(klass.email_field).blank?
   end
 
+  def set_default_role
+    debugger
+    if User.all.count == 0
+      self.role = Role.create(:role => "admin")
+    else
+      self.role = Role.find_or_create_by_name("user")
+    end
+  end
+
 end

@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
 	
+  before_create :set_default_role
+
   acts_as_authentic do |c|
 		c.account_mapping_mode :internal
 		c.account_merge_enabled true
     c.validate_login_field = false
-    validates_uniqueness_of   :login, :case_sensitive => false
+    validates_uniqueness_of :login, :case_sensitive => false
     validates_format_of :login, 
       :with => /^[0-9]*[a-zA-Z0-9]+$/,
       :message => "может содержать только буквы латинского алфавита и цифры"
@@ -45,10 +47,10 @@ class User < ActiveRecord::Base
   end
 
   def set_default_role
-    if User.all.count == 1
-      role = Role.create(:role => "admin")
+    if User.all.count == 0
+      roles << Role.create(:name => "admin")
     else
-      role = Role.find_or_create_by_name("user")
+      roles << Role.find_or_create_by_name("user")
     end
   end
 

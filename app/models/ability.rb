@@ -5,6 +5,8 @@ class Ability
 
     user ||= User.new
 
+    #user.current_user
+
     # Правила для гостя
     can :read, :all
     can :create, UserSession
