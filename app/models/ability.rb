@@ -23,14 +23,15 @@ class Ability
       cannot :create, User
     end
    
+    can :search, Post
 
     if user.role? :admin
       can :manage, :all
     end
 
-    #can :create, CaptchaTest do |post|
-    #  user.email.try(:any?)
-    #end
+    can :create, CaptchaTest do |post|
+      user.email.try(:any?)
+    end
     
   end
 end

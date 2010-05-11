@@ -108,7 +108,15 @@
           <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
         </div>
 
-        <% if params[:action] == "search" && @tags.count > 0 %>
+        <% 
+          begin
+            tmp = params[:tags].count
+          rescue
+            tmp = 0
+          end
+        %>
+
+        <% if params[:action] == "search" && @tags.count > tmp %>
           <h4><span>Родственные</span> теги</h4>
           <div class="block">
             <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>
