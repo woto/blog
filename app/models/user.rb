@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
 
   # собственные валидаторы, взамен валидаторов authlogic делают валидацию при изменении записи, что отказывался делать authlogic
   def addrpxauth
-    debugger
     begin
       session_class.controller.params[:add_rpx].any?
     rescue

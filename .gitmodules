@@ -64,3 +64,6 @@
 [submodule "vendor/plugins/cancan"]
 	path = vendor/plugins/cancan
 	url = git://github.com/ryanb/cancan.git
+[submodule "vendor/plugins/table_builder"]
+	path = vendor/plugins/table_builder
+	url = git://github.com/p8/table_builder.git
