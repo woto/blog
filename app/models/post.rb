@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+
+  has_friendly_id :title, :use_slug => true, :approximate_ascii => true
+
   cattr_reader :per_page
   @@per_page = 10
 

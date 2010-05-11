@@ -602,3 +602,25 @@ height: 2.3em;
 .block {
   margin-bottom: 2.5em;
 }
+
+/* Calendar */
+
+.block table {
+  width: 100%;
+}
+
+.block table td {
+  text-align: center;
+}
+
+.block .notmonth {
+  color: #ccc;
+}
+
+.block #month {
+  background-color: #ddd;
+}
+
+.block .today {
+  background-color: #999;
+}
