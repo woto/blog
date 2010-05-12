@@ -75,7 +75,7 @@
               <% tags = Array.[](params[:tags]).flatten %>
               Включен фильтр по  <%= Russian.p(tags.count, "тегу", "тегам", "тегам") %>:
               <% tags.each { |tag| %>
-              <%= link_to tag, search_posts_path(:tags => tag, :category => params[:category]) %>
+              <%= link_to h(tag), search_posts_path(:tags => tag, :category => params[:category]) %>
               <%= link_to "<sup>x</sup>", search_posts_path(:tags => tags.reject{|item| item == tag}, :category => params[:category]) %>
                 <%= ", " unless tags.last == tag %> 
               <% } %>
@@ -103,12 +103,12 @@
 
         <h4><span>Категории</span> постов</h4>
         <div class="block">
-          <%= Rails.cache.fetch('full_tree') {format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:tags => params[:tags], :category => i.name))}} %>
+          <%= format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:tags => params[:tags], :category => i.name))} %>
         </div>
         
         <h4><span>Популярные</span> теги</h4>
         <div class="block">
-          <% @popular_tags = Rails.cache.fetch('popular_tags') {Post.tag_counts(:limit => 20)} %>
+          <% @popular_tags = Post.tag_counts(:limit => 20) %>
           <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
         </div>
 

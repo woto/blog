@@ -14,7 +14,7 @@
         </li>
         <li class="comments"><a href="">2 комментария</a></li>
       </ul>
-      <b>Теги:</b> <%= post.tag_list %><br />
+      <b>Теги:</b> <%= h(post.tag_list) %><br />
       <% if can? :edit, @post %>
         <%= link_to 'Edit', edit_post_path(post) %>
       <% end %>

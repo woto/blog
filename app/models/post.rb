@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
   #named_scope :by_category, :conditions => {:category_id => 1}
 
   def invalidate_popular_tags
-    Rails.cache.delete('popular_tags')
+    raise Exception, "метод invalidate_popular_tags не должен был вызываться"
   end
 
   define_index do

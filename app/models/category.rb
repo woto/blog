@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
   after_destroy :invalidate_full_tree_cache
 
   def invalidate_full_tree_cache
-    Rails.cache.delete('full_tree')
+    raise Exception, "метода invalidate_full_tree_cache не должен был вызываться"
   end
 
   def path_name
