@@ -4,6 +4,12 @@ class ApplicationController < BaseController
 
   before_filter :current_user
   
+  before_filter :date
+
+  def date
+    @date = params[:month] ? Date.strptime(params[:month], "%Y-%m") : Date.today
+  end
+
   helper_method :current_user, :current_user_session
 
   # Scrub sensitive parameters from your log

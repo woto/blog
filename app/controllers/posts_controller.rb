@@ -1,11 +1,6 @@
 class PostsController < ApplicationController
   
   load_and_authorize_resource
-  before_filter :calendar_date_set
-
-  def calendar_date_set
-    @date = params[:month] ? Date.strptime(params[:month], "%Y-%m") : Date.today
-  end
 
   # GET /posts
   # GET /posts.xml
