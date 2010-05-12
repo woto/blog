@@ -1,6 +1,6 @@
 <h1>Editing category</h1>
 
-<% form_for(@category) do |f| %>
+<% form_for :cat, @category, :url => category_path(@category), :html => { :method => :put } do |f| %>
   <%= f.error_messages %>
 
   <p>

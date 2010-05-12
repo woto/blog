@@ -103,12 +103,12 @@
 
         <h4><span>Категории</span> постов</h4>
         <div class="block">
-          <%=format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:tags => params[:tags], :category => i.name))} %>
+          <%= Rails.cache.fetch('full_tree') {format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:tags => params[:tags], :category => i.name))}} %>
         </div>
         
         <h4><span>Популярные</span> теги</h4>
         <div class="block">
-          <% @popular_tags = Post.tag_counts(:limit => 20, :at_least => 2) %>
+          <% @popular_tags = Rails.cache.fetch('popular_tags') {Post.tag_counts(:limit => 20)} %>
           <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
         </div>
 
@@ -131,7 +131,7 @@
         <div class="block">
           <div style="text-align: center; width: 100%">
             <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
-            <%= h Russian.strftime(@date, "%B %Y") %>
+            <%= link_to Russian.strftime(@date, "%B %Y"), search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" + "00") %>
             <%= link_to ">", :month => (@date.end_of_month + 1).strftime("%Y-%m") %>
           </div>
 
@@ -140,7 +140,7 @@
             <%= calendar.head("пн", "вт", "ср", "чт", "пт", "сб", "вс") %>
             <% calendar.day(:day_method => :created_at) do |date, post| %>
               <% if posts_for_calendar.find{|post| post.date.strftime("%d").to_i == date.day } %>
-                <%= link_to date.day, search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m-")+ "%02d" % date.day.to_s) %>
+                <%= link_to date.day, search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s) %>
               <% else %>
                 <%= content_tag(:span, date.day, :class => "empty_day") %>
               <% end %>

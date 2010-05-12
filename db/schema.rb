@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100511195646) do
+ActiveRecord::Schema.define(:version => 20100512085634) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20100511195646) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
   create_table "roles", :force => true do |t|

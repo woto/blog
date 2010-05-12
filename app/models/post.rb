@@ -1,5 +1,8 @@
 class Post < ActiveRecord::Base
 
+  after_save :invalidate_popular_tags
+  after_destroy :invalidate_popular_tags
+
   has_friendly_id :title, :use_slug => true, :approximate_ascii => true
   
   validates_uniqueness_of :title
@@ -14,6 +17,10 @@ class Post < ActiveRecord::Base
   validates_datetime :date
   acts_as_taggable_on :tags
   #named_scope :by_category, :conditions => {:category_id => 1}
+
+  def invalidate_popular_tags
+    Rails.cache.delete('popular_tags')
+  end
 
   define_index do
     indexes title

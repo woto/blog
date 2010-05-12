@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.xml
   def create
-    @category = Category.new(params[:category])
+    @category = Category.new(params[:cat])
 
     respond_to do |format|
       if @category.save
@@ -63,7 +63,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     respond_to do |format|
-      if @category.update_attributes(params[:category])
+      if @category.update_attributes(params[:cat])
         flash[:notice] = 'Category was successfully updated.'
         format.html { redirect_to(@category) }
         format.xml  { head :ok }
