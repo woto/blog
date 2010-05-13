@@ -5,12 +5,8 @@ class Category < ActiveRecord::Base
   acts_as_nested_set
   has_many :posts
   
-  after_save :invalidate_full_tree_cache
-  after_destroy :invalidate_full_tree_cache
-
-  def invalidate_full_tree_cache
-    raise Exception, "метода invalidate_full_tree_cache не должен был вызываться"
-  end
+  #after_save :invalidate_full_tree_cache
+  #after_destroy :invalidate_full_tree_cache
 
   def path_name
     "#{'-' * self.level} #{self.name}"

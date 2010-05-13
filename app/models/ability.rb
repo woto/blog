@@ -24,6 +24,7 @@ class Ability
     end
    
     can :search, Post
+    can :calendar, Post
 
     if user.role? :admin
       can :manage, :all

@@ -63,28 +63,41 @@
             <% if params[:category] and category = Category.find_by_name(params[:category]) %>
               <p>
                 Просмотр происходит внутри категории: 
-                <%= link_to "Главная", search_posts_path(:tags => params[:tags]) %> → 
+                (
                 <% category.self_and_ancestors.each do |item| %>
-                  <%= link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name)) %>
+                  <%= link_to(item.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => item.name)) %>
                   <%= " → " unless category.self_and_ancestors.last == item %>
                 <% end %>
+                )
+                <%= link_to "<sup>x</sup>", search_posts_path(:date => params[:date], :tags => params[:tags]) %>
               </p>
             <% end %>
-          <p>
             <% if params[:tags] %>
-              <% tags = Array.[](params[:tags]).flatten %>
-              Включен фильтр по  <%= Russian.p(tags.count, "тегу", "тегам", "тегам") %>:
-              <% tags.each { |tag| %>
-              <%= link_to h(tag), search_posts_path(:tags => tag, :category => params[:category]) %>
-              <%= link_to "<sup>x</sup>", search_posts_path(:tags => tags.reject{|item| item == tag}, :category => params[:category]) %>
-                <%= ", " unless tags.last == tag %> 
-              <% } %>
+              <p>
+                <% tags = Array.[](params[:tags]).flatten %>
+                Включен фильтр по  <%= Russian.p(tags.count, "тегу", "тегам", "тегам") %>:
+                <% tags.each { |tag| %>
+                ( <%= link_to h(tag), search_posts_path(:date => params[:date], :tags => tag, :category => params[:category]) %> )
+                <%= link_to "<sup>x</sup>", search_posts_path(:date => params[:date], :tags => tags.reject{|item| item == tag}, :category => params[:category]) %>
+                <% } %>
+              </p>
             <% end %>
-          </p>
-          <p>
             <% if params[:date] %>
-              <%= "Включен фильтр даты todo" %>
+              <p>
+                Включен фильтр по дате:
+                (
+                <% if params[:date] =~ /^\d+-\d+-00$/ %>
+                  <%= Russian.strftime(@date, "%B %Y") %>
+                <% elsif params[:date] =~ /^\d+-\d+-\d+$/ %>
+                  <%= Russian.strftime(@date, "%d %B %Y") %>
+                <% end %>
+                )
+                <%= link_to "<sup>x</sup>", search_posts_path(:tags => params[:tags], :category => params[:category]) %>
+              </p>
             <% end %>
+            <p>
+              Внимание, при листании календаря действие всех фильтров кроме фильтра по дате сохраняется, <%= link_to "вы можете сбросить все фильтры", search_posts_path %></a>.
+            </p>
         </div>
 
         <br class="clear" />
@@ -103,7 +116,7 @@
 
         <h4><span>Категории</span> постов</h4>
         <div class="block">
-          <%= format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:tags => params[:tags], :category => i.name))} %>
+          <%= format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => i.name))} %>
         </div>
         
         <h4><span>Популярные</span> теги</h4>
@@ -128,26 +141,8 @@
         <% end %>
       
         <h4><span>Календарь</span> публикаций</h4>
-        <div class="block">
-          <div style="text-align: center; width: 100%">
-            <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
-            <%= link_to Russian.strftime(@date, "%B %Y"), search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" + "00") %>
-            <%= link_to ">", :month => (@date.end_of_month + 1).strftime("%Y-%m") %>
-          </div>
+        <%= render :partial => 'shared/calendar' %>
 
-          <% posts_for_calendar = Post.find(:all, :conditions => ["date > ? AND date < ?", @date.beginning_of_month, @date.end_of_month]) %>
-          <% calendar_for (Post.all, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
-            <%= calendar.head("пн", "вт", "ср", "чт", "пт", "сб", "вс") %>
-            <% calendar.day(:day_method => :created_at) do |date, post| %>
-              <% if posts_for_calendar.find{|post| post.date.strftime("%d").to_i == date.day } %>
-                <%= link_to date.day, search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s) %>
-              <% else %>
-                <%= content_tag(:span, date.day, :class => "empty_day") %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
- 
         <h4><span>Временные</span> ссылки</h4>
         <div class="block">
           <ul class="links">

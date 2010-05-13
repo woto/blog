@@ -1,0 +1,18 @@
+<div class="block" id="calendar">
+  <div style="text-align: center; width: 100%">
+    <%= link_to_remote "<", :url => {:action => "search", :tags => params[:tags], :category => params[:category], :date => (@date.beginning_of_month-1).strftime("%Y-%m") + "-00"} %>
+    <%= link_to Russian.strftime(@date, "%B %Y"), search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" + "00") %>
+    <%= link_to_remote ">", :url => {:action => "search", :tags => params[:tags], :category => params[:category], :date => (@date.end_of_month + 1).strftime("%Y-%m") + "-00"} %>
+  </div>
+
+  <% calendar_for (@posts, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
+    <%= calendar.head("пн", "вт", "ср", "чт", "пт", "сб", "вс") %>
+    <% calendar.day(:day_method => :created_at) do |date, post| %>
+      <% if @posts.find{|post| post.date.strftime("%d").to_i == date.day } %>
+        <%= link_to date.day, search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s) %>
+      <% else %>
+        <%= content_tag(:span, date.day, :class => "empty_day") %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

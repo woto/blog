@@ -1,0 +1,1 @@
+page.replace_html :calendar, :partial => 'shared/calendar', :object => @posts

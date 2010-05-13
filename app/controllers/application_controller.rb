@@ -7,7 +7,13 @@ class ApplicationController < BaseController
   before_filter :date
 
   def date
-    @date = params[:month] ? Date.strptime(params[:month], "%Y-%m") : Date.today
+    if params[:date] =~ /^\d+-\d+-00$/ 
+      @date = Date.strptime(params[:date], "%Y-%m")
+    elsif params[:date] =~ /^\d+-\d+-\d+$/
+      @date = Date.strptime(params[:date], "%Y-%m-%d")
+    else
+      @date = Date.today
+    end
   end
 
   helper_method :current_user, :current_user_session

@@ -89,12 +89,20 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
+  
   def search
     #scope = Post.by_category.tagged_with(params[:id], :on => :tags)
     scope = Post
     category_id = Category.find_by_name(params[:category]).self_and_descendants if params[:category] 
     scope = scope.scoped(:conditions => ["posts.category_id IN (?)", category_id]) if category_id
+    if params[:date]
+      if params[:date] =~ /^\d+-\d+-00$/ 
+        @date = Date.strptime(params[:date], "%Y-%m")
+        scope = scope.scoped(:conditions => ["posts.date > ? AND posts.date < ?", @date.beginning_of_month, @date.end_of_month])
+      elsif params[:date] =~ /^\d+-\d+-\d+$/
+        scope = scope.scoped(:conditions => ["posts.date > ? AND posts.date < ?", @date.beginning_of_day, @date.end_of_day ])
+      end
+    end
     #scope = scope.scoped(:conditions => ["posts.category_id = ?", category_id]).tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags) if params[:tags]
     scope = scope.tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags) if params[:tags]
 
@@ -103,7 +111,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html { render :action => "index" }
-      format.xml  { render :xml => @cakes }
+      format.js {render :action => "calendar.rjs"}
     end
   end 
 
