@@ -129,19 +129,23 @@
           begin
             tmp = params[:tags].count
           rescue
-            tmp = 0
+            tmp = 1
           end
+          debugger
         %>
 
-        <% if params[:action] == "search" && @tags.count > tmp %>
+        <% if params[:action] == "search" && @tags.size > tmp %>
           <h4><span>Родственные</span> теги</h4>
           <div class="block">
             <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>
           </div>
         <% end %>
-      
+        
+
+        
         <h4><span>Календарь</span> публикаций</h4>
-        <%= render :partial => 'shared/calendar' %>
+        <%=  render :partial => 'shared/calendar', :object => @calendar_posts %>
+
 
         <h4><span>Временные</span> ссылки</h4>
         <div class="block">

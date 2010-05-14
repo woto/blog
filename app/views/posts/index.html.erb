@@ -24,18 +24,16 @@
     </div>
     
     <br class="clear" />
-
   <% end %>
- 
-  <% if can? :create, @post %>
-    <%= link_to 'New post', new_post_path %>
-  <% end %>
-
-
-  <div class="flickr_pagination">
-    <%= will_paginate @posts, :container => false %>
-  </div>
-
 <% else %>
-  Не найдено ни одного поста удовлетворяющих требованию, попробуйте выбрать другие параметры фильтрации
+  Не найдены публикации, удовлетворяющие условиям поиска, попробуйте сбросить или выбрать другие параметры фильтрации
 <% end %>
+
+<% if can? :create, @post %>
+  <%= link_to 'New post', new_post_path %>
+<% end %>
+
+
+<div class="flickr_pagination">
+  <%= will_paginate @posts, :container => false %>
+</div>

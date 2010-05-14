@@ -8,12 +8,45 @@ class ApplicationController < BaseController
 
   def date
     if params[:date] =~ /^\d+-\d+-00$/ 
-      @date = Date.strptime(params[:date], "%Y-%m")
+
+=begin
+require 'date'
+
+local = DateTime.now
+utc = local.new_offset
+
+puts local.offset                  # => Rational(-5, 24)
+puts local_from_utc = utc.new_offset(local.offset)
+puts local_from_utc.to_s           # => "2006-03-18T20:15:58-0500"
+puts local == local_from_utc       # => true
+
+todo убрать Rational!!!
+=end
+
+      @date = DateTime.strptime(params[:date], "%Y-%m").new_offset(Rational(1,6))
     elsif params[:date] =~ /^\d+-\d+-\d+$/
-      @date = Date.strptime(params[:date], "%Y-%m-%d")
+      @date = DateTime.strptime(params[:date], "%Y-%m-%d").new_offset(Rational(1,6))
     else
-      @date = Date.today
+      @date = DateTime.now
     end
+    #debugger
+    #local = @date
+    #utc = local.new_offset
+    #@date = utc
+    #debugger
+    #Time.zone.local_to_utc()
+    #@date = @date.to_time(:local)
+  end
+
+  before_filter :load_posts_for_calendar
+
+  def load_posts_for_calendar
+    # Данная проверка нужна для того чтобы не загружать здесь @calendar_posts
+    # а получать их в post::calendar. Пока что более грамотного способа не знаю
+    if !request.xhr?
+      @calendar_posts = CalendarPosts::get_calendar_posts params, @date, false
+    end
+
   end
 
   helper_method :current_user, :current_user_session

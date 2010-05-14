@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     @tags = Post.tag_counts
-    @posts = Post.paginate :page => params[:page], :order => 'created_at DESC'
+    @posts = Post.paginate :page => params[:page], :order => 'date DESC'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,30 +89,42 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  def search
-    #scope = Post.by_category.tagged_with(params[:id], :on => :tags)
-    scope = Post
-    category_id = Category.find_by_name(params[:category]).self_and_descendants if params[:category] 
-    scope = scope.scoped(:conditions => ["posts.category_id IN (?)", category_id]) if category_id
-    if params[:date]
-      if params[:date] =~ /^\d+-\d+-00$/ 
-        @date = Date.strptime(params[:date], "%Y-%m")
-        scope = scope.scoped(:conditions => ["posts.date > ? AND posts.date < ?", @date.beginning_of_month, @date.end_of_month])
-      elsif params[:date] =~ /^\d+-\d+-\d+$/
-        scope = scope.scoped(:conditions => ["posts.date > ? AND posts.date < ?", @date.beginning_of_day, @date.end_of_day ])
-      end
-    end
-    #scope = scope.scoped(:conditions => ["posts.category_id = ?", category_id]).tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags) if params[:tags]
-    scope = scope.tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags) if params[:tags]
 
-    @posts = scope.paginate(:page => params[:page], :order => 'created_at DESC')
+  def calendar
+
+    @calendar_posts = CalendarPosts::get_calendar_posts params, @date, false
+                                                                            
+    respond_to do |format|
+      format.js {render :action => "calendar.rjs", :object => @calendar_posts}
+    end
+  end
+
+  def search
+    
+    scope = Post
+
+    if params[:category]
+      scope = scope.with_category_ids(Post.get_cat_ids_tree_by_name(params[:category]))
+    end
+    
+    if params[:date] =~ /^\d+-\d+-00$/ 
+      scope = scope.within_month(@date)
+    elsif params[:date] =~ /^\d+-\d+-\d+$/
+      scope = scope.within_day(@date)
+    end
+
+    if params[:tags]
+      scope = scope.tagged_with(Array.[](params[:tags]).flatten.join(','), :on => :tags)
+    end
+
+    @posts = scope.paginate(:page => params[:page], :order => 'date DESC')
     @tags = scope.tag_counts
+
 
     respond_to do |format|
       format.html { render :action => "index" }
-      format.js {render :action => "calendar.rjs"}
     end
+
   end 
 
   def auto_complete_for_post_tag_list
