@@ -8,7 +8,10 @@
   <% calendar_for (@calendar_posts, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar| %>
     <%= calendar.head("пн", "вт", "ср", "чт", "пт", "сб", "вс") %>
     <% calendar.day(:day_method => :created_at) do |date, post| %>
-      <% if @calendar_posts.find{|post| post.date.strftime("%d").to_i == date.day } %>
+      <% if @calendar_posts.find{|post| 
+        post.date.strftime("%d").to_i == date.day &&
+        post.date.strftime("%m").to_i == date.month
+        } %>
         <%= link_to date.day, search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s) %>
       <% else %>
         <%= content_tag(:span, date.day, :class => "empty_day") %>

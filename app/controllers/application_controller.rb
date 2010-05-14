@@ -22,10 +22,13 @@ puts local == local_from_utc       # => true
 
 todo убрать Rational!!!
 =end
-
-      @date = DateTime.strptime(params[:date], "%Y-%m").new_offset(Rational(1,6))
+    
+    
+      @date = DateTime.strptime(params[:date], "%Y-%m").new_offset(DateTime.now.offset
+)
     elsif params[:date] =~ /^\d+-\d+-\d+$/
-      @date = DateTime.strptime(params[:date], "%Y-%m-%d").new_offset(Rational(1,6))
+      @date = DateTime.strptime(params[:date], "%Y-%m-%d").new_offset(DateTime.now.offset
+)
     else
       @date = DateTime.now
     end

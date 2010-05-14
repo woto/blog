@@ -17,6 +17,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user
   map.resource :user_session
  
+  map.delicious 'delicious', :controller => 'delicious', :action => 'index'
+  map.google_reader 'google_reader', :controller => 'google_reader', :action => 'index'
 
   #map.resources :password_resets
   #map.resources :users

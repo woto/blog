@@ -121,20 +121,20 @@
         
         <h4><span>Популярные</span> теги</h4>
         <div class="block">
-          <% @popular_tags = Post.tag_counts(:limit => 20) %>
+          <% @popular_tags = Post.tag_counts(:limit => 30, :order => "count DESC").sort_by{|tag| tag.name.downcase} %>
           <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
         </div>
 
-        <% 
+        <%
+          debugger
           begin
             tmp = params[:tags].count
           rescue
             tmp = 1
           end
-          debugger
         %>
 
-        <% if params[:action] == "search" && @tags.size > tmp %>
+        <% if (params[:tags] || params[:date] || params[:category]) && @tags.size > tmp %>
           <h4><span>Родственные</span> теги</h4>
           <div class="block">
             <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>

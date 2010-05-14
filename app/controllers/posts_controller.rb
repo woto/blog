@@ -118,7 +118,7 @@ class PostsController < ApplicationController
     end
 
     @posts = scope.paginate(:page => params[:page], :order => 'date DESC')
-    @tags = scope.tag_counts
+    @tags = scope.tag_counts(:order => "count DESC", :limit => 30).sort_by{|tag| tag.name.downcase}
 
 
     respond_to do |format|

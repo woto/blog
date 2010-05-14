@@ -70,3 +70,12 @@
 [submodule "vendor/plugins/friendly_id"]
 	path = vendor/plugins/friendly_id
 	url = git://github.com/norman/friendly_id.git
+[submodule "vendor/plugins/www-delicious"]
+	path = vendor/plugins/www-delicious
+	url = git://github.com/weppos/www-delicious.git
+[submodule "vendor/plugins/nokogiri"]
+	path = vendor/plugins/nokogiri
+	url = git://github.com/tenderlove/nokogiri.git
+[submodule "vendor/plugins/feedzirra"]
+	path = vendor/plugins/feedzirra
+	url = git://github.com/pauldix/feedzirra.git

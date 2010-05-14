@@ -1,0 +1,52 @@
+(in /home/woto/rails/uniqsystems)
+                           /ckeditor/images                    {:controller=>"ckeditor", :action=>"images"}
+                           /ckeditor/files                     {:controller=>"ckeditor", :action=>"files"}
+                           /ckeditor/create                    {:controller=>"ckeditor", :action=>"create"}
+         categories GET    /categories(.:format)               {:controller=>"categories", :action=>"index"}
+                    POST   /categories(.:format)               {:controller=>"categories", :action=>"create"}
+       new_category GET    /categories/new(.:format)           {:controller=>"categories", :action=>"new"}
+      edit_category GET    /categories/:id/edit(.:format)      {:controller=>"categories", :action=>"edit"}
+           category GET    /categories/:id(.:format)           {:controller=>"categories", :action=>"show"}
+                    PUT    /categories/:id(.:format)           {:controller=>"categories", :action=>"update"}
+                    DELETE /categories/:id(.:format)           {:controller=>"categories", :action=>"destroy"}
+       search_posts GET    /posts/search(.:format)             {:controller=>"posts", :action=>"search"}
+              posts GET    /posts(.:format)                    {:controller=>"posts", :action=>"index"}
+                    POST   /posts(.:format)                    {:controller=>"posts", :action=>"create"}
+           new_post GET    /posts/new(.:format)                {:controller=>"posts", :action=>"new"}
+          edit_post GET    /posts/:id/edit(.:format)           {:controller=>"posts", :action=>"edit"}
+               post GET    /posts/:id(.:format)                {:controller=>"posts", :action=>"show"}
+                    PUT    /posts/:id(.:format)                {:controller=>"posts", :action=>"update"}
+                    DELETE /posts/:id(.:format)                {:controller=>"posts", :action=>"destroy"}
+               root GET    /                                   {:controller=>"posts", :action=>"index"}
+      captcha_tests GET    /captcha_tests(.:format)            {:controller=>"captcha_tests", :action=>"index"}
+                    POST   /captcha_tests(.:format)            {:controller=>"captcha_tests", :action=>"create"}
+   new_captcha_test GET    /captcha_tests/new(.:format)        {:controller=>"captcha_tests", :action=>"new"}
+  edit_captcha_test GET    /captcha_tests/:id/edit(.:format)   {:controller=>"captcha_tests", :action=>"edit"}
+       captcha_test GET    /captcha_tests/:id(.:format)        {:controller=>"captcha_tests", :action=>"show"}
+                    PUT    /captcha_tests/:id(.:format)        {:controller=>"captcha_tests", :action=>"update"}
+                    DELETE /captcha_tests/:id(.:format)        {:controller=>"captcha_tests", :action=>"destroy"}
+           register        /register                           {:controller=>"users", :action=>"new"}
+             logout        /logout                             {:controller=>"user_sessions", :action=>"destroy"}
+              login        /login                              {:controller=>"user_sessions", :action=>"new"}
+         addrpxauth        /addrpxauth                         {:method=>:post, :controller=>"users", :action=>"addrpxauth"}
+    password_resets GET    /password_resets(.:format)          {:controller=>"password_resets", :action=>"index"}
+                    POST   /password_resets(.:format)          {:controller=>"password_resets", :action=>"create"}
+ new_password_reset GET    /password_resets/new(.:format)      {:controller=>"password_resets", :action=>"new"}
+edit_password_reset GET    /password_resets/:id/edit(.:format) {:controller=>"password_resets", :action=>"edit"}
+     password_reset GET    /password_resets/:id(.:format)      {:controller=>"password_resets", :action=>"show"}
+                    PUT    /password_resets/:id(.:format)      {:controller=>"password_resets", :action=>"update"}
+                    DELETE /password_resets/:id(.:format)      {:controller=>"password_resets", :action=>"destroy"}
+           new_user GET    /user/new(.:format)                 {:controller=>"users", :action=>"new"}
+          edit_user GET    /user/edit(.:format)                {:controller=>"users", :action=>"edit"}
+               user GET    /user(.:format)                     {:controller=>"users", :action=>"show"}
+                    PUT    /user(.:format)                     {:controller=>"users", :action=>"update"}
+                    DELETE /user(.:format)                     {:controller=>"users", :action=>"destroy"}
+                    POST   /user(.:format)                     {:controller=>"users", :action=>"create"}
+   new_user_session GET    /user_session/new(.:format)         {:controller=>"user_sessions", :action=>"new"}
+  edit_user_session GET    /user_session/edit(.:format)        {:controller=>"user_sessions", :action=>"edit"}
+       user_session GET    /user_session(.:format)             {:controller=>"user_sessions", :action=>"show"}
+                    PUT    /user_session(.:format)             {:controller=>"user_sessions", :action=>"update"}
+                    DELETE /user_session(.:format)             {:controller=>"user_sessions", :action=>"destroy"}
+                    POST   /user_session(.:format)             {:controller=>"user_sessions", :action=>"create"}
+                           /:controller/:action/:id            
+                           /:controller/:action/:id(.:format)  

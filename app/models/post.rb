@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title
 
   cattr_reader :per_page
-  @@per_page = 3
+  @@per_page = 10
 
   belongs_to :user
   belongs_to :category
