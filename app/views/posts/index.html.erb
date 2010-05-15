@@ -12,9 +12,27 @@
             <%= post.category.self_and_ancestors.map{|item| link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name))}.join(' → ') %>
           <% end %>
         </li>
-        <li class="comments"><a href="">2 комментария</a></li>
+        <li class="comments"><%= link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post) %></li>
       </ul>
-      <b>Теги:</b> <%= h(post.tag_list) %><br />
+      <b>Теги:</b> <%
+      tags = Array.[](params[:tags]).flatten.compact
+      post.tags.each do |tag|
+        if(tags).include?(tag.name)
+      %>
+          <%= link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag.name})) %>
+          <%= link_to(h(tag.name), link_tags(tag.name)) %><% if post.tags.last != tag %>,<% end %>
+
+      <%
+        else
+      %>
+          <%= link_to("+", link_tags(tags + Array(tag.name))) %>
+          <%= link_to(h(tag.name), link_tags(tag.name)) %><% if post.tags.last != tag %>,<% end %>
+
+      <%
+        end
+      end
+      #h(post.tag_list) 
+      %><br />
       <% if can? :edit, @post %>
         <%= link_to 'Edit', edit_post_path(post) %>
       <% end %>

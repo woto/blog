@@ -24,6 +24,9 @@
   <b>Tags</b>
   <%= @post.tag_list %>
 </p>
+
+<%= render :partial => 'comments/form' %>
+
 <% if can? :update, @article %>
   <%= link_to 'Edit', edit_post_path(@post) %> |
 <% end %>

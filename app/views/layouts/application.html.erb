@@ -119,33 +119,13 @@
           <%= format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => i.name))} %>
         </div>
         
-        <h4><span>Популярные</span> теги</h4>
+        <h4><span>Родственные</span> теги</h4>
         <div class="block">
-          <% @popular_tags = Post.tag_counts(:limit => 30, :order => "count DESC").sort_by{|tag| tag.name.downcase} %>
-          <%= render(:partial => "posts/tags", :collection => @popular_tags) %>
+          <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>
         </div>
-
-        <%
-          debugger
-          begin
-            tmp = params[:tags].count
-          rescue
-            tmp = 1
-          end
-        %>
-
-        <% if (params[:tags] || params[:date] || params[:category]) && @tags.size > tmp %>
-          <h4><span>Родственные</span> теги</h4>
-          <div class="block">
-            <%= render(:partial => "related_tags", :collection => @tags, :as => :tag) %>
-          </div>
-        <% end %>
-        
-
         
         <h4><span>Календарь</span> публикаций</h4>
         <%=  render :partial => 'shared/calendar', :object => @calendar_posts %>
-
 
         <h4><span>Временные</span> ссылки</h4>
         <div class="block">

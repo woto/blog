@@ -2,7 +2,7 @@ class DeliciousController < ApplicationController
 
   def index
      d = WWW::Delicious.new('woto', 'qwer332')
-     l = d.posts_recent
+     l = d.posts_all
      l.each{|i|
        p = Post.new
        p.title = i.title # DateTime.now.to_s

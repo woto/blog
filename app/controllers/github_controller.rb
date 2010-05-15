@@ -1,10 +1,6 @@
 class GithubController < ApplicationController
 
   def index
-      #user = Octopi::User.find("fcoury")
-
-      #repo = Octopi::Repository.find(:user => "woto")
-      #puts repo
       feed = Feedzirra::Feed.fetch_and_parse("http://github.com/woto.atom")
       feed.entries.each do |entry|
         p = Post.new
@@ -12,9 +8,12 @@ class GithubController < ApplicationController
         p.title = entry.title
         p.body = entry.content
         p.date = entry.published
-        p.tag_list = entry.links
+        if entry.links.count > 1
+          debugger
+        end
+        tag = URI::split(entry.links[0])[5].scan(/\A\/*(\w+)?\/(\w+)/)
+        p.tag_list = [tag[0], tag[1]]
         p.save
       end
   end
-
 end
