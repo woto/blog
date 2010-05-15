@@ -79,3 +79,9 @@
 [submodule "vendor/plugins/feedzirra"]
 	path = vendor/plugins/feedzirra
 	url = git://github.com/pauldix/feedzirra.git
+[submodule "vendor/plugins/octopi"]
+	path = vendor/plugins/octopi
+	url = git://github.com/fcoury/octopi.git
+[submodule "vendor/plugins/api_cache"]
+	path = vendor/plugins/api_cache
+	url = git://github.com/mloughran/api_cache.git
