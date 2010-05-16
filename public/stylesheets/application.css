@@ -646,3 +646,21 @@ height: 2.3em;
 .block .today {
   background-color: #ccc;
 }
+
+/* nested_set links testing */
+ul li {
+  background-color: #DDA;
+}
+ul li ul li
+{
+  background-color: #DDD;
+}
+ul li ul li ul li
+{
+  background-color: #EDA;
+}
+ul li ul li ul li ul li
+{
+  background-color: #DAA;
+}
+/* end of link testing */

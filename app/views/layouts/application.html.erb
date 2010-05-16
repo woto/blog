@@ -116,7 +116,37 @@
 
         <h4><span>Категории</span> постов</h4>
         <div class="block">
-          <%= format_nested_set(Category.roots, {:major => {:tag => "ul", :class => "links"}}){|i| link_to(i.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => i.name))} %>
+          <% cat = Category.find_by_sql('select c2.name, c2.id, count(*) as lvl from categories as c1, categories as c2 where c2.lft between c1.lft and c1.rgt group by c2.name order by c2.lft') %>
+          <ul class="links">
+            <% counter = 0 %>
+            <% cat.each_with_index do |c, i| %>
+
+              <% if !cat[i+1].nil? && cat[i+1].lvl.to_i > c.lvl.to_i %>
+                <% counter += 1 %>
+                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %><ul class="links">
+              <% end %>
+
+              <% if !cat[i+1].nil? && cat[i+1].lvl.to_i == c.lvl.to_i %>
+                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %></li>
+              <% end %>
+
+              <% if !cat[i+1].nil? && cat[i+1].lvl.to_i < c.lvl.to_i %>
+                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %></li>
+                <% counter -= 1 %>
+                <% (c.lvl.to_i - cat[i+1].lvl.to_i).times do %>
+                    </ul></li>
+                <% end %>
+              <% end %>
+              
+              <% if (cat[i+1].nil?) %>
+                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %></li>
+                <% counter.times do %>
+                  </ul></li>
+                <% end %>
+              <% end %>
+
+            <% end %>
+          </ul>
         </div>
         
         <h4><span>Родственные</span> теги</h4>

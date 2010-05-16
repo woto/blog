@@ -5,6 +5,9 @@ class Category < ActiveRecord::Base
   acts_as_nested_set
   has_many :posts
   
+  def lvl
+    attributes['lvl']
+  end
   #after_save :invalidate_full_tree_cache
   #after_destroy :invalidate_full_tree_cache
 

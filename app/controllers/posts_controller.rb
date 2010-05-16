@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @tags = Post.tag_counts
+    @tags = Post.tag_counts(:order => "count DESC", :limit => 30).sort_by{|tag| tag.name.downcase}
     @posts = Post.paginate :page => params[:page], :order => 'date DESC'
 
     respond_to do |format|

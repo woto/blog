@@ -72,8 +72,21 @@ class User < ActiveRecord::Base
     @roles.include? role.to_s
   end
 
+  def reset_password_with_params!(user)
+    self.class.ignore_blank_passwords = false
+    self.password = user[:password]
+    self.password_confirmation = user[:password_confirmation]
+    save
+  end
+      
   def deliver_register_complete!
     Notifier.deliver_register_complete(self)
   end
+
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
+  end
+
 
 end

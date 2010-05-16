@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100515150125) do
+ActiveRecord::Schema.define(:version => 20100515225620) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(:version => 20100515150125) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cached_slug"
+    t.integer  "comments_count",  :default => 0
+    t.string   "cached_tag_list"
   end
 
   create_table "roles", :force => true do |t|

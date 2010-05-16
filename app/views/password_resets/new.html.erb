@@ -1,0 +1,8 @@
+<p><%= t('.reset_note') %></p>
+
+<% semantic_form_for User.new, :url => password_resets_path, :html => {:id => nil} do |f| %>
+  <% f.inputs do %>
+    <%= f.input :email %>
+    <%= f.commit_button :reset_password, :name => nil %>
+  <% end %>
+<% end %>

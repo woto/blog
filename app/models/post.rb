@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true, :approximate_ascii => true
   
-  validates_uniqueness_of :title
+  #validates_uniqueness_of :title
 
   cattr_reader :per_page
   @@per_page = 10
@@ -17,7 +17,7 @@ class Post < ActiveRecord::Base
   validates_length_of :body, :minimum => 9
   validates_datetime :date
   acts_as_taggable_on :tags
-  
+ 
   def self.get_cat_ids_tree_by_name(category_name)
     Category.find_by_name(category_name).self_and_descendants
   end
