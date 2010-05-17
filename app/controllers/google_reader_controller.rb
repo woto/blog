@@ -12,7 +12,7 @@ class GoogleReaderController < ApplicationController
       p.category = Category.find_or_create_by_name("Google Reader")
       p.title = entry.title
       p.date = entry.published
-      p.body = entry.content
+      p.body = entry.summary
       p.tag_list = entry.categories
       p.save
     end
