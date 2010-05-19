@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :comments
 
+  SprocketsApplication.routes(map)
 
   #map.filter '/browse/*params', :controller => 'posts', :action => 'index'
   #map.resources :posts

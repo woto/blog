@@ -1,0 +1,852 @@
+/*
+
+	Nonzero1.0 by nodethirtythree design
+	http://www.nodethirtythree.com
+	missing in a maze
+
+*/
+
+/* This controls the width of the fluid width layouts */
+
+div.fluid
+{
+width: 90% !important;
+}
+
+/* This controls the width of the fixed width layouts */
+
+div.fixed
+{
+width: 950px !important;
+}
+
+/* Basic Stuff */
+
+*
+{
+margin: 0em;
+padding: 0em;
+}
+
+body
+{
+background-color: #fff;
+color: #585858;
+font-size: 9pt;
+font-family: "trebuchet ms", helvetica, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+margin: 1em 0;
+font-weight: normal;
+letter-spacing: -1px;
+text-transform: lowercase;
+}
+
+h3,h4,h5,h6
+{
+color: #66000F;
+}
+
+h1 span
+{
+font-weight: bold;
+}
+
+h3 span
+{
+font-weight: bold;
+}
+
+h4 span
+{
+font-weight: bold;
+}
+
+br.clear
+{
+clear: both;
+}
+
+.block img
+{
+padding: 3px;
+border: solid 1px #e1e1e1;
+}
+
+img.floatTL
+{
+float: left;
+margin-right: 1.5em;
+margin-bottom: 1.5em;
+margin-top: 0.5em;
+}
+
+a
+{
+text-decoration: none;
+color: #D90000;
+}
+
+a:hover
+{
+  color: #da9a02
+}
+
+a.ajax 
+{
+  border-bottom: dashed;
+  border-width: 1px;
+  text-decoration: none;
+}
+
+#main_inner ul li
+{
+  /* margin-left: 1.5em; */
+}
+
+#main_inner ul.links
+{
+list-style: none;
+margin-bottom: 0px;
+}
+
+#main_inner ul.links li
+{
+  margin-left: 0px;
+  margin-top: 0.8em;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+#main_inner ul.links ul.links li
+{
+  margin-left: 0.8em;
+  font-size: 95%;
+  font-weight: normal;
+}
+
+p
+{
+line-height: 1.8em;
+}
+
+/* nifty_layout */
+
+#flash_notice, #flash_error 
+{
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice 
+{
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error 
+{
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors 
+{
+    display: inline;
+}
+
+#errorExplanation 
+{
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 
+{
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p 
+{
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul 
+{
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li 
+{
+  list-style: disc;
+}
+
+
+/* tags css */
+
+.tags { }
+.tag_level_1 { font-size: 12px; }
+.tag_level_2 { font-size: 12px; }
+.tag_level_3 { font-size: 12px; }
+.tag_level_4 { font-size: 13px; }
+.tag_level_5 { font-size: 13px; }
+.tag_level_6 { font-size: 13px; }
+.tag_level_7 { font-size: 14px; }
+.tag_level_8 { font-size: 14px; }
+.tag_level_9 { font-size: 14px; }
+.tag_level_10 { font-size: 15px; }
+.tag_level_11 { font-size: 15px; }
+.tag_level_12 { font-size: 15px; }
+.tag_level_13 { font-size: 16px; }
+.tag_level_14 { font-size: 16px; }
+.tag_level_15 { font-size: 16px; }
+.tag_level_16 { font-size: 16px; }
+.tag_level_17 { font-size: 16px; }
+.tag_level_18 { font-size: 16px; }
+.tag_level_19 { font-size: 16px; }
+.tag_level_20 { font-size: 16px; }
+.tag_level_21 { font-size: 16px; }
+.tag_level_22 { font-size: 16px; }
+.tag_level_23 { font-size: 16px; }
+.tag_level_24 { font-size: 16px; }
+.tag_level_25 { font-size: 16px; }
+.tag_level_26 { font-size: 16px; }
+.tag_level_27 { font-size: 16px; }
+.tag_level_28 { font-size: 16px; }
+.tag_level_29 { font-size: 16px; }
+.tag_level_30 { font-size: 16px; }
+
+/* pagination */
+
+.flickr_pagination 
+{
+  text-align: center;
+  padding: .3em; 
+}
+
+.flickr_pagination a, .flickr_pagination span 
+{
+  padding: .2em .5em; 
+}
+
+.flickr_pagination span.disabled 
+{
+  color: #AAA; 
+}
+
+.flickr_pagination span.current 
+{
+  font-weight: bold;
+  color: #000; 
+}
+
+.flickr_pagination a 
+{
+  border: 1px solid #DDDDDD;
+  color: #D90000;
+  text-decoration: none; 
+}
+
+.flickr_pagination a:hover, .flickr_pagination a:focus 
+{
+  border-color: #000;
+  background: #D90000;
+  color: white; 
+}
+
+.flickr_pagination .page_info 
+{
+  color: #aaa;
+  padding-top: .8em; 
+}
+
+.flickr_pagination .prev_page, .flickr_pagination .next_page 
+{
+  border-width: 1px;
+}
+.flickr_pagination .prev_page 
+{
+  margin-right: 1em; 
+}
+
+.flickr_pagination .next_page 
+{
+  margin-left: 1em; 
+}
+
+
+/* Header */
+
+#header
+{
+width:100%;
+height:122px;
+background: #440000 url('/images/template/n1.gif') repeat-x;
+}
+
+#header_inner
+{
+position: relative;
+width: 950px;
+height:122px;
+margin: 0 auto;
+}
+
+/* Logo */
+
+#logo
+{
+position: absolute;
+bottom: 0.6em;
+}
+
+#logo a
+{
+  text-decoration: none;
+}
+
+#logo h1
+{
+display: inline;
+color: #fff;
+font-size: 2.6em;
+}
+
+#logo h2
+{
+display: inline;
+padding-left: 0.5em;
+color: #E5CCD0;
+font-size: 1.0em;
+}
+
+/* Menu */
+
+#menu
+{
+position: absolute;
+right: 0em;
+bottom: 0em;
+}
+
+#menu ul
+{
+list-style: none;
+}
+
+#menu li
+{
+float: left;
+}
+
+#menu li a
+{
+margin-left: 0.5em;
+display: block;
+padding: 1.1em 1.4em 1.0em 1.4em;
+background: #fff url('/images/template/n4.gif') repeat-x;
+border: solid 1px #fff;
+color: #616161;
+font-weight: bold;
+font-size: 1.0em;
+text-transform: lowercase;
+text-decoration: none;
+}
+
+#menu li a.active
+{
+background: #CA2F2F url('/images/template/n3.gif') repeat-x;
+color: #fff;
+border: solid 1px #A94B4B;
+}
+
+/* Main */
+
+#main
+{
+background: #fff url('/images/template/n2.gif') 0px 1px repeat-x;
+}
+
+#main_inner p
+{
+text-align: justify;
+margin: 1.0em 0em;
+}
+
+#main_inner ul
+{
+}
+
+#main_inner
+{
+position: relative;
+width: 950px;
+margin: 0 auto;
+padding-top: 3.5em;
+}
+
+#main_inner h3.title,h4.title
+{
+border-bottom: dotted 1px #E1E1E1;
+position: relative;
+margin: 0;
+}
+
+#main_inner h3.title
+{
+font-size: 2.1em;
+padding-bottom: 0.1em;
+margin-bottom: 0.8em;
+}
+
+#main_inner h4
+{
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+#main_inner .post
+{
+position: relative;
+}
+
+#main_inner .post h3.title
+{
+position: relative;
+font-size: 1.7em;
+padding-bottom: 1.2em;
+}
+
+#main_inner .post h3.title a
+{
+  text-decoration: none;
+  color: #000;
+}
+
+#main_inner .post ul.post_info
+{
+list-style: none;
+position: absolute;
+top: 3em;
+font-size: 0.8em;
+}
+
+#main_inner .post ul.post_info li
+{
+background-position: 0em 0.2em;
+background-repeat: no-repeat;
+display: inline;
+padding-left: 18px;
+margin-left: 0;
+}
+
+#main_inner .post ul.post_info li.date
+{
+background-image: url('/images/template/n5.gif');
+}
+
+#main_inner .post ul.post_info li.comments
+{
+background-image: url('/images/template/n6.gif');
+margin-left: 1.1em;
+}
+
+/* Footer */
+
+#footer
+{
+width: 950px;
+margin: 0 auto;
+text-align: center;
+clear: both;
+border-top: dotted 1px #E1E1E1;
+margin-top: 1.0em;
+margin-bottom: 1.0em;
+padding-top: 1.0em;
+text-transform: lowercase;
+}
+
+/* Search */
+
+input.button
+{
+background: #CA2F2F url('/images/template/n3.gif') repeat-x;
+color: #fff;
+border: solid 1px #A94B4B;
+font-weight: bold;
+text-transform: lowercase;
+font-size: 0.8em;
+height: 2.0em;
+}
+
+input.text
+{
+border: solid 1px #DDD;
+font-size: 1.0em;
+padding: 0.25em 0.25em 0.25em 0.25em;
+}
+
+#search
+{
+position: relative;
+width: 100%;
+margin-bottom: 2.0em;
+}
+
+#search input.text
+{
+position: absolute;
+top: 0em;
+left: 0em;
+width: 9.5em;
+}
+
+#search input.button
+{
+position: absolute;
+top: 0em;
+right: 0em;
+min-width: 2.0em;
+max-width: 2.5em;
+width: 4em;
+height: 2.3em;
+}
+
+/* LAYOUT - 3 COLUMNS */
+
+	/* Primary content */
+	
+	#primaryContent_3columns
+	{
+	position: relative;
+	margin-right: 34em;
+	}
+	
+	#columnA_3columns
+	{
+	position: relative;
+	float: left;
+	width: 100%;
+	margin-right: -34em;
+	padding-right: 2em;
+	}
+	
+	/* Secondary Content */
+	
+	#secondaryContent_3columns
+	{
+	float: right;
+	}
+	
+	#columnB_3columns
+	{
+	width: 13.0em;
+	float: left;
+	padding: 0em 2em 0.5em 2em;
+	border-left: dotted 1px #E1E1E1;
+	}
+	
+	#columnC_3columns
+	{
+	width: 13.0em;
+	float: left;
+	padding: 0em 0em 0.5em 2em;
+	border-left: dotted 1px #E1E1E1;
+	}
+	
+/* LAYOUT - 2 COLUMNS */
+
+	/* Primary content */
+	
+	#primaryContent_2columns
+	{
+	position: relative;
+	margin-right: 17em;
+	}
+	
+	#columnA_2columns
+	{
+	position: relative;
+	float: left;
+	width: 100%;
+	margin-right: -17em;
+	padding-right: 2em;
+	}
+	
+	/* Secondary Content */
+	
+	#secondaryContent_2columns
+	{
+	float: right;
+	}
+	
+	#columnC_2columns
+	{
+	width: 13.0em;
+	float: left;
+	padding: 0em 0em 0.5em 2em;
+	border-left: dotted 1px #E1E1E1;
+	}
+
+/* LAYOUT - COLUMNLESS */
+
+	/* Primary content */
+	
+	#primaryContent_columnless
+	{
+	position: relative;
+	}
+	
+	#columnA_columnless
+	{
+	position: relative;
+	width: 100%;
+	}
+
+#filter
+{
+  background-color: #EED; 
+  padding: 10px;
+}
+
+.block {
+  margin-bottom: 2.5em;
+}
+
+/* Calendar */
+
+.block table {
+  width: 100%;
+}
+
+.block table td {
+  text-align: center;
+}
+
+.block .notmonth {
+  color: #ccc;
+}
+
+.block #month {
+  background-color: #ddd;
+}
+
+.block .today {
+  background-color: #ccc;
+}
+
+
+/* -------------------------------------------------------------------------------------------------
+
+It's *strongly* suggested that you don't modify this file.  Instead, load a new stylesheet after
+this one in your layouts (eg formtastic_changes.css) and override the styles to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+This stylesheet forms part of the Formtastic Rails Plugin
+(c) 2008 Justin French
+
+--------------------------------------------------------------------------------------------------*/
+
+
+/* NORMALIZE AND RESET - obviously inspired by Yahoo's reset.css, but scoped to just form.formtastic
+--------------------------------------------------------------------------------------------------*/
+form.formtastic, form.formtastic ul, form.formtastic ol, form.formtastic li, form.formtastic fieldset, form.formtastic legend, form.formtastic input, form.formtastic textarea, form.formtastic select, form.formtastic p { margin:0; padding:0; }
+form.formtastic fieldset { border:0; }
+form.formtastic em, form.formtastic strong { font-style:normal; font-weight:normal; }
+form.formtastic ol, form.formtastic ul { list-style:none; }
+form.formtastic abbr, form.formtastic acronym { border:0; font-variant:normal; }
+form.formtastic input, form.formtastic textarea, form.formtastic select { font-family:inherit; font-size:inherit; font-weight:inherit; }
+form.formtastic input, form.formtastic textarea, form.formtastic select { font-size:100%; }
+form.formtastic legend { white-space:normal; color:#000; }
+
+
+/* SEMANTIC ERRORS
+--------------------------------------------------------------------------------------------------*/
+form.formtastic ul.errors { color:#cc0000; margin:0.5em 0 1.5em 25%; list-style:square; }
+form.formtastic ul.errors li { padding:0; border:none; display:list-item; }
+
+
+/* FIELDSETS & LISTS
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset { }
+form.formtastic fieldset.inputs { }
+form.formtastic fieldset.buttons { padding-left:25%; }
+form.formtastic fieldset ol { }
+form.formtastic fieldset.buttons li { float:left; padding-right:0.5em; }
+
+/* clearfixing the fieldsets */
+form.formtastic fieldset { display: inline-block; }
+form.formtastic fieldset:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+html[xmlns] form.formtastic fieldset { display: block; }
+* html form.formtastic fieldset { height: 1%; }
+
+
+/* INPUT LIs
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li { margin-bottom:1.5em; }
+
+/* clearfixing the li's */
+form.formtastic fieldset > ol > li { display: inline-block; }
+form.formtastic fieldset > ol > li:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+html[xmlns] form.formtastic fieldset > ol > li { display: block; }
+* html form.formtastic fieldset > ol > li { height: 1%; }
+
+form.formtastic fieldset > ol > li.required { }
+form.formtastic fieldset > ol > li.optional { }
+form.formtastic fieldset > ol > li.error { }
+  
+
+/* LABELS
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li label { display:block; width:25%; float:left; padding-top:.2em; }
+form.formtastic fieldset > ol > li > li label { line-height:100%; padding-top:0; }
+form.formtastic fieldset > ol > li > li label input { line-height:100%; vertical-align:middle; margin-top:-0.1em;}
+
+
+/* NESTED FIELDSETS AND LEGENDS (radio, check boxes and date/time inputs use nested fieldsets)
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li fieldset { position:relative; }
+form.formtastic fieldset > ol > li fieldset legend { position:absolute; width:95%; padding-top:0.1em; left: 0px; }
+form.formtastic fieldset > ol > li fieldset legend span { position:absolute; }
+form.formtastic fieldset > ol > li fieldset legend.label label { position:absolute; }
+form.formtastic fieldset > ol > li fieldset ol { float:left; width:74%; margin:0; padding:0 0 0 25%; }
+form.formtastic fieldset > ol > li fieldset ol li { padding:0; border:0; }
+
+
+/* INLINE HINTS
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li p.inline-hints { color:#666; margin:0.5em 0 0 25%; }
+
+
+/* INLINE ERRORS
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li p.inline-errors { color:#cc0000; margin:0.5em 0 0 25%; }
+form.formtastic fieldset > ol > li ul.errors { color:#cc0000; margin:0.5em 0 0 25%; list-style:square; }
+form.formtastic fieldset > ol > li ul.errors li { padding:0; border:none; display:list-item; }
+
+
+/* STRING & NUMERIC OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li.string input { max-width:74%; }
+form.formtastic fieldset > ol > li.password input { max-width: 13em; }
+form.formtastic fieldset > ol > li.numeric input { max-width:74%; }
+
+
+/* TEXTAREA OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li.text textarea { width:74%; }
+
+
+/* HIDDEN OVERRIDES
+The dual declarations are required because of our clearfix display hack on the LIs, which is more
+specific than the more general rule below. TODO: Revist the clearing hack and this rule.
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset ol li.hidden,
+html[xmlns] form.formtastic fieldset ol li.hidden { display:none; }
+
+/* BOOLEAN OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li.boolean label { padding-left:25%; width:auto; }
+form.formtastic fieldset > ol > li.boolean label input { margin:0 0.5em 0 0.2em; }
+
+
+/* RADIO OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li.radio { }
+form.formtastic fieldset > ol > li.radio fieldset ol { margin-bottom:-0.6em; }
+form.formtastic fieldset > ol > li.radio fieldset ol li { margin:0.1em 0 0.5em 0; }
+form.formtastic fieldset > ol > li.radio fieldset ol li label { float:none; width:100%; }
+form.formtastic fieldset > ol > li.radio fieldset ol li label input { margin-right:0.2em; }
+
+
+/* CHECK BOXES (COLLECTION) OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li.check_boxes { }
+form.formtastic fieldset > ol > li.check_boxes fieldset ol { margin-bottom:-0.6em; }
+form.formtastic fieldset > ol > li.check_boxes fieldset ol li { margin:0.1em 0 0.5em 0; }
+form.formtastic fieldset > ol > li.check_boxes fieldset ol li label { float:none; width:100%; }
+form.formtastic fieldset > ol > li.check_boxes fieldset ol li label input { margin-right:0.2em; }
+
+
+
+/* DATE & TIME OVERRIDES
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li.date fieldset ol li,
+form.formtastic fieldset > ol > li.time fieldset ol li,
+form.formtastic fieldset > ol > li.datetime fieldset ol li { float:left; width:auto; margin:0 .3em 0 0; }
+
+form.formtastic fieldset > ol > li.date fieldset ol li label,
+form.formtastic fieldset > ol > li.time fieldset ol li label,
+form.formtastic fieldset > ol > li.datetime fieldset ol li label { display:none; }
+
+form.formtastic fieldset > ol > li.date fieldset ol li label input, 
+form.formtastic fieldset > ol > li.time fieldset ol li label input, 
+form.formtastic fieldset > ol > li.datetime fieldset ol li label input { display:inline; margin:0; padding:0;  }
+
+
+/* -------------------------------------------------------------------------------------------------
+
+Load this stylesheet after formtastic.css in your layouts to override the CSS to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+For example, to make the inline hint paragraphs a little darker in color than the standard #666:
+
+form.formtastic fieldset > ol > li p.inline-hints { color:#333; }
+
+HINT:
+The following style may be *conditionally* included for improved support on older versions of IE(<8)
+form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
+
+--------------------------------------------------------------------------------------------------*/
+
+form.formtastic fieldset > ol > li p.inline-hints {
+  margin: 0.5em 0 0 0;
+}
+
+form.formtastic fieldset > ol > li label {
+  padding-bottom: 0.5em;
+  float: none;
+}
+
+form.formtastic fieldset > ol > li.boolean label {
+  padding-left: 0;
+}
+
+form.formtastic fieldset > ol > li p.inline-errors {
+  margin-left: 0;
+}
+
+form.formtastic fieldset > ol > li.password input {
+max-width: 100%;
+}
+
+form.formtastic fieldset > ol > li label {
+  width:30%;
+}
+
+
+.weakling {
+  font-size: 11px;
+  font-weight: bold; }
+  .weakling .default {
+    color: rgb(160,160,160); }
+  .weakling .error {
+    color: rgb(200,0,0); }
+  .weakling .weak {
+    color: rgb(100,100,0); }
+  .weakling .average {
+    color: rgb(200,0,200); }
+  .weakling .strong {
+    color: rgb(0,200,0); }
