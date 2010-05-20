@@ -85,3 +85,9 @@
 [submodule "vendor/plugins/api_cache"]
 	path = vendor/plugins/api_cache
 	url = git://github.com/mloughran/api_cache.git
+[submodule "vendor/plugins/sprockets"]
+  path = vendor/plugins/sprockets
+  url = git://github.com/sstephenson/sprockets.git
+[submodule "vendor/plugins/sprockets-rails"]
+  path = vendor/plugins/sprockets-rails
+  url = git://github.com/sstephenson/sprockets-rails.git

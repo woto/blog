@@ -1,7 +1,10 @@
 class Post < ActiveRecord::Base
 
-  #after_save :invalidate_popular_tags
+  #after_save :invalidate_cached_category
   #after_destroy :invalidate_popular_tags
+  
+  after_create :invalidate_cached_category, :if => :category
+  after_update :invalidate_cached_category, :if => :category
 
   has_friendly_id :title, :use_slug => true, :approximate_ascii => true
   
@@ -17,7 +20,13 @@ class Post < ActiveRecord::Base
   validates_length_of :body, :minimum => 9
   validates_datetime :date
   acts_as_taggable_on :tags
+
+  serialize :cached_category
  
+  def invalidate_cached_category
+    self.cached_category = category.self_and_ancestors
+  end
+
   def self.get_cat_ids_tree_by_name(category_name)
     Category.find_by_name(category_name).self_and_descendants
   end

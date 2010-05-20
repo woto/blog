@@ -5,11 +5,13 @@
       <%= post.body %>
       <ul class="post_info">
         <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a>
-          в категории 
-          <%= link_to("Главная", search_posts_path(:tags => params[:tags])) %>
-          <% if post.category %> 
-            →
-            <%= post.category.self_and_ancestors.map{|item| link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name))}.join(' → ') %>
+          <% if post.cached_category %>
+            в категории 
+            <%= post.cached_category.map{|item| 
+              link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name)
+              )}.join(' → ') %>
+          <% else %>
+            без категории
           <% end %>
         </li>
         <li class="comments"><%= link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post) %></li>
