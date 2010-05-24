@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     @posts = Post.paginate :page => params[:page], :order => 'date DESC'
 
     respond_to do |format|
+      format.mobile
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
     end

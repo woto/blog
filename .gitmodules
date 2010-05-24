@@ -91,3 +91,6 @@
 [submodule "vendor/plugins/sprockets-rails"]
   path = vendor/plugins/sprockets-rails
   url = git://github.com/sstephenson/sprockets-rails.git
+[submodule "vendor/plugins/mobile-fu"]
+	path = vendor/plugins/mobile-fu
+	url = git://github.com/brendanlim/mobile-fu.git

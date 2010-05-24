@@ -1,0 +1,12 @@
+<div style="font-size: 36px; font-family: verdana; width: 100%; color: grey">
+
+  <% @posts.each do |post| %>
+      <h3 stlye="text-align: left"><%= link_to h(post.title), post %></h3>
+      <%= post.body %>
+  <% end %>
+  <br />
+
+  <div style="margin: 56px 0px; width: 100%; text-align: center; font-size: 48px">
+  <%= will_paginate @posts, :container => false, :page_links => false %>
+  </div>
+</div>

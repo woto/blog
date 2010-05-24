@@ -56,44 +56,7 @@
       
       <% if params[:category] || params[:tags] || params[:date] %>
         <div id="filter">
-            <% if params[:category] and category = Category.find_by_name(params[:category]) %>
-              <p>
-                Просмотр происходит внутри категории: 
-                (
-                <% category.self_and_ancestors.each do |item| %>
-                  <%= link_to(item.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => item.name)) %>
-                  <%= " → " unless category.self_and_ancestors.last == item %>
-                <% end %>
-                )
-                <%= link_to "<sup>x</sup>", search_posts_path(:date => params[:date], :tags => params[:tags]) %>
-              </p>
-            <% end %>
-            <% if params[:tags] %>
-              <p>
-                <% tags = Array.[](params[:tags]).flatten %>
-                Включен фильтр по  <%= Russian.p(tags.count, "тегу", "тегам", "тегам") %>:
-                <% tags.each { |tag| %>
-                ( <%= link_to h(tag), search_posts_path(:date => params[:date], :tags => tag, :category => params[:category]) %> )
-                <%= link_to "<sup>x</sup>", search_posts_path(:date => params[:date], :tags => tags.reject{|item| item == tag}, :category => params[:category]) %>
-                <% } %>
-              </p>
-            <% end %>
-            <% if params[:date] %>
-              <p>
-                Включен фильтр по дате:
-                (
-                <% if params[:date] =~ /^\d+-\d+-00$/ %>
-                  <%= Russian.strftime(@date, "%B %Y") %>
-                <% elsif params[:date] =~ /^\d+-\d+-\d+$/ %>
-                  <%= Russian.strftime(@date, "%d %B %Y") %>
-                <% end %>
-                )
-                <%= link_to "<sup>x</sup>", search_posts_path(:tags => params[:tags], :category => params[:category]) %>
-              </p>
-            <% end %>
-            <p>
-              Внимание, при листании календаря действие всех фильтров кроме фильтра по дате сохраняется, <%= link_to "вы можете сбросить все фильтры", search_posts_path %></a>.
-            </p>
+          <%= filters %>
         </div>
 
         <br class="clear" />
@@ -112,37 +75,7 @@
 
         <h4><span>Категории</span> постов</h4>
         <div class="block">
-          <% cat = Category.find_by_sql('select c2.name, c2.id, count(*) as lvl from categories as c1, categories as c2 where c2.lft between c1.lft and c1.rgt group by c2.name order by c2.lft') %>
-          <ul class="links">
-            <% counter = 0 %>
-            <% cat.each_with_index do |c, i| %>
-
-              <% if !cat[i+1].nil? && cat[i+1].lvl.to_i > c.lvl.to_i %>
-                <% counter += 1 %>
-                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %><ul class="links">
-              <% end %>
-
-              <% if !cat[i+1].nil? && cat[i+1].lvl.to_i == c.lvl.to_i %>
-                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %></li>
-              <% end %>
-
-              <% if !cat[i+1].nil? && cat[i+1].lvl.to_i < c.lvl.to_i %>
-                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %></li>
-                <% counter -= 1 %>
-                <% (c.lvl.to_i - cat[i+1].lvl.to_i).times do %>
-                    </ul></li>
-                <% end %>
-              <% end %>
-              
-              <% if (cat[i+1].nil?) %>
-                <li><%= link_to(c.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => c.name)) %></li>
-                <% counter.times do %>
-                  </ul></li>
-                <% end %>
-              <% end %>
-
-            <% end %>
-          </ul>
+          <%= categories %>
         </div>
         
         <h4><span>Родственные</span> теги</h4>
