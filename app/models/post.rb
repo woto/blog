@@ -15,6 +15,9 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
+
+  accepts_nested_attributes_for :category
+
   has_many :comments
   validates_presence_of :title, :body
   validates_length_of :body, :minimum => 9

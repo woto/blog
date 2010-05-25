@@ -1,0 +1,7 @@
+<% semantic_fields_for @post do |f| %>
+  <% f.inputs :id => 'category' do %>
+    <%= f.input :category_id, :as => :select, :collection => nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" } %>
+    <%= link_to_remote "Создать новую категорию", :url => {:action => "new_category"} %>
+    <br /><br />
+<% end %>
+<% end %>

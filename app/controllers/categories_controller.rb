@@ -43,6 +43,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.xml
   def create
+    debugger
     @category = Category.new(params[:cat])
 
     respond_to do |format|

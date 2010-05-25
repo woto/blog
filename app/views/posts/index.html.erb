@@ -1,7 +1,8 @@
 <% if @posts.count > 0 %>
   <% @posts.each do |post| %>
     <div class="post">
-      <h3 class="title"><%= link_to h(post.title), post %></h3>
+      <h3 class="title">
+        <%= link_to h(truncate(post.title, 50)), post %></h3>
       <%= post.body %>
       <ul class="post_info">
         <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a>
@@ -22,13 +23,11 @@
       post_tags.each do |tag|
         if(tags).include?(tag)
       %>
-          <%= link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag})) %>
-          <%= link_to(h(tag), link_tags(tag)) %><% if tag != post_tags.last%>,<% end %>
+          <%= link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag})) %>&nbsp;<%= link_to(h(tag), link_tags(tag)) %><% if tag != post_tags.last%>,<% end %>
       <%
         else
       %>
-          <%= link_to("+", link_tags(tags + Array(tag))) %>
-          <%= link_to(h(tag), link_tags(tag)) %><% if tag != post_tags.last%>,<% end %>
+          <%= link_to("+", link_tags(tags + Array(tag))) %>&nbsp;<%= link_to(h(tag), link_tags(tag)) %><% if tag != post_tags.last%>,<% end %>
       <%
         end
       end

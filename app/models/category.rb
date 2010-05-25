@@ -3,11 +3,14 @@ class Category < ActiveRecord::Base
   validates_uniqueness_of :name
   
   acts_as_nested_set
+
   has_many :posts
 
+  # определение для более быстрого построения дерева одним запросом
   def lvl
     attributes['lvl']
   end
+
   #after_save :invalidate_full_tree_cache
   #after_destroy :invalidate_full_tree_cache
 

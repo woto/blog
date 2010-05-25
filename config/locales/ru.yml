@@ -39,3 +39,6 @@ ru:
         date: Дата
         category_id: Категория
         tag_list: Теги
+      category:
+        parent: Родительская категория
+        name: Название категории

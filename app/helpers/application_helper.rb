@@ -1,6 +1,8 @@
 # Methods added to this helper will be available to all templates in the application.
+
 module ApplicationHelper
-  
+
+
   def categories
     cat = Category.find_by_sql('select c2.name, c2.id, count(*) as lvl from categories as c1, categories as c2 where c2.lft between c1.lft and c1.rgt group by c2.name order by c2.lft')
     out = ""

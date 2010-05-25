@@ -26,7 +26,21 @@ class PostsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @post }
     end
+  end
 
+  def available_category
+    @post = Post.new
+    respond_to do |format|
+      format.js {render :action => "available_category.rjs", :object => @post}
+    end
+  end
+
+  def new_category
+    @post = Post.new
+    @post.build_category
+    respond_to do |format|
+      format.js {render :action => "new_category.rjs", :object => @post}
+    end
   end
 
   # GET /posts/new
@@ -35,6 +49,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.visible = true
     @post.date = Time.now
+    @post.build_category
 
     respond_to do |format|
       format.html # new.html.erb
