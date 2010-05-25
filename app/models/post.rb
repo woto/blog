@@ -1,10 +1,6 @@
 class Post < ActiveRecord::Base
 
-  #after_save :invalidate_cached_category
-  #after_destroy :invalidate_popular_tags
-  
-  after_create :invalidate_cached_category, :if => :category
-  after_update :invalidate_cached_category, :if => :category
+  before_save :invalidate_cached_category, :if => :category
 
   has_friendly_id :title, :use_slug => true, :approximate_ascii => true
   
@@ -27,6 +23,9 @@ class Post < ActiveRecord::Base
   serialize :cached_category
  
   def invalidate_cached_category
+    # todo необходимо сохранить категорию прежде чем мы 
+    # получим полный путь к категории
+    category.save!
     self.cached_category = category.self_and_ancestors
   end
 
