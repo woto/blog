@@ -9,18 +9,18 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      #if @user_session.new_registration?
+      if @user_session.new_registration?
         flash[:notice] = "Вы успешно зарегистрировались, и вошли на сайт"
         redirect_back_or_default user_url
-      #else
+      else
       #  if @user_session.registration_complete?
-      #    flash[:notice] = "Вы успешно вошли на сайт под своим аккаунтом"
-      #    redirect_back_or_default root_path
+          flash[:notice] = "Рады Вас снова видеть на нашем сайте"
+          redirect_back_or_default root_path
       #  else
       #    flash[:notice] = "С возвращением, пожалуйста проверьте ваши данные перед тем как продолжите работу с сайтом"
       #    redirect_back_or_default edit_user_url
       #  end
-      #end
+      end
     else
       render :action => :new
     end
