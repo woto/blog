@@ -2,11 +2,12 @@
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
     <head>
-      <title><%= h(yield(:title) || "Untitled") %></title>
-      <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', 'weakling', :cache => true, :concat => true %>
+      <title><%= h(yield(:title) || AppConfig.site_name) %></title>
+
+      <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', '/components/dyndatetime/css/skins/aqua/theme.css', :cache => true, :concat => true %>
+
       <%= sprockets_include_tag %>
       <%= javascript_include_tag :ckeditor %>
-      <%= calendar_date_select_includes :style => "default", :locale => "ru" %>
 
       <%= yield(:head) %>
 

@@ -1,9 +1,3 @@
-[submodule "vendor/plugins/calendar_date_select_test"]
-	path = vendor/plugins/calendar_date_select_test
-	url = git://github.com/woto/calendar_date_select.git
-[submodule "vendor/plugins/calendar_date_select"]
-	path = vendor/plugins/calendar_date_select
-	url = git://github.com/woto/calendar_date_select.git
 [submodule "vendor/plugins/acts-as-taggable-on"]
 	path = vendor/plugins/acts-as-taggable-on
 	url = git://github.com/mbleigh/acts-as-taggable-on.git
@@ -16,9 +10,6 @@
 [submodule "vendor/plugins/awesome_nested_set"]
 	path = vendor/plugins/awesome_nested_set
 	url = git://github.com/collectiveidea/awesome_nested_set.git
-[submodule "vendor/plugins/formtastic_calendar_date_select"]
-	path = vendor/plugins/formtastic_calendar_date_select
-	url = git://github.com/dyohi/formtastic_calendar_date_select.git
 [submodule "vendor/plugins/formtastic"]
 	path = vendor/plugins/formtastic
 	url = git://github.com/justinfrench/formtastic.git
@@ -46,9 +37,6 @@
 [submodule "vendor/plugins/validation_reflection"]
 	path = vendor/plugins/validation_reflection
 	url = git://github.com/redinger/validation_reflection.git
-[submodule "vendor/plugins/weakling"]
-	path = vendor/plugins/weakling
-	url = git://github.com/omenking/weakling.git
 [submodule "vendor/plugins/will_paginate"]
 	path = vendor/plugins/will_paginate
 	url = git://github.com/mislav/will_paginate.git
@@ -94,3 +82,6 @@
 [submodule "vendor/plugins/mobile-fu"]
 	path = vendor/plugins/mobile-fu
 	url = git://github.com/brendanlim/mobile-fu.git
+[submodule "vendor/plugins/jrails"]
+	path = vendor/plugins/jrails
+	url = git://github.com/neocoin/jrails.git

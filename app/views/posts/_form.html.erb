@@ -1,4 +1,16 @@
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery("#post_date").dynDateTime({
+      showsTime: true,
+      ifFormat: "%d.%m.%Y %H:%M",
+      electric: true,
+    });
+  });
+</script>
+
+
 <script language="Javascript">
+/*
   document.observe('dom:loaded', function(){
     CKEDITOR.on('instanceReady', function() {
       document.checkVisibility = function(){
@@ -18,6 +30,7 @@
       event.stop();
     });
   });
+*/
 </script>
 
 <% if params[:commit] == 'Предпросмотр' %>
@@ -33,7 +46,7 @@
     <%= f.input :intro, :as => :ckeditor, :input_html => {:language => "ru"}, :hint => 'Пропустите вступление и переходите к следующему полю если не хотите чтобы пост содержал короткое вступление при просмотре в виде списка или выгрузки в rss' %>
     <%= f.input :body, :as => :ckeditor, :input_html => {:language => "ru"} %>
     <%= f.input :visible %>
-    <%= f.input :date, :as => :calendar, :hint => "Формальная дата публикации (не влияет на дату появления поста)" %>
+    <%= f.text_field :date %> <%= f.image_tag('calendar.gif') %>
 
     <% if !@post.category.nil? && (@post.category.new_record? && params[:action] != 'new') %>
       <%= render :partial => 'new_category', :object => @post %>

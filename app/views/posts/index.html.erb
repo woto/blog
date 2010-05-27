@@ -2,13 +2,13 @@
   <% @posts.each do |post| %>
     <div class="post">
       <h3 class="title">
-        <%= link_to h(truncate(post.title, 50)), post %></h3>
+      <%= link_to h(truncate(post.title, 50)), post %></h3>
 
-        <% if !post.intro.empty? %>
-          <%= post.intro %>
-        <% else %>
-          <%= post.body %>
-        <% end %>
+      <% if !post.intro.empty? %>
+        <%= post.intro %>
+      <% else %>
+        <%= post.body %>
+      <% end %>
 
       <ul class="post_info">
         <li class="date">Опубликовано <a href=""><%= l(post.date, :format => "%d %B %Y") %></a>
