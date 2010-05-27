@@ -9,7 +9,9 @@
       button: ".next()"
     });
 
-    $("input#post_tag_list").autocomplete("auto_complete_for_post_tag_list")
+    $("textarea#post_tag_list").autocomplete("/tags/auto_complete_for_tag_name", {
+	  	multiple: true
+    })
 
 });
 </script>
@@ -62,7 +64,7 @@
 
     <li id="post_tag_list_input" class="string optional">
       <%= f.label :tag_list %>
-      <%= f.text_field :tag_list, :autocomplete =>"off" %>
+      <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 1 %>
       <%= image_tag('/images/ajax-indicator.gif', :id => 'searchIndicator', :style => 'display:none;') %>
       <p class="inline-hints">Используйте запятую для разделения тегов</p>
     </li>

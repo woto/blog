@@ -4,9 +4,6 @@
 [submodule "vendor/plugins/authlogic"]
 	path = vendor/plugins/authlogic
 	url = git://github.com/binarylogic/authlogic.git
-[submodule "vendor/plugins/auto_complete"]
-	path = vendor/plugins/auto_complete
-	url = git://github.com/rails/auto_complete.git
 [submodule "vendor/plugins/awesome_nested_set"]
 	path = vendor/plugins/awesome_nested_set
 	url = git://github.com/collectiveidea/awesome_nested_set.git
@@ -73,12 +70,6 @@
 [submodule "vendor/plugins/api_cache"]
 	path = vendor/plugins/api_cache
 	url = git://github.com/mloughran/api_cache.git
-[submodule "vendor/plugins/sprockets"]
-  path = vendor/plugins/sprockets
-  url = git://github.com/sstephenson/sprockets.git
-[submodule "vendor/plugins/sprockets-rails"]
-  path = vendor/plugins/sprockets-rails
-  url = git://github.com/sstephenson/sprockets-rails.git
 [submodule "vendor/plugins/mobile-fu"]
 	path = vendor/plugins/mobile-fu
 	url = git://github.com/brendanlim/mobile-fu.git
@@ -88,3 +79,6 @@
 [submodule "vendor/plugins/delocalize"]
 	path = vendor/plugins/delocalize
 	url = git://github.com/clemens/delocalize.git
+[submodule "vendor/plugins/auto_complete_jquery"]
+	path = vendor/plugins/auto_complete_jquery
+	url = git://github.com/robertwahler/auto_complete_jquery.git

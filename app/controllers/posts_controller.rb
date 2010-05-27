@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
 
-  auto_complete_for :post, :title
-
   load_and_authorize_resource
 
   # GET /posts

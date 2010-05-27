@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   validates_presence_of :title, :body
   validates_length_of :body, :minimum => 9
+  # todo отказался в пользу delocalize
   #validates_datetime :date
   acts_as_taggable_on :tags
 

@@ -4,9 +4,8 @@
     <head>
       <title><%= h(yield(:title) || AppConfig.site_name) %></title>
 
-      <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', '/components/dyndatetime/css/skins/aqua/theme.css', :cache => true, :concat => true %>
-
-      <%= sprockets_include_tag %>
+      <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', '/components/dyndatetime/css/skins/aqua/theme.css', 'jquery.autocomplete.css', :cache => true, :concat => true %>
+      <%= javascript_include_tag 'jquery.min.js', 'jquery-ui.min.js', 'jrails.min.js', 'application.js', '/components/dyndatetime/src/jquery.dynDateTime.js', '/components/dyndatetime/lang/calendar-ru.js', 'jquery.autocomplete.pack.js', :cache => true %>
       <%= javascript_include_tag :ckeditor %>
 
       <%= yield(:head) %>
