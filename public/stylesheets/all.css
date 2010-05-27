@@ -648,7 +648,8 @@ height: 2.3em;
 }
 
 #preview #title, 
-#preview #body
+#preview #body,
+#preview #intro
 {
   background-color: #ddd;
 }

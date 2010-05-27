@@ -90,6 +90,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if(params['commit'] == 'Предпросмотр' && @post.valid?)
+        @post.attributes = params[:post]
         format.html { render :action => "edit" }
       elsif @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
