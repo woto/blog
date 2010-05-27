@@ -20,6 +20,10 @@
   });
 </script>
 
+<% if params[:commit] == 'Предпросмотр' %>
+  <%= render(:partial => 'preview') %>
+<% end %>
+
 <% semantic_form_for(@post) do |f| %>
   <%= f.error_messages %>
 
@@ -45,5 +49,8 @@
     </li>
 
   <% end %>
-  <%= f.buttons %>
+  <% f.buttons do %>
+    <%= f.submit "Предпросмотр" %>
+    <%= f.submit %>
+  <% end %>
 <% end %>

@@ -646,3 +646,10 @@ height: 2.3em;
 .block .today {
   background-color: #ccc;
 }
+
+#preview #title, 
+#preview #body
+#preview #intro
+{
+  background-color: #ddd;
+}

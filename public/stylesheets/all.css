@@ -647,6 +647,12 @@ height: 2.3em;
   background-color: #ccc;
 }
 
+#preview #title, 
+#preview #body
+{
+  background-color: #ddd;
+}
+
 
 /* -------------------------------------------------------------------------------------------------
 

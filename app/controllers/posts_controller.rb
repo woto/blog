@@ -65,11 +65,14 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
+    
     @post = Post.new(params[:post])
     @post.user = current_user
 
     respond_to do |format|
-      if @post.save
+      if(params['commit'] == 'Предпросмотр' && @post.valid?)
+        format.html { render :action => "new" }
+      elsif @post.save
         flash[:notice] = 'Post was successfully created.'
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
@@ -86,7 +89,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if(params['commit'] == 'Предпросмотр' && @post.valid?)
+        format.html { render :action => "edit" }
+      elsif @post.update_attributes(params[:post])
         flash[:notice] = 'Post was successfully updated.'
         format.html { redirect_to(@post) }
         format.xml  { head :ok }
