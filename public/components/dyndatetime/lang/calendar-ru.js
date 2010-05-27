@@ -35,12 +35,12 @@ Calendar._DN = new Array
 // short day names
 Calendar._SDN = new Array
 ("вск",
- "пон",
+ "пнд",
  "втр",
  "срд",
- "чет",
- "пят",
- "суб",
+ "чтв",
+ "птн",
+ "сбт",
  "вск");
 
 // full month names

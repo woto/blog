@@ -85,3 +85,6 @@
 [submodule "vendor/plugins/jrails"]
 	path = vendor/plugins/jrails
 	url = git://github.com/neocoin/jrails.git
+[submodule "vendor/plugins/delocalize"]
+	path = vendor/plugins/delocalize
+	url = git://github.com/clemens/delocalize.git

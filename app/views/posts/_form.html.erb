@@ -4,6 +4,8 @@
       showsTime: true,
       ifFormat: "%d.%m.%Y %H:%M",
       electric: true,
+      firstDay: 1,
+      button: ".next()"
     });
   });
 </script>
@@ -46,7 +48,7 @@
     <%= f.input :intro, :as => :ckeditor, :input_html => {:language => "ru"}, :hint => 'Пропустите вступление и переходите к следующему полю если не хотите чтобы пост содержал короткое вступление при просмотре в виде списка или выгрузки в rss' %>
     <%= f.input :body, :as => :ckeditor, :input_html => {:language => "ru"} %>
     <%= f.input :visible %>
-    <%= f.text_field :date %> <%= f.image_tag('calendar.gif') %>
+    <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %> <%= f.image_tag('calendar.gif') %>
 
     <% if !@post.category.nil? && (@post.category.new_record? && params[:action] != 'new') %>
       <%= render :partial => 'new_category', :object => @post %>
@@ -56,7 +58,6 @@
 
     <li id="post_tag_list_input" class="string optional">
       <%= f.label :tag_list %>
-      <%= text_field_with_auto_complete :post, :tag_list, {:autocomplete => "off"}, {:indicator =>'searchIndicator', :tokens => [',']} %>
       <%= image_tag('/images/ajax-indicator.gif', :id => 'searchIndicator', :style => 'display:none;') %>
       <p class="inline-hints">Используйте запятую для разделения тегов</p>
     </li>

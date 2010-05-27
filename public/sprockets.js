@@ -2116,12 +2116,12 @@ Calendar._DN = new Array
 
 Calendar._SDN = new Array
 ("вск",
- "пон",
+ "пнд",
  "втр",
  "срд",
- "чет",
- "пят",
- "суб",
+ "чтв",
+ "птн",
+ "сбт",
  "вск");
 
 Calendar._MN = new Array

@@ -11,10 +11,5 @@
   - app/javascripts/jrails.min.js
   - public/components/dyndatetime/src/jquery.dynDateTime.js
   - public/components/dyndatetime/lang/calendar-ru.js
-  #- app/javascripts/prototype.js
-  #- app/javascripts/effects.js
-  #- app/javascripts/dragdrop.js
-  #- app/javascripts/controls.js
-  #- app/javascripts/weakling.js
   #- app/javascripts/*.js
   #- app/javascripts/**/*.js
