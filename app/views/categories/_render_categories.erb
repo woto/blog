@@ -1,5 +1,6 @@
 <div id="categories">
   <% fields_for @post do |f| %>
     <%= f.select :category_id, options_for_select([nil] + nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" }) %>
-  <% end %>
+  <% end %>&nbsp;
+  <%= link_to "Управление категориями", categories_path(:format => :iframe), {:id => 'render_categories', :class => "ajax"} %>
 </div>

@@ -1,7 +1,7 @@
 <script type="text/javascript">
-  $(document).ready(function() {
+  jQuery(document).ready(function() {
 
-    $("#post_date").dynDateTime({
+    jQuery("#post_date").dynDateTime({
       showsTime: true,
       ifFormat: "%d.%m.%Y %H:%M",
       electric: true,
@@ -11,33 +11,20 @@
 
     $("textarea#post_tag_list").autocomplete("/tags/auto_complete_for_tag_name", {
 	  	multiple: true
+    })
+
+    $("a#render_categories").live('click', function() {
+      $.fn.colorbox({
+        href:$(this).attr('href'), 
+        width: "90%", 
+        height: "90%", 
+        iframe: true,
+        onCleanup:function(){ 
+          <%= remote_function( :url => {:controller => 'categories', :action => 'render_categories'}) %>
+        }
       });
-
-$(".example9").colorbox({
-					onOpen:function(){ alert('onOpen: colorbox is about to open'); },
-					onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
-					onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
-					onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
-					onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
-          });
-
-    $("a#render_categories").colorbox({
-					onOpen:function(){ alert('onOpen: colorbox is about to open'); },
-					onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
-					onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
-					onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
-					onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
-          });
-    /*.colorbox({
-      width: "80%", 
-      height: "80%", 
-      iframe: true,
-      onClosed:function(){ alert('onClosed: colorbox has completely closed'); },
-      onCleanup:function(){
-      alert('closed');
-      <%= remote_function( :url => {:action => "available_category"}) %>;
-      }
-    });*/
+      return false;
+    });
 
 });
 </script>
@@ -68,8 +55,6 @@ $(".example9").colorbox({
 
 
 </script>
-<p><a class='example9' href="../content/marylou.jpg" title="Marylou on Cumberland Island">Example with alerts</a>. Callbacks and event-hooks allow users to extend functionality without having to rewrite parts of the plugin.</p> 
-<p><a href="http://localhost:3000/categories/new">Outside webpage (IFrame)</a></p>
 
 <% if params[:commit] == 'Предпросмотр' %>
   <%= render(:partial => 'preview') %>
@@ -89,16 +74,16 @@ $(".example9").colorbox({
   <%= f.label :body %><br />
   <%= f.cktext_area :body, :language => "ru" %><br />
 
-  <%= f.check_box :visible %><br />
-  <%= f.label :visible %><br />
+  <%= f.check_box :visible %> 
+  <%= f.label :visible %><br /><br />
 
-  <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %> <%= f.image_tag('calendar.gif') %><br />
+  <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %>
+  <%= f.image_tag('calendar.gif') %><br /><br />
 
-  <%= render :partial => 'categories/render_categories', :object => @post %>
-  <%= link_to "Управление категориями", categories_path(:format => :iframe), {:id => 'render_categories', :class => "ajax"} %>
+  <%= render :partial => 'categories/render_categories', :object => @post %><br />
 
   <%= f.label :tag_list %><br />
-  <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 2 %><br />
+  <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 2 %><br /><br />
 
   <%= f.submit "Предпросмотр" %>
   <%= f.submit %>
