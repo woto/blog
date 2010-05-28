@@ -1,5 +1,4 @@
 <h1>Listing categories</h1>
-
 <table>
   <tr>
     <th>Name</th>
@@ -23,4 +22,7 @@
 
 <br />
 
-<%= link_to 'New category', new_category_path %>
+<% 
+  # todo непонятно, почему в ситуациях ...url ...path :format не сохраняется
+%>
+<%= link_to 'New category', new_category_path(:format => params[:format]) %>

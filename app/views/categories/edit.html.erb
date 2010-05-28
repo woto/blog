@@ -1,6 +1,6 @@
 <h1>Editing category</h1>
 
-<% form_for :cat, @category, :url => category_path(@category), :html => { :method => :put } do |f| %>
+<% form_for :cat, @category, :url => category_path(@category, :format => params[:format]), :html => { :method => :put } do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -17,4 +17,4 @@
 <% end %>
 
 <%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Back', categories_path(:format => params[:format]) %>

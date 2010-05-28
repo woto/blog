@@ -1,0 +1,1 @@
+page.replace_html :categories, render(:partial => 'render_categories.erb')

@@ -1,8 +1,0 @@
-<% semantic_fields_for "post[category_attributes]", @post.category, :category do |f| %>
-  <% f.inputs :id => 'category' do %>
-    <%= link_to_remote ("Выбрать имеющуюся категорию", {:url => {:action => "available_category"}}, {:class => "ajax"}) %>
-    <br /><br />
-    <%= f.input :parent, :as => :select, :collection => nested_set_options(Category) {|i| "#{'-' * i.level} #{i.name}" } %>
-    <%= f.input :name %>
-  <% end %>
-<% end %>

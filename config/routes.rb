@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.filter '/browse/*params', :controller => 'posts', :action => 'index'
   #map.resources :posts
-  map.resources :categories
+
+  map.resources :categories, :collection => {:render_categories => :post}
   map.resources :posts, :collection => {:search => [:get]}
 
   map.root :posts

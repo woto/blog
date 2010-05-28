@@ -1,6 +1,6 @@
 <h1>New category</h1>
 
-<% form_for :cat, @category, :url => categories_path do |f| %>
+<% form_for :cat, @category, :url => categories_path(:format => params[:format]) do |f| %>
   <%= f.error_messages %>
 
   <p>

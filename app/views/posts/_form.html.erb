@@ -1,7 +1,7 @@
 <script type="text/javascript">
-  jQuery(document).ready(function() {
+  $(document).ready(function() {
 
-    jQuery("#post_date").dynDateTime({
+    $("#post_date").dynDateTime({
       showsTime: true,
       ifFormat: "%d.%m.%Y %H:%M",
       electric: true,
@@ -11,7 +11,33 @@
 
     $("textarea#post_tag_list").autocomplete("/tags/auto_complete_for_tag_name", {
 	  	multiple: true
-    })
+      });
+
+$(".example9").colorbox({
+					onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+					onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+					onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+					onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+					onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+          });
+
+    $("a#render_categories").colorbox({
+					onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+					onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+					onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+					onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+					onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+          });
+    /*.colorbox({
+      width: "80%", 
+      height: "80%", 
+      iframe: true,
+      onClosed:function(){ alert('onClosed: colorbox has completely closed'); },
+      onCleanup:function(){
+      alert('closed');
+      <%= remote_function( :url => {:action => "available_category"}) %>;
+      }
+    });*/
 
 });
 </script>
@@ -39,39 +65,42 @@
     });
   });
 */
+
+
 </script>
+<p><a class='example9' href="../content/marylou.jpg" title="Marylou on Cumberland Island">Example with alerts</a>. Callbacks and event-hooks allow users to extend functionality without having to rewrite parts of the plugin.</p> 
+<p><a href="http://localhost:3000/categories/new">Outside webpage (IFrame)</a></p>
 
 <% if params[:commit] == 'Предпросмотр' %>
   <%= render(:partial => 'preview') %>
 <% end %>
 
-<% semantic_form_for(@post) do |f| %>
+<% form_for(@post) do |f| %>
   <%= f.error_messages %>
 
-  <% f.inputs do %>
-    <%= f.input :title %>
-    <a id="toggle_post_intro_input" class="ajax" href=""></a><br /><br />
-    <%= f.input :intro, :as => :ckeditor, :input_html => {:language => "ru"}, :hint => 'Пропустите вступление и переходите к следующему полю если не хотите чтобы пост содержал короткое вступление при просмотре в виде списка или выгрузки в rss' %>
-    <%= f.input :body, :as => :ckeditor, :input_html => {:language => "ru"} %>
-    <%= f.input :visible %>
-    <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %> <%= f.image_tag('calendar.gif') %>
+  <%= f.label :title %><br />
+  <%= f.text_field :title, :maxlength => 255, :size => 50%><br />
 
-    <% if !@post.category.nil? && (@post.category.new_record? && params[:action] != 'new') %>
-      <%= render :partial => 'new_category', :object => @post %>
-    <% else %>
-      <%= render :partial => 'available_category', :object => @post %>
-    <% end %>
+  <a id="toggle_post_intro_input" class="ajax" href=""></a><br />
 
-    <li id="post_tag_list_input" class="string optional">
-      <%= f.label :tag_list %>
-      <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 1 %>
-      <%= image_tag('/images/ajax-indicator.gif', :id => 'searchIndicator', :style => 'display:none;') %>
-      <p class="inline-hints">Используйте запятую для разделения тегов</p>
-    </li>
+  <%= f.label :intro %><br />
+  <%= f.cktext_area :intro, :language => "ru" %><br />
 
-  <% end %>
-  <% f.buttons do %>
-    <%= f.submit "Предпросмотр" %>
-    <%= f.submit %>
-  <% end %>
+  <%= f.label :body %><br />
+  <%= f.cktext_area :body, :language => "ru" %><br />
+
+  <%= f.check_box :visible %><br />
+  <%= f.label :visible %><br />
+
+  <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %> <%= f.image_tag('calendar.gif') %><br />
+
+  <%= render :partial => 'categories/render_categories', :object => @post %>
+  <%= link_to "Управление категориями", categories_path(:format => :iframe), {:id => 'render_categories', :class => "ajax"} %>
+
+  <%= f.label :tag_list %><br />
+  <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 2 %><br />
+
+  <%= f.submit "Предпросмотр" %>
+  <%= f.submit %>
+
 <% end %>

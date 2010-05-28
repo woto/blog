@@ -11,7 +11,6 @@
     <% end %>
 
     <%= form.input :password, :input_html => form.object.new_record? ? nil : {:autocomplete => 'off'}, :required => form.object.new_record? ? true : false, :label => form.object.new_record? ? nil : :new_password %>
-    <%= password_strength :password_strength, 'user_password' %><br />
     <%= form.input :password_confirmation, :input_html => form.object.new_record? ? nil : {:autocomplete => 'off'}, :required => form.object.new_record? ? true : false %>
  
     <% if @user.new_record? %>

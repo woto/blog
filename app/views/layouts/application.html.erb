@@ -4,8 +4,26 @@
     <head>
       <title><%= h(yield(:title) || AppConfig.site_name) %></title>
 
-      <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes', '/components/dyndatetime/css/skins/aqua/theme.css', 'jquery.autocomplete.css', :cache => true, :concat => true %>
-      <%= javascript_include_tag 'jquery.min.js', 'jquery-ui.min.js', 'jrails.min.js', 'application.js', '/components/dyndatetime/src/jquery.dynDateTime.js', '/components/dyndatetime/lang/calendar-ru.js', 'jquery.autocomplete.pack.js', :cache => true %>
+      <%= stylesheet_link_tag \
+        'application', \
+        'formtastic', \
+        'formtastic_changes', \
+        'jquery.autocomplete.css', \
+        '/components/dyndatetime/css/skins/aqua/theme.css', \
+        '/components/colorbox/example5/colorbox.css', \
+        :cache => true, :concat => true %>
+
+        <%= javascript_include_tag \
+          'jquery.min.js', \
+          'jquery-ui.min.js', \
+          'jrails.min.js', \
+          'application.js', \
+          '/components/dyndatetime/src/jquery.dynDateTime.js', \
+          '/components/dyndatetime/lang/calendar-ru.js', \
+          'jquery.autocomplete.pack.js', \
+          '/components/colorbox/colorbox/jquery.colorbox-min.js', \
+          :cache => true %>
+
       <%= javascript_include_tag :ckeditor %>
 
       <%= yield(:head) %>

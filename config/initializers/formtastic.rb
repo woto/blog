@@ -1,5 +1,3 @@
-require 'formtastic_ckeditor.rb'
-
 # Set the default text field size when input is a string. Default is 50.
 # Formtastic::SemanticFormBuilder.default_text_field_size = 50
 
@@ -53,4 +51,3 @@ require 'formtastic_ckeditor.rb'
 
 # You can add custom inputs or override parts of Formtastic by subclassing SemanticFormBuilder and
 # specifying that class here.  Defaults to SemanticFormBuilder.
-Formtastic::SemanticFormHelper.builder = CustomFormBuilder

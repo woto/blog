@@ -128,4 +128,11 @@ todo убрать Rational!!!
       session[:return_to] = nil
     end
 
+  def default_url_options(options = nil)
+    options ||= {}
+    options[:format] = :iframe if params[:format] == "iframe"
+    options
+    layout = nil
+  end
+
 end
