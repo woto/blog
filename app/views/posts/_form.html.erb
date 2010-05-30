@@ -26,34 +26,26 @@
       return false;
     });
 
-});
-</script>
 
-
-<script language="Javascript">
-/*
-  document.observe('dom:loaded', function(){
     CKEDITOR.on('instanceReady', function() {
       document.checkVisibility = function(){
-        if($('post_intro_input').visible())
-          $('toggle_post_intro_input').update("Выключить вступление");
+        if($('#post_intro').is(":visible"))
+          $('#toggle_post_intro').html("Выключить вступление");
         else
-          $('toggle_post_intro_input').update("Включить вступление");
+          $('#toggle_post_intro').html("Включить вступление");
       }
       if(CKEDITOR.instances.post_intro_editor.getData().length <= 9)
-        $('post_intro_input').hide();
+        $('#post_intro').hide();
       document.checkVisibility();
     });
 
-    $('toggle_post_intro_input').observe('click', function(event){
-      $('post_intro_input').toggle();
+    $('#toggle_post_intro').click(function(event){
+      $('#post_intro').toggle();
       document.checkVisibility();
-      event.stop();
+      event.preventDefault();
     });
-  });
-*/
 
-
+});
 </script>
 
 <% if params[:commit] == 'Предпросмотр' %>
@@ -64,12 +56,14 @@
   <%= f.error_messages %>
 
   <%= f.label :title %><br />
-  <%= f.text_field :title, :maxlength => 255, :size => 50%><br />
+  <%= f.text_field :title, :maxlength => 255, :size => 50, :rows => 2 %><br />
 
-  <a id="toggle_post_intro_input" class="ajax" href=""></a><br />
-
-  <%= f.label :intro %><br />
-  <%= f.cktext_area :intro, :language => "ru" %><br />
+  <a id="toggle_post_intro" class="ajax" href=""></a><br /><br />
+  
+  <div id="post_intro">
+    <%= f.label :intro %><br />
+    <%= f.cktext_area :intro, :language => "ru" %><br />
+  </div>
 
   <%= f.label :body %><br />
   <%= f.cktext_area :body, :language => "ru" %><br />
@@ -83,7 +77,7 @@
   <%= render :partial => 'categories/render_categories', :object => @post %><br />
 
   <%= f.label :tag_list %><br />
-  <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 2 %><br /><br />
+  <%= f.text_area :tag_list, :autocomplete =>"off", :style => "height: 30px; width: 300px" %><br /><br />
 
   <%= f.submit "Предпросмотр" %>
   <%= f.submit %>

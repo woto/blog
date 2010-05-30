@@ -1,0 +1,32 @@
+%h2 Войдите на сайт используя аккаунт сайта
+%br/
+%br/
+%div{:style => "padding: 0 0 0 35px"}
+  - form_for @user_session, :url => user_session_path do |f|
+
+    = f.error_messages
+    = f.label :login
+    %br/
+    = f.text_field :login
+    %br/
+    %br/
+    = f.label :password
+    %br/
+    = f.password_field :password
+    %br/
+    %br/
+    = f.check_box :remember_me
+    = f.label :remember_me
+    %br/
+    %br/
+    = f.submit "Войти"
+    = link_to "Зарегистрироваться", register_path
+    или #{link_to("Восстановить пароль", password_resets_path)}
+%br/
+%br/
+%br/
+%h2 или используйте аккаунт других популярных сайтов в интернете
+%br/
+%br/
+%div
+  = rpx_embed( :language => 'ru', :link_text => "Register/Sign in with RPX..", :app_name => AppConfig.rpx_app_name, :return_url => user_session_url, :unobtrusive => false )

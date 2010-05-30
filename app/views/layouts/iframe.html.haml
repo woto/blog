@@ -5,7 +5,7 @@
     /[if lt IE 8]
     = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
   %body
-    .container
+    .container{:style => "width: 100%;"}
       - flash.each do |name, msg|
         .box= content_tag :div, msg, :id => "flash_#{name}"
       = yield

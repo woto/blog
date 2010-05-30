@@ -2,7 +2,7 @@
 %html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %title= h(yield(:title) || AppConfig.site_name)
-    = stylesheet_link_tag 'compiled/application.css', 'jquery.autocomplete.css',  '/components/dyndatetime/css/skins/aqua/theme.css',  '/components/colorbox/example4/colorbox.css',  :cache => true, :concat => true, :media => 'screen, project'
+    = stylesheet_link_tag 'compiled/application.css', 'jquery.autocomplete.css',  '/components/dyndatetime/css/skins/aqua/theme.css',  '/components/colorbox/example4/colorbox.css',  :concat => true, :media => 'screen, project'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if lt IE 8]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
@@ -10,6 +10,10 @@
     = javascript_include_tag :ckeditor
     = yield(:head)
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
+    - content_for(:keywords) do
+      ключевые, слова
+    - content_for(:description) do
+      описание
     %meta{:content => yield(:keywords), :name => "keywords"}/
     %meta{:content => yield(:description), :name => "description"}/
   %body
@@ -37,8 +41,8 @@
         %div.column.last.span-7#sidebar
           .box#search
             %form{:action => "", :method => "post"}
-              %input.text{:name => "keywords", :type => "text", :class => "text"}
-              %input.button{:type => "submit", :value => "Поиск"}
+              = text_field_tag("keywords", nil, {:class => "text"})
+              = submit_tag("Поиск")
           %h4.loud
             Категории
           = categories

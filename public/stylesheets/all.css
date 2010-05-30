@@ -1094,7 +1094,7 @@ input.span-24, textarea.span-24, select.span-24 {
 
 /* line 8, ../../../vendor/plugins/compass/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
 .showgrid {
-  background: url('/images/grid.png?1275110343');
+  background: url('/images/grid.png?1275194367');
 }
 
 /* line 4, ../../../vendor/plugins/compass/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
@@ -1323,14 +1323,19 @@ body .box {
   background-color: #cee8f2;
   border: 2px solid #dddddd;
 }
+/* line 26, ../../../app/stylesheets/application.scss */
+body .ajax {
+  text-decoration: none;
+  border-bottom: 1px dashed #046380;
+}
 
-/* line 32, ../../../app/stylesheets/application.scss */
+/* line 36, ../../../app/stylesheets/application.scss */
 #header #title {
   margin: 0;
   display: inline;
   float: left;
 }
-/* line 36, ../../../app/stylesheets/application.scss */
+/* line 40, ../../../app/stylesheets/application.scss */
 #header ul#nav {
   list-style-type: none;
   margin: 0px;
@@ -1348,12 +1353,12 @@ body .box {
   display: inline;
 }
 
-/* line 44, ../../../app/stylesheets/application.scss */
+/* line 48, ../../../app/stylesheets/application.scss */
 #main {
   extend: prepend-top;
 }
 
-/* line 53, ../../../app/stylesheets/application.scss */
+/* line 57, ../../../app/stylesheets/application.scss */
 #sidebar ul {
   padding: 0;
   margin: 0;
@@ -1365,100 +1370,100 @@ body .box {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 54, ../../../app/stylesheets/application.scss */
+/* line 58, ../../../app/stylesheets/application.scss */
 #sidebar li {
   padding: 2px 0;
 }
-/* line 55, ../../../app/stylesheets/application.scss */
+/* line 59, ../../../app/stylesheets/application.scss */
 #sidebar li li {
   padding-left: 18px;
 }
-/* line 56, ../../../app/stylesheets/application.scss */
+/* line 60, ../../../app/stylesheets/application.scss */
 #sidebar .loud {
   text-shadow: #aaaaaa 1px 1px 1px;
 }
-/* line 58, ../../../app/stylesheets/application.scss */
+/* line 62, ../../../app/stylesheets/application.scss */
 #sidebar #search input.text {
-  width: 149px;
+  width: 145px;
 }
-/* line 59, ../../../app/stylesheets/application.scss */
+/* line 63, ../../../app/stylesheets/application.scss */
 #sidebar #search input.button {
   vertical-align: baseline;
 }
-/* line 62, ../../../app/stylesheets/application.scss */
+/* line 66, ../../../app/stylesheets/application.scss */
 #sidebar table {
   margin-bottom: 0;
 }
-/* line 64, ../../../app/stylesheets/application.scss */
+/* line 68, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_1 {
   font-size: 105%;
 }
-/* line 65, ../../../app/stylesheets/application.scss */
+/* line 69, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_2 {
   font-size: 110%;
 }
-/* line 66, ../../../app/stylesheets/application.scss */
+/* line 70, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_3 {
   font-size: 115%;
 }
-/* line 67, ../../../app/stylesheets/application.scss */
+/* line 71, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_4 {
   font-size: 120%;
 }
-/* line 68, ../../../app/stylesheets/application.scss */
+/* line 72, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_5 {
   font-size: 125%;
 }
-/* line 69, ../../../app/stylesheets/application.scss */
+/* line 73, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_6 {
   font-size: 130%;
 }
-/* line 70, ../../../app/stylesheets/application.scss */
+/* line 74, ../../../app/stylesheets/application.scss */
 #sidebar .tag_level_7 {
   font-size: 135%;
 }
 
-/* line 79, ../../../app/stylesheets/application.scss */
+/* line 83, ../../../app/stylesheets/application.scss */
 #pagination {
   text-align: center;
   padding: .3em;
 }
-/* line 82, ../../../app/stylesheets/application.scss */
+/* line 86, ../../../app/stylesheets/application.scss */
 #pagination a, #pagination span {
   padding: .2em .5em;
 }
-/* line 85, ../../../app/stylesheets/application.scss */
+/* line 89, ../../../app/stylesheets/application.scss */
 #pagination span.disabled {
   color: #888888;
 }
-/* line 88, ../../../app/stylesheets/application.scss */
+/* line 92, ../../../app/stylesheets/application.scss */
 #pagination span.current {
   color: #333333;
   border: 2px solid #dddddd;
 }
-/* line 92, ../../../app/stylesheets/application.scss */
+/* line 96, ../../../app/stylesheets/application.scss */
 #pagination a {
   border: 2px solid #dddddd;
   color: #888888;
   text-decoration: none;
   background-color: #cee8f2;
 }
-/* line 97, ../../../app/stylesheets/application.scss */
+/* line 101, ../../../app/stylesheets/application.scss */
 #pagination a:hover, #pagination a:focus {
   border-color: #333333;
   background: #eeeeee;
   color: #333333;
 }
-/* line 102, ../../../app/stylesheets/application.scss */
+/* line 106, ../../../app/stylesheets/application.scss */
 #pagination a:active {
   color: #888888;
   border-color: #888888;
 }
-/* line 107, ../../../app/stylesheets/application.scss */
+/* line 111, ../../../app/stylesheets/application.scss */
 #pagination .prev_page {
   margin-right: 1em;
 }
-/* line 110, ../../../app/stylesheets/application.scss */
+/* line 114, ../../../app/stylesheets/application.scss */
 #pagination .next_page {
   margin-left: 1em;
 }

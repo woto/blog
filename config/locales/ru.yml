@@ -1,11 +1,5 @@
 ru:
   footer: <a href="http://github.com/woto/blog">Работает на Ruby on Rails</a>. &copy; Руслан Корнев aka woto - {{year}}.
-  weakling:
-    default: Используйте строчные и прописные буквы, числа и символы
-    error: Очень короткий пароль
-    weak: Легкий пароль
-    average: Устойчивый пароль
-    strong: Очень устойчивый пароль
   activerecord:
     errors:
       models:
@@ -22,17 +16,12 @@ ru:
       category_id: Категория
       tag_list: Теги
     attributes:
-      #usersession:
-        #username: Логин
-        #password: Пароль
-        #remeber_me: Запомнить меня
       user:
         email: Электронная почта
         new_password: Новый пароль
         password_confirmation: Подтверждение пароля
         password: Пароль
         login: Логин
-        remember_me: Запомнить меня
       post:
         title: Заголовок
         body: Пост
@@ -44,3 +33,23 @@ ru:
       category:
         parent: Родительская категория
         name: Название категории
+  authlogic:
+    error_messages:
+      login_blank: не может быть пустым
+      login_not_found: неверен
+      login_invalid: фываа
+      consecutive_failed_logins_limit_exceeded: паывк
+      email_invalid: пар
+      password_blank: не может быть пустым
+      password_invalid: ывау
+      not_active: авплу
+      not_confirmed: пжкцулм
+      not_approved: аьоути
+      no_authentication_details: Вы не заполнили форму для входа
+      general_credentials_error: Комбинация Логин и Пароль не верны
+    attributes:
+      user_session:
+        email: E-mail
+        login: Логин или E-mail
+        password: Пароль
+        remember_me: Запомнить меня

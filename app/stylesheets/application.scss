@@ -23,6 +23,10 @@ body {
     background-color: $box;
     border: 2px solid $border;
   }
+  .ajax {
+    text-decoration: none;
+    border-bottom: 1px dashed $normal;
+  }
 }
 
 #header {
@@ -55,7 +59,7 @@ body {
   li li { padding-left: 18px; }
   .loud { @include text-shadow; }
   #search {
-    input.text {  width: 149px; }
+    input.text {  width: 145px; }
     input.button { vertical-align: baseline; }
   }
 

@@ -74,7 +74,7 @@ module ApplicationHelper
         elsif params[:date] =~ /^\d+-\d+-\d+$/
           out << Russian.strftime(@date, "%d %B %Y")
         end
-        out << "'</a>"
+        out << "</a>"
         out << " ) "
         out << link_to("<sup>x</sup>", search_posts_path(:tags => params[:tags], :category => params[:category]))
         out << "</div>"
