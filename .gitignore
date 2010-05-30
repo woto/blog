@@ -7,3 +7,4 @@ nbproject
 public/assets/*
 db/sphinx
 db/development.sqlite3
+public/stylesheets/compiled/*
