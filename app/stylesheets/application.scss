@@ -1,0 +1,113 @@
+@import "partials/_base";
+@import "screen";
+@import "compass/utilities/links/link-colors";
+@import "compass/utilities/links/hover-link";
+@import "compass/css3";
+@import "compass/utilities/general/float";
+@import "compass/utilities/lists/horizontal-list";
+@import "compass/css3/box-shadow";
+@import "compass/css3/inline-block";
+@import "compass/utilities/lists/bullets";
+@import "compass/utilities/general/hacks";
+@import "compass/utilities/lists/inline-list";
+
+a { 
+  text-decoration: none;
+  @include link-colors($normal, $hover, $active, $visited, $focus)
+}
+
+body {
+  .centered { text-align: center; margin-left: auto; margin-right: auto; }
+  .box { 
+    @include border-radius(8px);
+    background-color: $box;
+    border: 2px solid $border;
+  }
+}
+
+#header {
+
+  @extend .append-bottom;
+
+  #title { 
+    margin: 0;
+    @include float-left;
+  }
+  ul#nav { 
+    @include inline-list; 
+    @include float-right;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
+
+#main {
+  extend: prepend-top;
+}
+#wrapper
+{
+  @extend .prepend-top;
+}
+
+#sidebar {
+  ul { padding: 0; margin: 0; @include no-bullets; }
+  li { padding: 2px 0; }
+  li li { padding-left: 18px; }
+  .loud { @include text-shadow; }
+  #search {
+    input.text {  width: 149px; }
+    input.button { vertical-align: baseline; }
+  }
+
+  table { margin-bottom: 0; }
+
+  .tag_level_1 {font-size: 105%}
+  .tag_level_2 {font-size: 110%}
+  .tag_level_3 {font-size: 115%}
+  .tag_level_4 {font-size: 120%}
+  .tag_level_5 {font-size: 125%}
+  .tag_level_6 {font-size: 130%}
+  .tag_level_7 {font-size: 135%}
+}
+
+.footer {
+  @extend .centered;
+  @extend .prepend-top;
+  @extend .append-bottom;
+}
+
+#pagination {
+  text-align: center;
+  padding: .3em;
+  a, span {
+    padding: .2em .5em;
+  }
+  span.disabled {
+    color: $active;
+  }
+  span.current {
+    color: $hover;
+    border: 2px solid $border;
+  }
+  a {
+    border: 2px solid $border;
+    color: $active;
+    text-decoration: none;
+    background-color: $box;
+    &:hover, &:focus {
+      border-color: $hover;
+      background: $focus;
+      color: $hover;
+    }
+    &:active {
+      color: $active;
+      border-color: $active;
+    }
+  }
+  .prev_page {
+    margin-right: 1em;
+  }
+  .next_page {
+    margin-left: 1em;
+  }
+}

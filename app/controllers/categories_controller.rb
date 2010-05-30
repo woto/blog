@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.iframe { render "index.html.erb" }
+      format.iframe { render ("index.html.erb", :layout => 'iframe.html.haml') }
       format.xml  { render :xml => @categories }
       format.js {render :layout => nil}
     end

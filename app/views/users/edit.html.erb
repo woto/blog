@@ -1,6 +1,6 @@
 <h2>Редактирование своего профиля</h2>
 <br /><br />
 
-<% semantic_form_for @user, :url => user_path do |f| %>
+<% form_for @user, :url => user_path do |f| %>
   <%= render :partial => "form", :object => f %>
 <% end %>

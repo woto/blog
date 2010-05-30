@@ -82,3 +82,9 @@
 [submodule "vendor/plugins/auto_complete_jquery"]
 	path = vendor/plugins/auto_complete_jquery
 	url = git://github.com/robertwahler/auto_complete_jquery.git
+[submodule "vendor/plugins/haml"]
+	path = vendor/plugins/haml
+	url = git://github.com/nex3/haml.git
+[submodule "vendor/plugins/compass"]
+	path = vendor/plugins/compass
+	url = git://github.com/chriseppstein/compass.git

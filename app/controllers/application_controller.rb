@@ -1,6 +1,4 @@
-class ApplicationController < BaseController
-
-  has_mobile_fu
+class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -132,7 +130,6 @@ todo убрать Rational!!!
     options ||= {}
     options[:format] = :iframe if params[:format] == "iframe"
     options
-    layout = nil
   end
 
 end

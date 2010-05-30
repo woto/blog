@@ -1,0 +1,66 @@
+%div{:style => "padding: 0 0 0 35px"}
+  = form.error_messages
+  = form.label :login
+  %br
+  = form.text_field :login
+  %br
+  %br
+  = form.label :email
+  %br
+  = form.text_field :email
+  %br
+  %br
+  - unless form.object.new_record?
+    Заполняйте поле пароля только если хотите создать новый пароль.
+    %br
+    %br
+  - if(form.object.new_record?)
+    = form.label :password
+  - else
+    = form.label :new_password
+  %br
+  = form.text_field :password
+  %br
+  %br
+  = form.label :password_confirmation
+  %br
+  = form.text_field :password_confirmation
+  %br
+  %br
+  - if form.object.new_record?
+    = form.submit :create
+  - else
+    = form.submit :update
+  - if form.object.new_record?
+    = link_to "Войти", login_path
+    или #{link_to("Восстановить пароль", password_resets_path)}
+- if form.object.new_record?
+  %br
+  %br
+  %br
+  %h2 или войдите используя аккаунт других популярных сайтов в интернете
+  %br
+  %div
+    = rpx_embed( :language => 'ru', :app_name => AppConfig.rpx_app_name, :return_url => user_session_url)
+- else
+  %br
+  %br
+  %br
+  %h2 вы можете связать свой аккаунт с уже имеющимся у вас аккаунтом
+  %br
+  = rpx_embed( :language => "ru", :app_name => AppConfig.rpx_app_name, :return_url => addrpxauth_url, :add_rpx => true, :unobtrusive => false )
+%br
+%br
+crypted_password.blank?:  #{@user.crypted_password.blank?}
+%br
+crypted_password.nil?:  #{@user.crypted_password.nil?}
+%br
+
+using_rpx?: #{@user.using_rpx?}
+%br
+using_password?: #{@user.using_password?}
+%br
+crypted_password_chagned?: #{@user.crypted_password_changed?}
+%br
+new_record: #{@user.new_record?}
+%br
