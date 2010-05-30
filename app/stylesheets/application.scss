@@ -11,12 +11,12 @@
 @import "compass/utilities/general/hacks";
 @import "compass/utilities/lists/inline-list";
 
-a { 
-  text-decoration: none;
-  @include link-colors($normal, $hover, $active, $visited, $focus)
-}
 
 body {
+  a { 
+    text-decoration: none;
+    @include link-colors($normal, $hover, $active, $visited, $focus)
+  }
   .centered { text-align: center; margin-left: auto; margin-right: auto; }
   .box { 
     @include border-radius(8px);
@@ -54,16 +54,17 @@ body {
 }
 
 #sidebar {
+
   ul { padding: 0; margin: 0; @include no-bullets; }
   li { padding: 2px 0; }
   li li { padding-left: 18px; }
+
   .loud { @include text-shadow; }
+
   #search {
     input.text {  width: 145px; }
     input.button { vertical-align: baseline; }
   }
-
-  table { margin-bottom: 0; }
 
   .tag_level_1 {font-size: 105%}
   .tag_level_2 {font-size: 110%}
@@ -72,6 +73,31 @@ body {
   .tag_level_5 {font-size: 125%}
   .tag_level_6 {font-size: 130%}
   .tag_level_7 {font-size: 135%}
+
+  #calendar {
+
+    table { 
+      margin-bottom: 0; 
+      font-size: 90% 
+    }
+
+    td {
+      text-align: center;
+    }
+
+    .notmonth {
+      color: #999;
+    }
+    .not_empty_day {
+      background: #EEE;
+      padding: 3px;
+      display: block;
+    }
+
+    .today {
+      color: #aaa
+    }
+  }
 }
 
 .footer {
@@ -100,7 +126,6 @@ body {
     background-color: $box;
     &:hover, &:focus {
       border-color: $hover;
-      background: $focus;
       color: $hover;
     }
     &:active {

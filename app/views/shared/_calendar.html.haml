@@ -2,7 +2,7 @@
   .centered.append-bottom
     = link_to_remote "←", :url => {:action => "calendar", :tags => params[:tags], :category => params[:category], :date => (@date.beginning_of_month-1).strftime("%Y-%m") + "-00"}
     &nbsp;&nbsp;
-    = link_to Russian.strftime(@date, "%B %Y"), search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" + "00")
+    = link_to Russian.strftime(@date, "%B %Y"), link_calendar(@date.strftime("%Y-%m") + "-" + "00", false), :rel => link_calendar(@date.strftime("%Y-%m") + "-" + "00", true)
     &nbsp;&nbsp;
     = link_to_remote "→", :url => {:action => "calendar", :tags => params[:tags], :category => params[:category], :date => (@date.end_of_month + 1).strftime("%Y-%m") + "-00"}
 
@@ -10,6 +10,6 @@
     = calendar.head("пн", "вт", "ср", "чт", "пт", "сб", "вс")
     - calendar.day(:day_method => :created_at) do |date, post|
       - if @calendar_posts.find{ |post| post.date.strftime("%d").to_i == date.day && post.date.strftime("%m").to_i == date.month }
-        = link_to date.day, search_posts_path(:tags => params[:tags], :category => params[:category], :date => @date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s)
+        = content_tag("span", link_to(date.day, link_calendar(@date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s, false), :rel => link_calendar(@date.strftime("%Y-%m") + "-" +"%02d" % date.day.to_s, true)), :class => 'not_empty_day')
       - else
         = content_tag(:span, date.day, :class => "empty_day")

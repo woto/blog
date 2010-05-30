@@ -25,6 +25,11 @@
   <%= @post.tag_list %>
 </p>
 
+<p>
+  <b>Category</b>
+  <%= post_category(@post) %>
+</p>
+
 <%= render :partial => 'comments/form' %>
 
 <% if can? :update, @article %>

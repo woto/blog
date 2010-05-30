@@ -1,7 +1,7 @@
 <script type="text/javascript">
-  jQuery(document).ready(function() {
+  $(document).ready(function() {
 
-    jQuery("#post_date").dynDateTime({
+    $("#post_date").dynDateTime({
       showsTime: true,
       ifFormat: "%d.%m.%Y %H:%M",
       electric: true,
@@ -71,8 +71,10 @@
   <%= f.check_box :visible %> 
   <%= f.label :visible %><br /><br />
 
-  <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %>
-  <%= f.image_tag('calendar.gif') %><br /><br />
+  <div style="position: relative">
+    <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %>
+    <%= f.image_tag('calendar.gif', :style => "cursor: pointer; position: absolute; margin-top: 13px; margin-left: 7px") %><br /><br />
+  </div>
 
   <%= render :partial => 'categories/render_categories', :object => @post %><br />
 

@@ -7,14 +7,9 @@
         = post.intro
       - else
         = post.body
-        Опубликовано
-        %a{:href => ""}= l(post.date, :format => "%d %B %Y")
-        - if post.cached_category
-          в категории
-          #{post.cached_category.map{|item|  link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name) )}.join(' → ')}
-        - else
-          без категории
-        =link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post)
+      Опубликовано
+      = link_to l(post.date, :format => "%d %b %Y"), link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true), :rel => link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true)
+      = post_category(post)
       - unless post.cached_tag_list.empty?
         %br 
         Теги:
@@ -23,17 +18,19 @@
         - post_tags = post.cached_tag_list.split(', ')
         - post_tags.each do |tag|
           - if(tags).include?(tag)
-            = link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag}))
+            = link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, true))
             =fukc
-            %span.exclude> #{link_to(h(tag), link_tags(tag))}
+            %span>= link_to(h(tag), link_tags(tag, false))
             - if tag != post_tags.last
-              ,&nbsp;
+              ,
           - else
-            = link_to("+", link_tags(tags + Array(tag)))
+            = link_to("+", link_tags(tags + Array(tag), true))
             =fukc
-            %span.include> #{link_to(h(tag), link_tags(tag))}
+            %span>= link_to(h(tag), link_tags(tag, false))
             - if tag != post_tags.last
-              ,&nbsp;
+              ,
+        %br
+        =link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post)
       .control
       - if can? :edit, @post
         = link_to :edit, edit_post_path(post)
