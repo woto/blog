@@ -1,0 +1,45 @@
+- if @posts.count > 0
+  - @posts.each do |post|
+    .post
+      %h2.title
+        = link_to h(truncate(post.title, 50)), post
+      - if !post.intro.empty?
+        = post.intro
+      - else
+        = post.body
+        Опубликовано
+        %a{:href => ""}= l(post.date, :format => "%d %B %Y")
+        - if post.cached_category
+          в категории
+          #{post.cached_category.map{|item|  link_to(item.name, search_posts_path(:tags => params[:tags], :category => item.name) )}.join(' → ')}
+        - else
+          без категории
+        =link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post)
+      - unless post.cached_tag_list.empty?
+        %br 
+        Теги:
+        - fukc = "&nbsp;"
+        - tags = Array.[](params[:tags]).flatten.compact
+        - post_tags = post.cached_tag_list.split(', ')
+        - post_tags.each do |tag|
+          - if(tags).include?(tag)
+            = link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag}))
+            =fukc
+            %span.exclude> #{link_to(h(tag), link_tags(tag))}
+            - if tag != post_tags.last
+              ,&nbsp;
+          - else
+            = link_to("+", link_tags(tags + Array(tag)))
+            =fukc
+            %span.include> #{link_to(h(tag), link_tags(tag))}
+            - if tag != post_tags.last
+              ,&nbsp;
+      .control
+      - if can? :edit, @post
+        = link_to :edit, edit_post_path(post)
+      - if can? :destroy, @post
+        = link_to :destroy, post, :confirm => t(:sure), :method => :delete
+      %hr.prepend-top
+- else
+  Не найдены публикации, удовлетворяющие условиям поиска, попробуйте сбросить или выбрать другие параметры фильтрации
+.footer#pagination= will_paginate @posts, :container => false

@@ -7,9 +7,13 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
 
+    #default_url_options(params[:format] => :iframe)
+
     respond_to do |format|
       format.html # index.html.erb
+      format.iframe { render ("index.html.erb", :layout => 'iframe.html.haml') }
       format.xml  { render :xml => @categories }
+      format.js {render :layout => nil}
     end
   end
 
@@ -20,6 +24,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.iframe { render "show.html.erb" }
       format.xml  { render :xml => @category }
     end
   end
@@ -31,6 +36,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.iframe { render "new.html.erb" }
       format.xml  { render :xml => @category }
     end
   end
@@ -38,21 +44,26 @@ class CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     @category = Category.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.iframe { render "edit.html.erb" }
+    end
   end
 
   # POST /categories
   # POST /categories.xml
   def create
-    debugger
     @category = Category.new(params[:cat])
 
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Category was successfully created.'
         format.html { redirect_to(@category) }
+        format.iframe { redirect_to(category_path(@category, :format => :iframe)) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
         format.html { render :action => "new" }
+        format.iframe { render "new.html.erb" }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
       end
     end
@@ -68,8 +79,10 @@ class CategoriesController < ApplicationController
         flash[:notice] = 'Category was successfully updated.'
         format.html { redirect_to(@category) }
         format.xml  { head :ok }
+        format.iframe { redirect_to(@category) }
       else
         format.html { render :action => "edit" }
+        format.iframe { render "edit.html.erb" }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
       end
     end
@@ -83,6 +96,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(categories_url) }
+      format.iframe { redirect_to(categories_url(:format => params[:format])) }
       format.xml  { head :ok }
     end
   end

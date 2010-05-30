@@ -1,0 +1,110 @@
+<project name="dyndatetime" default="dyndatetime" basedir=".">
+    <!--
+    	*****************************
+		* Dyndatetime jQuery plugin *
+    	*****************************
+
+		See: http://code.google.com/p/dyndatetime/
+		Build script inspired by jQuery build system.  Thanks!
+
+    -->
+
+	<!-- Setup -->
+
+    <property description="Source folder" name="SRC_DIR" value="src"  />
+    <property description="Build tools" name="BUILD_TOOLS_DIR" value="build" />
+    <property description="Rhino JS Engine" name="JS_JAR" value="${BUILD_TOOLS_DIR}/js.jar" />
+    
+    <loadfile property="VERSION" srcFile="version.txt" />
+    <property description="The output filename, excluding suffix" name="BASE_NAME" value="jquery.dynDateTime" />
+    <property description="Distribution root" name="DIST_ROOT" value="./dist" />
+
+    <property description="Versioned distribution folder" name="DIST_DIR" value="${DIST_ROOT}/${BASE_NAME}-${VERSION}" />
+    <property description="Uncompressed distribution filename" name="OUT" value="${DIST_DIR}/${BASE_NAME}.js" />
+    <property description="Distribution archive filename" name="ARCHIVE" value="${DIST_ROOT}/${BASE_NAME}-${VERSION}.zip" />
+
+	<!-- http://ant-contrib.sourceforge.net/ - fixed: antcontrib.properties; "for" task added -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="lib/ant-contrib-1.0b3-fixed.jar"/>
+		</classpath>
+	</taskdef>
+
+	<!-- Targets -->
+
+    <target name="all" depends="clean,dyndatetime,min,pack,zip">
+        <echo message="All complete." />
+    </target>
+
+    <target name="clean">
+        <delete dir="${DIST_ROOT}" />
+    </target>
+
+    <target name="dyndatetime"  depends="clean" description="Concatenate source, gather static resources and replaces @VERSION">
+        <echo message="Create ${DIST_DIR}" />
+        <mkdir dir="${DIST_DIR}" />
+        
+        <echo message="Concatenting source to ${OUT}" />
+        <concat destfile="${OUT}">
+            <fileset dir="${SRC_DIR}" includes="*.js"/>
+        </concat>
+        
+        <echo message="Copying static resoures to ${DIST_DIR}" />
+        <copy todir="${DIST_DIR}">
+        	<fileset dir="." includes="css/** lang/**"/>
+        	<fileset dir="." includes="example.html README"/>
+        </copy>
+        
+        <echo message="Insert version: ${VERSION}" />
+    	<java jar="${JS_JAR}" fork="true">
+            <arg value="${BUILD_TOOLS_DIR}/build/version.js" />
+            <arg value="${OUT}" />
+        </java>
+    </target>
+
+    <target name="min" depends="dyndatetime" description="Remove all comments and whitespace, no compression, great in combination with GZip">
+		<for param="file">
+			<path>
+				<fileset file="${OUT}"/>
+				<fileset dir="${DIST_DIR}/lang" includes="*.js" excludes="*.min.js, *.pack.js"/>
+			</path>
+			<sequential>
+		        <echo message="@{file} being 'min'ified." />
+				<java jar="${JS_JAR}" fork="true"  failonerror="true">
+					<arg value="${BUILD_TOOLS_DIR}/build/min.js" />
+					<arg value="@{file}" />
+				</java>
+			</sequential>
+		</for>
+    </target>
+
+    <target name="pack" depends="dyndatetime" description="Remove all comments and whitespace and compress">
+        <for param="file">
+			<path>
+				<fileset file="${OUT}"/>
+				<fileset dir="${DIST_DIR}/lang" includes="*.js" excludes="*.min.js, *.pack.js"/>
+			</path>
+			<sequential>
+		        <echo message="@{file} being 'pack'ed." />
+				<java jar="${JS_JAR}" fork="true"  failonerror="true">
+					<arg value="${BUILD_TOOLS_DIR}/build/pack.js" />
+					<arg value="@{file}" />
+				</java>
+			</sequential>
+		</for>
+    </target>
+
+	<target name="zip" depends="dyndatetime">
+		<zip destfile="${ARCHIVE}" basedir="${DIST_ROOT}"/>
+	</target>
+
+	<!-- TODO -->
+	<target name="runtest">
+		<echo message="Running Automated Test Suite" />
+		<java jar="${JS_JAR}" fork="true"  failonerror="true">
+            <arg value="${BUILD_TOOLS_DIR}/runtest/test.js" />
+        </java>
+		<echo message="Test Suite Finished" />
+	</target>
+	
+</project>

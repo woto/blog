@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   load_and_authorize_resource
 
   # GET /posts
@@ -152,9 +152,9 @@ class PostsController < ApplicationController
 
   end 
 
-  def auto_complete_for_post_tag_list
-    @tags = Tag.find(:all, :conditions => ['name LIKE ?', "#{params[:post][:tag_list]}%"]) 
-    render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false 
-  end
+#  def auto_complete_for_post_tag_list
+#    @tags = Tag.find(:all, :conditions => ['name LIKE ?', "#{params[:post][:tag_list]}%"]) 
+#    render :inline => "<%= auto_complete_result(@tags, 'name') %>", :layout => false 
+#  end
 
 end

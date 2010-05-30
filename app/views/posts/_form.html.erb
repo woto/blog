@@ -1,4 +1,37 @@
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+
+    jQuery("#post_date").dynDateTime({
+      showsTime: true,
+      ifFormat: "%d.%m.%Y %H:%M",
+      electric: true,
+      firstDay: 1,
+      button: ".next()"
+    });
+
+    $("textarea#post_tag_list").autocomplete("/tags/auto_complete_for_tag_name", {
+	  	multiple: true
+    })
+
+    $("a#render_categories").live('click', function() {
+      $.fn.colorbox({
+        href:$(this).attr('href'), 
+        width: "90%", 
+        height: "90%", 
+        iframe: true,
+        onCleanup:function(){ 
+          <%= remote_function( :url => {:controller => 'categories', :action => 'render_categories'}) %>
+        }
+      });
+      return false;
+    });
+
+});
+</script>
+
+
 <script language="Javascript">
+/*
   document.observe('dom:loaded', function(){
     CKEDITOR.on('instanceReady', function() {
       document.checkVisibility = function(){
@@ -18,39 +51,41 @@
       event.stop();
     });
   });
+*/
+
+
 </script>
 
 <% if params[:commit] == 'Предпросмотр' %>
   <%= render(:partial => 'preview') %>
 <% end %>
 
-<% semantic_form_for(@post) do |f| %>
+<% form_for(@post) do |f| %>
   <%= f.error_messages %>
 
-  <% f.inputs do %>
-    <%= f.input :title %>
-    <a id="toggle_post_intro_input" class="ajax" href=""></a><br /><br />
-    <%= f.input :intro, :as => :ckeditor, :input_html => {:language => "ru"}, :hint => 'Пропустите вступление и переходите к следующему полю если не хотите чтобы пост содержал короткое вступление при просмотре в виде списка или выгрузки в rss' %>
-    <%= f.input :body, :as => :ckeditor, :input_html => {:language => "ru"} %>
-    <%= f.input :visible %>
-    <%= f.input :date, :as => :calendar, :hint => "Формальная дата публикации (не влияет на дату появления поста)" %>
+  <%= f.label :title %><br />
+  <%= f.text_field :title, :maxlength => 255, :size => 50%><br />
 
-    <% if !@post.category.nil? && (@post.category.new_record? && params[:action] != 'new') %>
-      <%= render :partial => 'new_category', :object => @post %>
-    <% else %>
-      <%= render :partial => 'available_category', :object => @post %>
-    <% end %>
+  <a id="toggle_post_intro_input" class="ajax" href=""></a><br />
 
-    <li id="post_tag_list_input" class="string optional">
-      <%= f.label :tag_list %>
-      <%= text_field_with_auto_complete :post, :tag_list, {:autocomplete => "off"}, {:indicator =>'searchIndicator', :tokens => [',']} %>
-      <%= image_tag('/images/ajax-indicator.gif', :id => 'searchIndicator', :style => 'display:none;') %>
-      <p class="inline-hints">Используйте запятую для разделения тегов</p>
-    </li>
+  <%= f.label :intro %><br />
+  <%= f.cktext_area :intro, :language => "ru" %><br />
 
-  <% end %>
-  <% f.buttons do %>
-    <%= f.submit "Предпросмотр" %>
-    <%= f.submit %>
-  <% end %>
+  <%= f.label :body %><br />
+  <%= f.cktext_area :body, :language => "ru" %><br />
+
+  <%= f.check_box :visible %> 
+  <%= f.label :visible %><br /><br />
+
+  <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %>
+  <%= f.image_tag('calendar.gif') %><br /><br />
+
+  <%= render :partial => 'categories/render_categories', :object => @post %><br />
+
+  <%= f.label :tag_list %><br />
+  <%= f.text_area :tag_list, :autocomplete =>"off", :rows => 2 %><br /><br />
+
+  <%= f.submit "Предпросмотр" %>
+  <%= f.submit %>
+
 <% end %>

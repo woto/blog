@@ -1,4 +1,5 @@
 ru:
+  footer: <a href="http://github.com/woto/blog">Работает на Ruby on Rails</a>. &copy; Руслан Корнев aka woto - {{year}}.
   weakling:
     default: Используйте строчные и прописные буквы, числа и символы
     error: Очень короткий пароль
@@ -27,6 +28,7 @@ ru:
         #remeber_me: Запомнить меня
       user:
         email: Электронная почта
+        new_password: Новый пароль
         password_confirmation: Подтверждение пароля
         password: Пароль
         login: Логин

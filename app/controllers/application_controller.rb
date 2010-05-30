@@ -1,6 +1,4 @@
-class ApplicationController < BaseController
-
-  has_mobile_fu
+class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -127,5 +125,11 @@ todo убрать Rational!!!
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
+
+  def default_url_options(options = nil)
+    options ||= {}
+    options[:format] = :iframe if params[:format] == "iframe"
+    options
+  end
 
 end

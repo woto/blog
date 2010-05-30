@@ -3,14 +3,18 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :comments
 
-  SprocketsApplication.routes(map)
-
   #map.filter '/browse/*params', :controller => 'posts', :action => 'index'
   #map.resources :posts
-  map.resources :categories
+
+  map.resources :categories, :collection => {:render_categories => :post}
   map.resources :posts, :collection => {:search => [:get]}
 
   map.root :posts
+  
+  # todo заменить на member, или может вообще восстановить свой метод, чтобы
+  # теги автозаполнялись только с первой буквы, а не искались все вхождения символа
+  # в назание тега
+  map.connect 'tags/auto_complete_for_tag_name', :controller => 'tags', :action => 'auto_complete_for_tag_name', :format => 'json'
 
   map.resources :captcha_tests
 

@@ -1,0 +1,11 @@
+!!! Strict
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    = stylesheet_link_tag 'compiled/application.css', :media => 'screen, project'
+    /[if lt IE 8]
+    = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+  %body
+    .container
+      - flash.each do |name, msg|
+        .box= content_tag :div, msg, :id => "flash_#{name}"
+      = yield

@@ -1,0 +1,24 @@
+%ul
+  - unless current_user
+    %li= link_to "Вход", login_path
+  - unless current_user
+    %li= link_to "Регистрация", register_path
+  - if current_user
+    %li= link_to "Просмотр профиля", user_path
+  - if current_user
+    %li= link_to "Редактирование профиля", edit_user_path
+  - if current_user
+    %li= link_to "Выход", logout_path
+  - if current_user
+    %li= link_to "Удалить аккаунт", user_path, :confirm => t(:sure), :method => :delete
+  - if can? :create, Category
+    %li= link_to "Создать категорию", new_category_path
+  %li= link_to "Тест каптчи", new_captcha_test_path
+  - if can? :create, @post
+    %li= link_to "Написать пост", new_post_path(:tags => params[:tags], :category => params[:category], :date => params[:date])
+  %li
+    Роль: 
+    - begin 
+      = current_user.roles.first.name 
+    - rescue 
+      не аутентифицирован

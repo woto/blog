@@ -2,10 +2,10 @@
 
 module ApplicationHelper
 
-
   def categories
-    cat = Category.find_by_sql('select c2.name, c2.id, count(*) as lvl from categories as c1, categories as c2 where c2.lft between c1.lft and c1.rgt group by c2.name order by c2.lft')
     out = ""
+    cat = Category.find_by_sql('select c2.name, c2.id, count(*) as lvl from categories as c1, categories as c2 where c2.lft between c1.lft and c1.rgt group by c2.name order by c2.lft')
+    out << "<div class='box'>"
     out << '<ul class="links">'
       counter = 0
       cat.each_with_index do |c, i|
@@ -35,43 +35,52 @@ module ApplicationHelper
         end
       end
     out << "</ul>"
+    out << "</div>"
   end
 
   def filters
-    out = ""
-    if params[:category] and category = Category.find_by_name(params[:category])
-      out << "<p> Просмотр происходит внутри категории: ( "
-      category.self_and_ancestors.each do |item|
-        out << link_to(item.name, search_posts_path(:date => params[:date], :tags => params[:tags], :category => item.name))
-        out << " → " unless category.self_and_ancestors.last == item 
-      end 
-      out << " ) "
-      out << link_to("<sup>x</sup>", search_posts_path(:date => params[:date], :tags => params[:tags]))
-      out << "</p>"
-    end
-    if params[:tags]
-      out << "<p>"
-      tags = Array.[](params[:tags]).flatten
-      out << "Включен фильтр по" +  Russian.p(tags.count, "тегу", "тегам", "тегам") + ":"
-      tags.each { |tag|
-        out << " ( " + link_to(h(tag), search_posts_path(:date => params[:date], :tags => tag, :category => params[:category])) + " ) "
-        out << link_to("<sup>x</sup>", search_posts_path(:date => params[:date], :tags => tags.reject{|item| item == tag}, :category => params[:category]))
-      }
-      out << "</p>"
-    end
-    if params[:date]
-      out << "<p>Включен фильтр по дате: ( "
-      if params[:date] =~ /^\d+-\d+-00$/
-        out << Russian.strftime(@date, "%B %Y")
-      elsif params[:date] =~ /^\d+-\d+-\d+$/
-        out << Russian.strftime(@date, "%d %B %Y")
+    if params[:category] || params[:tags] || params[:date]
+      out = ""
+      out << "<div class='box'>"
+      if params[:category] and category = Category.find_by_name(params[:category])
+          out << "<div>"
+          out << "Просмотр происходит внутри категории: ( "
+          category.self_and_ancestors.each do |item|
+            out << link_to(item.name, search_posts_path(:category => item.name))
+            out << " → " unless category.self_and_ancestors.last == item 
+          end 
+          out << " ) "
+          out << link_to("<sup>x</sup>", search_posts_path(:date => params[:date], :tags => params[:tags]))
+          out << "</div>"
       end
-      out << " ) "
-      out << link_to("<sup>x</sup>", search_posts_path(:tags => params[:tags], :category => params[:category]))
-      out << "</p>"
+      if params[:tags]
+        out << "<div>"
+        tags = Array.[](params[:tags]).flatten
+        out << "Включен фильтр по" +  Russian.p(tags.count, "тегу", "тегам", "тегам") + ":"
+        tags.each { |tag|
+          out << " ( " + link_to(h(tag), search_posts_path(:tags => tag)) + " ) "
+          out << link_to("<sup>x</sup>", search_posts_path(:date => params[:date], :tags => tags.reject{|item| item == tag}, :category => params[:category]))
+        }
+        out << "</div>"
+      end
+      if params[:date]
+        out << "<div>"
+        out << "Включен фильтр по дате: ( "
+        out << "<a href='"
+        out << url_for(search_posts_path(:date => params[:date]))
+        out << "'>"
+        if params[:date] =~ /^\d+-\d+-00$/
+          out << Russian.strftime(@date, "%B %Y")
+        elsif params[:date] =~ /^\d+-\d+-\d+$/
+          out << Russian.strftime(@date, "%d %B %Y")
+        end
+        out << "'</a>"
+        out << " ) "
+        out << link_to("<sup>x</sup>", search_posts_path(:tags => params[:tags], :category => params[:category]))
+        out << "</div>"
+      end
+      out << "</div>"
     end
-    out << "<p> Внимание, при листании календаря действие всех фильтров кроме фильтра по дате сохраняется, " + link_to("вы можете сбросить все фильтры", search_posts_path) + "</a>. </p>"
-    return out
   end
 
   def link_tags(tags)
