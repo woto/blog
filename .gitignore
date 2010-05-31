@@ -8,4 +8,4 @@ public/assets/*
 db/sphinx
 db/development.sqlite3
 public/stylesheets/compiled/*
-public/stylesheets/all.css b/public/stylesheets/all.css
+public/stylesheets/all.css
