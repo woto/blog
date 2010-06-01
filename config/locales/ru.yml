@@ -36,7 +36,7 @@ ru:
         category_id: Категория
         tag_list: Теги
       category:
-        parent: Родительская категория
+        parent_id: Родительская категория
         name: Название категории
   authlogic:
     error_messages:

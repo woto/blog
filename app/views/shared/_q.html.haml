@@ -12,6 +12,8 @@
   - if current_user
     %li= link_to "Удалить аккаунт", user_path, :confirm => t(:sure), :method => :delete
   - if can? :create, Category
+    %li= link_to "Управление категориями", categories_path
+  - if can? :create, Category
     %li= link_to "Создать категорию", new_category_path
   %li= link_to "Тест каптчи", new_captcha_test_path
   - if can? :create, @post

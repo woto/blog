@@ -2,7 +2,7 @@
   - @posts.each do |post|
     .post
       %h2.title
-        = link_to h(truncate(post.title, 50)), post
+        = link_to h(truncate(post.title, :length => 50)), post
       - if !post.intro.empty?
         = post.intro
       - else
@@ -37,6 +37,8 @@
       - if can? :destroy, @post
         = link_to :destroy, post, :confirm => t(:sure), :method => :delete
       %hr.prepend-top
+  .footer#pagination= will_paginate @posts, :container => false
 - else
-  Не найдены публикации, удовлетворяющие условиям поиска, попробуйте сбросить или выбрать другие параметры фильтрации
-.footer#pagination= will_paginate @posts, :container => false
+  Не найдены публикации, удовлетворяющие условиям поиска, попробуйте сбросить или выбрать другие параметры фильтрации, вы можете 
+  - if can? :create, @post
+    = link_to("написать пост с учетом фильтра.", new_post_path(:tags => params[:tags], :category => params[:category], :date => params[:date]))

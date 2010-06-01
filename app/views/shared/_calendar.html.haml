@@ -1,10 +1,13 @@
+:javascript
+  refresh_links($("#calendar"));
+
 #calendar
   .centered.append-bottom
-    = link_to_remote "←", :url => {:action => "calendar", :tags => params[:tags], :category => params[:category], :date => (@date.beginning_of_month-1).strftime("%Y-%m") + "-00"}
+    = link_to_remote "←", :url => {:controller => 'posts', :action => "calendar", :tags => params[:tags], :category => params[:category], :date => (@date.beginning_of_month-1).strftime("%Y-%m") + "-00"}
     &nbsp;&nbsp;
     = link_to Russian.strftime(@date, "%B %Y"), link_calendar(@date.strftime("%Y-%m") + "-" + "00", false), :rel => link_calendar(@date.strftime("%Y-%m") + "-" + "00", true)
     &nbsp;&nbsp;
-    = link_to_remote "→", :url => {:action => "calendar", :tags => params[:tags], :category => params[:category], :date => (@date.end_of_month + 1).strftime("%Y-%m") + "-00"}
+    = link_to_remote "→", :url => {:controller => "posts", :action => "calendar", :tags => params[:tags], :category => params[:category], :date => (@date.end_of_month + 1).strftime("%Y-%m") + "-00"}
 
   - calendar_for (@calendar_posts, :year => @date.year, :month => @date.month, :first_day_of_week => 1) do |calendar|
     = calendar.head("пн", "вт", "ср", "чт", "пт", "сб", "вс")

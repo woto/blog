@@ -1,7 +1,9 @@
-$(document).ready(function(){
-    $('a').each(function(i, e){
-      $(e).mouseenter(function(){
-       if($(this).attr('rel') && $(this).attr('rel').match(/\/.*/i)) {
+var refresh_links = function(selector){
+
+  selector.find('a').each(function(i, e){
+    $(e).mouseenter(function(){
+      if($(this).attr('rel') && $(this).attr('rel').match(/\/.*/i)) {
+        if($(this).attr('href') == $(this).attr('rel')) return;
         toolbox = $("<div class='box'></div>");
         toolbox.css("position", "absolute");
         toolbox.css("top", $(this).position().top - 13);
@@ -27,4 +29,8 @@ $(document).ready(function(){
       }
     });
   });
+}
+
+$(document).ready(function(){
+    refresh_links($(document));
 });

@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   before_filter :current_user
   
   before_filter :date
+  
+  helper_method :getTagsCloud
+
+  def getTagsCloud
+    @tags = Tags::getTagsCloud
+  end
 
   def date
     if params[:date] =~ /^\d+-\d+-00$/ 

@@ -29,6 +29,9 @@ ActionController::Routing::Routes.draw do |map|
   map.delicious 'delicious', :controller => 'delicious', :action => 'index'
   map.google_reader 'google_reader', :controller => 'google_reader', :action => 'index'
 
+  map.about_me 'about_me', :controller => 'about_me', :action => 'index'
+  map.feedback 'feedback', :controller => 'feedback', :action => 'index'
+
   #map.resources :password_resets
   #map.resources :users
   #map.root :controller => "user_sessions", :action => "new"

@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @tags = Post.tag_counts(:order => "count DESC", :limit => 30).sort_by{|tag| tag.name.downcase}
     @posts = Post.paginate :page => params[:page], :order => 'date DESC'
 
     respond_to do |format|
@@ -28,28 +27,14 @@ class PostsController < ApplicationController
     end
   end
 
-  def available_category
-    @post = Post.new
-    respond_to do |format|
-      format.js {render :action => "available_category.rjs", :object => @post}
-    end
-  end
-
-  def new_category
-    @post = Post.new
-    @post.build_category
-    respond_to do |format|
-      format.js {render :action => "new_category.rjs", :object => @post}
-    end
-  end
-
   # GET /posts/new
   # GET /posts/new.xml
   def new
     @post = Post.new
-    @post.visible = true
+    @post.category = Category.find_by_name(params[:category]) if params[:category]
+    @post.tag_list = params[:tags] if params[:tags]
     @post.date = Time.now
-    @post.build_category
+    @post.visible = true
 
     respond_to do |format|
       format.html # new.html.erb
@@ -65,7 +50,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    
     @post = Post.new(params[:post])
     @post.user = current_user
 
@@ -87,7 +71,6 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = Post.find(params[:id])
-
     respond_to do |format|
       if(params['commit'] == 'Предпросмотр' && @post.valid?)
         @post.attributes = params[:post]
@@ -143,8 +126,7 @@ class PostsController < ApplicationController
     end
 
     @posts = scope.paginate(:page => params[:page], :order => 'date DESC')
-    @tags = scope.tag_counts(:order => "count DESC", :limit => 30).sort_by{|tag| tag.name.downcase}
-
+    @tags = Tags::getTagsCloud scope
 
     respond_to do |format|
       format.html { render :action => "index" }

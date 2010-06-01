@@ -2,6 +2,13 @@
 %html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %title= h(yield(:title) || AppConfig.site_name)
+    - content_for(:keywords) do
+      ключевые, слова
+    - content_for(:description) do
+      описание
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => yield(:keywords), :name => "keywords"}/
+    %meta{:content => yield(:description), :name => "description"}/
     = stylesheet_link_tag 'compiled/application.css', 'jquery.autocomplete.css',  '/components/dyndatetime/css/calendar-blue.css',  '/components/colorbox/example4/colorbox.css',  :concat => true, :media => 'screen, project'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if lt IE 8]
@@ -9,13 +16,6 @@
     = javascript_include_tag  'jquery.js',  'jquery-ui.js',  'jrails.js',  'application.js',  '/components/dyndatetime/src/jquery.dynDateTime.js',  '/components/dyndatetime/lang/calendar-ru.js',  'jquery.autocomplete.pack.js',  '/components/colorbox/colorbox/jquery.colorbox.js',  :cache => true
     = javascript_include_tag :ckeditor
     = yield(:head)
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}/
-    - content_for(:keywords) do
-      ключевые, слова
-    - content_for(:description) do
-      описание
-    %meta{:content => yield(:keywords), :name => "keywords"}/
-    %meta{:content => yield(:description), :name => "description"}/
   %body
     .container#wrapper
       .container#header
@@ -27,17 +27,17 @@
               %a{:href => "/"} Главная 
               &nbsp;|&nbsp;
             %li
-              %a.active{:href => "/about"} Обо мне 
+              = link_to "Обо мне", about_me_path
               &nbsp;|&nbsp;
             %li
-              %a{:href => "/feedback"} Обратная связь
+              = link_to "Обратная связь", feedback_path
       %hr
       .container#main
         %div.column.span-16.colborder
           - flash.each do |name, msg|
             .box#flash= content_tag :div, msg, :id => "flash_#{name}"
           = filters
-          = yield 
+          = yield
         %div.column.last.span-7#sidebar
           .box#search
             %form{:action => "", :method => "post"}
@@ -46,9 +46,12 @@
           %h4.loud
             Категории
           = categories
-          %h4.loud
-            Родственные теги
-          .box= render(:partial => "related_tags", :collection => @tags, :as => :tag)
+          - if @tags.nil? or @tags.count == 0
+            - @tags = getTagsCloud
+            %h4.loud Популярные теги
+          - else
+            %h4.loud Родственные теги
+          .box= render(:partial => "tags/related_tags", :collection => @tags, :as => :tag)
           %h4.loud
             Календарь
           .box= render :partial => 'shared/calendar', :object => @calendar_posts
