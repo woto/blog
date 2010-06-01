@@ -15,10 +15,7 @@ var refresh_links = function(selector){
           "<a href='" + $(this).attr('rel') + "'>" + "С фильтром" + "</a>");
         $(this).append(toolbox);
 
-        if($(this).position().left + toolbox.width() > $('#wrapper').width())
-          toolbox.css("left", $("#wrapper").width() - toolbox.width());
-        else
-          toolbox.css("left", $(this).position().left);
+        toolbox.css("left", $(this).position().left);
 
         toolbox.mouseleave(function(){
           $(this).remove();
