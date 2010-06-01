@@ -1,6 +1,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
+    /* Календарь */
     $("#post_date").dynDateTime({
       showsTime: true,
       ifFormat: "%d.%m.%Y %H:%M",
@@ -9,10 +10,12 @@
       button: ".next()"
     });
 
+    /* Теги */
     $("textarea#post_tag_list").autocomplete("/tags/auto_complete_for_tag_name", {
 	  	multiple: true
     })
 
+    /* Colorbox и обновление категорий */
     $("a#render_categories").live('click', function() {
       $.fn.colorbox({
         href:$(this).attr('href'), 
@@ -20,13 +23,14 @@
         height: "90%", 
         iframe: true,
         onCleanup:function(){ 
+          isEdit = true;
           <%= remote_function( :url => {:controller => 'categories', :action => 'render_categories'}) %>
         }
       });
       return false;
     });
 
-
+    /* Блок связанный с Вступлением */
     CKEDITOR.on('instanceReady', function() {
       document.checkVisibility = function(){
         if($('#post_intro').is(":visible"))
@@ -56,32 +60,35 @@
   <%= f.error_messages %>
 
   <%= f.label :title %><br />
-  <%= f.text_field :title, :maxlength => 255, :size => 50, :rows => 2 %><br />
+  <%= f.text_field :title, :maxlength => 255, :size => 50, :rows => 2, :class => 'check_changing' %><br />
 
   <a id="toggle_post_intro" class="ajax" href=""></a><br /><br />
   
   <div id="post_intro">
     <%= f.label :intro %><br />
-    <%= f.cktext_area :intro, :language => "ru" %><br />
+    <%= f.cktext_area :intro, :language => "ru", :class => "check_changing" %><br />
   </div>
 
   <%= f.label :body %><br />
-  <%= f.cktext_area :body, :language => "ru" %><br />
+  <%= f.cktext_area :body, :language => "ru", :class => "check_changing"%><br />
 
-  <%= f.check_box :visible %> 
+  <%= f.check_box :visible, :class => "check_changing"%> 
   <%= f.label :visible %><br /><br />
 
   <div style="position: relative">
-    <%= f.text_field :date, :format => "%d.%m.%Y %H:%M" %>
+    <%= f.label :date %><br />
+    <%= f.text_field :date, :format => "%d.%m.%Y %H:%M", :class => "check_changing"%>
     <%= f.image_tag('calendar.gif', :style => "cursor: pointer; position: absolute; margin-top: 13px; margin-left: 7px") %><br /><br />
   </div>
 
+  <%= f.label :category %><br />
   <%= render :partial => 'categories/render_categories', :object => @post %><br />
 
   <%= f.label :tag_list %><br />
-  <%= f.text_area :tag_list, :autocomplete =>"off", :style => "height: 30px; width: 300px" %><br /><br />
+  <%= f.text_area :tag_list, :autocomplete =>"off", :class => "check_changing", :style => "height: 30px; width: 300px" %><br /><br />
 
-  <%= f.submit "Предпросмотр" %>
-  <%= f.submit %>
-
+  <%= f.submit t(:preview) %>
+  <%= f.submit t(:save) %>
+  <%= link_to t(:view), post_path(f.object) unless (f.object.new_record?) %>
+  
 <% end %>

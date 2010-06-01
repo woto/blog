@@ -1,5 +1,9 @@
 ru:
   footer: <a href="http://github.com/woto/blog">Работает на Ruby on Rails</a>. &copy; Руслан Корнев aka woto - {{year}}.
+  back: Назад
+  save: Сохранить
+  view: Просмотр
+  preview: Предпросмотр
   activerecord:
     errors:
       models:
@@ -15,6 +19,7 @@ ru:
       date: Дата
       category_id: Категория
       tag_list: Теги
+      category: Категория
     attributes:
       user:
         email: Электронная почта

@@ -27,6 +27,12 @@ body {
     text-decoration: none;
     border-bottom: 1px dashed $normal;
   }
+  .fieldWithErrors {
+    background: red;
+  }
+  .errorExplanation {
+    background: yellow;
+  }
 }
 
 #header {
@@ -80,6 +86,10 @@ body {
       margin-bottom: 0; 
       font-size: 90% 
     }
+    
+    th {
+      background: #EEE;
+    }
 
     td {
       text-align: center;
@@ -95,7 +105,7 @@ body {
     }
 
     //.today {
-    //  color: red;
+    //  color: #999;
     //}
   }
 }
