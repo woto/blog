@@ -96,7 +96,7 @@ body {
     }
 
     .notmonth {
-      color: #999;
+      color: $box;
     }
     .not_empty_day {
       background: #EEE;
@@ -104,9 +104,9 @@ body {
       display: block;
     }
 
-    //.today {
-    //  color: #999;
-    //}
+    .today {
+      color: $box;
+    }
   }
 }
 

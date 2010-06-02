@@ -7,12 +7,6 @@ class ApplicationController < ActionController::Base
   
   before_filter :date
   
-  helper_method :getTagsCloud
-
-  def getTagsCloud
-    @tags = Tags::getTagsCloud
-  end
-
   def date
     if params[:date] =~ /^\d+-\d+-00$/ 
 
@@ -46,17 +40,6 @@ todo убрать Rational!!!
     #debugger
     #Time.zone.local_to_utc()
     #@date = @date.to_time(:local)
-  end
-
-  before_filter :load_posts_for_calendar
-
-  def load_posts_for_calendar
-    # Данная проверка нужна для того чтобы не загружать здесь @calendar_posts
-    # а получать их в post::calendar. Пока что более грамотного способа не знаю
-    if !request.xhr?
-      @calendar_posts = CalendarPosts::get_calendar_posts params, @date, false
-    end
-
   end
 
   helper_method :current_user, :current_user_session

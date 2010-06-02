@@ -28,12 +28,6 @@
 [submodule "vendor/plugins/validates_captcha"]
 	path = vendor/plugins/validates_captcha
 	url = git://github.com/m4n/validates_captcha.git
-[submodule "vendor/plugins/validates_timeliness"]
-	path = vendor/plugins/validates_timeliness
-	url = git://github.com/adzap/validates_timeliness.git
-[submodule "vendor/plugins/validation_reflection"]
-	path = vendor/plugins/validation_reflection
-	url = git://github.com/redinger/validation_reflection.git
 [submodule "vendor/plugins/will_paginate"]
 	path = vendor/plugins/will_paginate
 	url = git://github.com/mislav/will_paginate.git
@@ -55,24 +49,6 @@
 [submodule "vendor/plugins/friendly_id"]
 	path = vendor/plugins/friendly_id
 	url = git://github.com/norman/friendly_id.git
-[submodule "vendor/plugins/www-delicious"]
-	path = vendor/plugins/www-delicious
-	url = git://github.com/weppos/www-delicious.git
-[submodule "vendor/plugins/nokogiri"]
-	path = vendor/plugins/nokogiri
-	url = git://github.com/tenderlove/nokogiri.git
-[submodule "vendor/plugins/feedzirra"]
-	path = vendor/plugins/feedzirra
-	url = git://github.com/pauldix/feedzirra.git
-[submodule "vendor/plugins/octopi"]
-	path = vendor/plugins/octopi
-	url = git://github.com/fcoury/octopi.git
-[submodule "vendor/plugins/api_cache"]
-	path = vendor/plugins/api_cache
-	url = git://github.com/mloughran/api_cache.git
-[submodule "vendor/plugins/mobile-fu"]
-	path = vendor/plugins/mobile-fu
-	url = git://github.com/brendanlim/mobile-fu.git
 [submodule "vendor/plugins/jrails"]
 	path = vendor/plugins/jrails
 	url = git://github.com/neocoin/jrails.git

@@ -47,23 +47,24 @@
             Категории
           = categories
           - if @tags.nil? or @tags.count == 0
-            - @tags = getTagsCloud
+            - @tags = Tags::getTagsCloud
             %h4.loud Популярные теги
           - else
             %h4.loud Родственные теги
           .box= render(:partial => "tags/related_tags", :collection => @tags, :as => :tag)
           %h4.loud
             Календарь
-          .box= render :partial => 'shared/calendar', :object => @calendar_posts
+          - @calendar_posts = CalendarPosts::get_calendar_posts params, @date, false
+          .box= render :partial => 'calendar/index', :object => @calendar_posts
           %h4.loud
             Ссылки
-          .box= render :partial => 'shared/q'
+          .box= render :partial => 'shared/links'
           %h4.loud
             Я в других местах
-          .box= render :partial => 'shared/w'
+          .box= render :partial => 'shared/other_places'
           %h4.loud
             Обо мне
-          .box= render :partial => 'shared/e'
+          .box= render :partial => 'shared/about_me'
       .container.footer
         %div.column.last.span-24
           = t(:footer, :year => Date.today.strftime("%Y"))

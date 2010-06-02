@@ -31,6 +31,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.about_me 'about_me', :controller => 'about_me', :action => 'index'
   map.feedback 'feedback', :controller => 'feedback', :action => 'index'
+  
+  map.connect 'calendar', :controller => 'calendar'
 
   #map.resources :password_resets
   #map.resources :users
