@@ -2,13 +2,13 @@
   - @posts.each do |post|
     .post
       %h2.title
-        = link_to h(truncate(post.title, :length => 49)), post
+        = link_to h(truncate(post.title, :length => 45)), post
       .control
         - if can? :edit, @post
           = link_to t(:edit), edit_post_path(post)
         - if can? :destroy, @post
           = link_to t(:destroy), post, :confirm => t(:sure), :method => :delete
-      - if !post.intro.empty?
+      - if !post.intro.try(:empty?)
         = post.intro
       - else
         = post.body

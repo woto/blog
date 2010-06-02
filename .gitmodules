@@ -64,3 +64,9 @@
 [submodule "vendor/plugins/compass"]
 	path = vendor/plugins/compass
 	url = git://github.com/chriseppstein/compass.git
+[submodule "vendor/plugins/feedzirra"]
+	path = vendor/plugins/feedzirra
+	url = git://github.com/pauldix/feedzirra.git
+[submodule "vendor/plugins/www-delicious"]
+	path = vendor/plugins/www-delicious
+	url = git://github.com/weppos/www-delicious.git

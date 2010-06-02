@@ -26,9 +26,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user
   map.resource :user_session
  
-  map.delicious 'delicious', :controller => 'delicious', :action => 'index'
-  map.google_reader 'google_reader', :controller => 'google_reader', :action => 'index'
-
   map.about_me 'about_me', :controller => 'about_me', :action => 'index'
   map.feedback 'feedback', :controller => 'feedback', :action => 'index'
   
@@ -80,6 +77,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
+  map.connect ':controller'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
