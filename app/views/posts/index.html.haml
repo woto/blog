@@ -23,15 +23,15 @@
         - post_tags = post.cached_tag_list.split(', ')
         - post_tags.each do |tag|
           - if(tags).include?(tag)
-            = link_to("-",link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, true))
+            = link_to("-", link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, false), :rel => link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, true))
             =fukc
-            %span>= link_to(h(tag), link_tags(tag, false))
+            %span>= link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
             - if tag != post_tags.last
               ,
           - else
-            = link_to("+", link_tags(tags + Array(tag), true))
+            = link_to("+", link_tags(tags + Array(tag), false), :rel => link_tags(tags + Array(tag), true))
             =fukc
-            %span>= link_to(h(tag), link_tags(tag, false))
+            %span>= link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
             - if tag != post_tags.last
               ,
       %br

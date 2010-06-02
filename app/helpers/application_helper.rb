@@ -54,23 +54,24 @@ module ApplicationHelper
       out << "<div style='position: absolute; top: 0px; right: 6px'>" + link_to("x", posts_path) + "</div>"
       if params[:category] and category = Category.find_by_name(params[:category])
           out << "<div>"
-          out << link_to("-", search_posts_path(:date => params[:date], :tags => params[:tags]))
+          out << link_to("-", link_category({}, true))
           out << " Просмотр происходит внутри категории: "
-          category.self_and_ancestors.each do |item|
+          tree = category.self_and_ancestors
+          tree.each do |item|
             out << link_to(item.name, link_category(item.name, false), :rel => link_category(item.name, true))
-            out << " → " unless category.self_and_ancestors.last == item 
+            out << " → " unless tree.last == item 
           end 
           out << "</div>"
       end
       if params[:tags]
         out << "<div>"
         tags = Array.[](params[:tags]).flatten
-        out << link_to("-", search_posts_path(:date => params[:date], :category => params[:category]))
+        out << link_to("-", link_tags({}, true))
         out << " Включен фильтр по " +  Russian.p(tags.count, "тегу", "тегам", "тегам") + ": "
         tags.each { |tag|
-          out << link_to("-", search_posts_path(:date => params[:date], :tags => tags.reject{|item| item == tag}, :category => params[:category]))
+          out << link_to("-", link_tags(tags.reject{|item| item == tag}, false), :rel => link_tags(tags.reject{|item| item == tag}, true))
           out << "&nbsp;"
-          out << link_to(h(tag), search_posts_path(:tags => tag))
+          out << link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
           out << ", " unless tag == tags.last
         }
         out << "</div>"
@@ -80,8 +81,12 @@ module ApplicationHelper
         out << link_to("-", search_posts_path(:tags => params[:tags], :category => params[:category]))
         out << " Включен фильтр по дате: "
         out << "<a href='"
-        out << url_for(search_posts_path(:date => params[:date]))
-        out << "'>"
+        out << link_calendar(params[:date], false)
+        out << "' "
+        out << "rel='"
+        out << link_calendar(params[:date], true)
+        out << "' "
+        out << ">"
         if params[:date] =~ /^\d+-\d+-00$/
           out << Russian.strftime(@date, "%B %Y")
         elsif params[:date] =~ /^\d+-\d+-\d+$/

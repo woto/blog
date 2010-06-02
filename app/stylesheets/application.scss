@@ -145,7 +145,7 @@ body {
     }
     
     th {
-      background: #EEE;
+      background: $box;
     }
 
     td {
@@ -156,9 +156,7 @@ body {
       color: #999;
     }
     .not_empty_day {
-      background: #EEE;
-      padding: 3px;
-      display: block;
+      font-weight: bold;
     }
 
     .today {
