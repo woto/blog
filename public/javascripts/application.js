@@ -1,9 +1,8 @@
 var refresh_links = function(selector){
-
   selector.find('a').each(function(i, e){
     $(e).mouseenter(function(){
       if($(this).attr('rel') && $(this).attr('rel').match(/\/.*/i)) {
-        if($(this).attr('href') == $(this).attr('rel')) return;
+        //if($(this).attr('href') == $(this).attr('rel')) return;
         toolbox = $("<div class='box'></div>");
         toolbox.css("position", "absolute");
         toolbox.css("top", $(this).position().top - 13);
@@ -15,7 +14,7 @@ var refresh_links = function(selector){
           "<a href='" + $(this).attr('rel') + "'>" + "С фильтром" + "</a>");
         $(this).append(toolbox);
 
-        toolbox.css("left", $(this).position().left);
+        toolbox.css("left", $(this).position().left + $(this).width()/2 - toolbox.width()/2);
 
         toolbox.mouseleave(function(){
           $(this).remove();
@@ -30,4 +29,10 @@ var refresh_links = function(selector){
 
 $(document).ready(function(){
     refresh_links($(document));
+    $(".post").mouseover(function(){
+      $(this).find('.control').show();
+    })
+    $(".post").mouseout(function(){
+      $(this).find('.control').hide();
+    })
 });

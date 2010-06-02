@@ -4,6 +4,9 @@ ru:
   save: Сохранить
   view: Просмотр
   preview: Предпросмотр
+  edit: Редактировать
+  destroy: Удалить
+  sure: Вы уверены?
   activerecord:
     errors:
       models:
@@ -34,6 +37,7 @@ ru:
         visible: Опубликован
         date: Дата
         category_id: Категория
+        category: Категория
         tag_list: Теги
       category:
         parent_id: Родительская категория

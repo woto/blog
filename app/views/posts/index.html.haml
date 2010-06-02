@@ -3,6 +3,11 @@
     .post
       %h2.title
         = link_to h(truncate(post.title, :length => 50)), post
+      .control
+        - if can? :edit, @post
+          = link_to t(:edit), edit_post_path(post)
+        - if can? :destroy, @post
+          = link_to t(:destroy), post, :confirm => t(:sure), :method => :delete
       - if !post.intro.empty?
         = post.intro
       - else
@@ -29,13 +34,11 @@
             %span>= link_to(h(tag), link_tags(tag, false))
             - if tag != post_tags.last
               ,
-        %br
+      %br
+      - if post.comments.size > 0 
         =link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post)
-      .control
-      - if can? :edit, @post
-        = link_to :edit, edit_post_path(post)
-      - if can? :destroy, @post
-        = link_to :destroy, post, :confirm => t(:sure), :method => :delete
+      - else
+        =link_to("нет комментариев", post)
       %hr.prepend-top
   .footer#pagination= will_paginate @posts, :container => false
 - else

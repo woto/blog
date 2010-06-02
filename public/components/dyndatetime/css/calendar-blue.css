@@ -143,7 +143,7 @@ div.calendar { position: relative; }
   color: #445;
   border-top: 1px solid #556;
   padding: 1px;
-  font-size: 95%;
+  font-size: 90%;
 }
 
 .calendar tfoot .hilite { /* Hover style for buttons in footer */

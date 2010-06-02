@@ -53,6 +53,15 @@ body {
 
 #main {
   extend: prepend-top;
+  .post {
+    position: relative;
+  }
+  .control {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 #wrapper
 {
@@ -96,7 +105,7 @@ body {
     }
 
     .notmonth {
-      color: $box;
+      color: #999;
     }
     .not_empty_day {
       background: #EEE;
@@ -105,8 +114,12 @@ body {
     }
 
     .today {
-      color: $box;
+      color: red;
+      .not_empty_day > a {
+        color: red;
+      }
     }
+
   }
 }
 
