@@ -42,6 +42,7 @@
       %hr.prepend-top
   .footer#pagination= will_paginate @posts, :container => false
 - else
-  Не найдены публикации, удовлетворяющие условиям поиска, попробуйте сбросить или выбрать другие параметры фильтрации, вы можете 
+  Не найдены публикации, удовлетворяющие условиям поиска, попробуйте сбросить или выбрать другие параметры фильтрации
   - if can? :create, @post
+    , вы можете 
     = link_to("написать пост с учетом фильтра.", new_post_path(:tags => params[:tags], :category => params[:category], :date => params[:date]))
