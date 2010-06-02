@@ -33,6 +33,10 @@ body {
   .errorExplanation {
     background: yellow;
   }
+  .nospace {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 #header {
@@ -52,6 +56,7 @@ body {
 }
 
 #main {
+  padding-top: 1.45em;
   extend: prepend-top;
   .post {
     position: relative;
@@ -59,7 +64,7 @@ body {
   .control {
     display: none;
     position: absolute;
-    top: 0;
+    top: -15px;
     right: 0;
   }
 }
@@ -88,6 +93,15 @@ body {
   .tag_level_5 {font-size: 125%}
   .tag_level_6 {font-size: 130%}
   .tag_level_7 {font-size: 135%}
+  .tag_level_8 {font-size: 135%}
+  .tag_level_9 {font-size: 140%}
+  .tag_level_10 {font-size: 140%}
+  .tag_level_11 {font-size: 145%}
+  .tag_level_12 {font-size: 145%}
+  .tag_level_14 {font-size: 145%}
+  .tag_level_15 {font-size: 150%}
+  .tag_level_16 {font-size: 150%}
+  .tag_level_17 {font-size: 150%}
 
   #calendar {
 

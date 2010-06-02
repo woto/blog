@@ -17,7 +17,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.xml
   def show
-    @post = Post.find(params[:id])
+
+    scope = Post
+
+    @post = scope.find(params[:id])
 
     @comment = Comment.new(:post => @post)
 
@@ -33,6 +36,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.category = Category.find_by_name(params[:category]) if params[:category]
     @post.tag_list = params[:tags] if params[:tags]
+    #todo вставить так же сохранение даты публикации
     @post.date = Time.now
     @post.visible = true
 
@@ -109,6 +113,8 @@ class PostsController < ApplicationController
 
   def search
     
+    @found_posts = false
+
     scope = Post
 
     if params[:category]
@@ -126,7 +132,13 @@ class PostsController < ApplicationController
     end
 
     @posts = scope.paginate(:page => params[:page], :order => 'date DESC')
-    @tags = Tags::getTagsCloud scope
+
+    # Символизирует о том, что нам придется еще делать запросы с сброшенными фильтрами
+    unless @posts.size == 0
+      @found_posts = true
+      @calendar = CalendarPosts::get_calendar_posts params, @date
+      @tags = Tags::getTagsCloud scope
+    end
 
     respond_to do |format|
       format.html { render :action => "index" }

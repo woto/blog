@@ -2,7 +2,7 @@
   - @posts.each do |post|
     .post
       %h2.title
-        = link_to h(truncate(post.title, :length => 50)), post
+        = link_to h(truncate(post.title, :length => 49)), post
       .control
         - if can? :edit, @post
           = link_to t(:edit), edit_post_path(post)
@@ -13,7 +13,7 @@
       - else
         = post.body
       Опубликовано
-      = link_to l(post.date, :format => "%d %b %Y"), link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true), :rel => link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true)
+      = link_to l(post.date, :format => "%d %b %Y"), link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, false), :rel => link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true)
       = post_category(post)
       - unless post.cached_tag_list.empty?
         %br 

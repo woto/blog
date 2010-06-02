@@ -1,0 +1,23 @@
+%h2.title
+  =link_to h(@post.title), @post
+= @post.body
+%p
+  %b Date:
+  = h @post.date
+%p
+  %b Author:
+  - unless @post.user.nil?
+    = @post.user.login
+%p
+  %b Tags
+  = @post.tag_list
+%p
+  %b Category
+  = post_category(@post)
+= render :partial => 'comments/form'
+- if can? :update, @article
+  = link_to 'Edit', edit_post_path(@post)
+  |
+- if can? :destroy, @article
+  = link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?"
+= link_to 'Back', posts_path

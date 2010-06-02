@@ -7,9 +7,6 @@ class ApplicationController < ActionController::Base
   
   before_filter :date
   
-  def date
-    if params[:date] =~ /^\d+-\d+-00$/ 
-
 =begin
 require 'date'
 
@@ -23,16 +20,16 @@ puts local == local_from_utc       # => true
 
 todo убрать Rational!!!
 =end
-    
-    
-      @date = DateTime.strptime(params[:date], "%Y-%m").new_offset(DateTime.now.offset
-)
+
+  def date
+    if params[:date] =~ /^\d+-\d+-00$/ 
+      @date = DateTime.strptime(params[:date], "%Y-%m").new_offset(DateTime.now.offset)
     elsif params[:date] =~ /^\d+-\d+-\d+$/
-      @date = DateTime.strptime(params[:date], "%Y-%m-%d").new_offset(DateTime.now.offset
-)
+      @date = DateTime.strptime(params[:date], "%Y-%m-%d").new_offset(DateTime.now.offset)
     else
       @date = DateTime.now
     end
+
     #debugger
     #local = @date
     #utc = local.new_offset

@@ -31,12 +31,12 @@
               &nbsp;|&nbsp;
             %li
               = link_to "Обратная связь", feedback_path
-      %hr
+      %hr{:class => "nospace"}
       .container#main
         %div.column.span-16.colborder
           - flash.each do |name, msg|
             .box#flash= content_tag :div, msg, :id => "flash_#{name}"
-          = filters
+          = filter
           = yield
         %div.column.last.span-7#sidebar
           .box#search
@@ -46,16 +46,33 @@
           %h4.loud
             Категории
           = categories
-          - if @tags.nil? or @tags.count == 0
+          -# Проверка на tags.size нужна в случае если все таки посты найдены, но у постов отсутствуют теги
+          - if(!@found_posts || @tags.size == 0)
             - @tags = Tags::getTagsCloud
+            - @dont_show_scroll_to_top = true
             %h4.loud Популярные теги
           - else
             %h4.loud Родственные теги
-          .box= render(:partial => "tags/related_tags", :collection => @tags, :as => :tag)
+          .box
+            =render(:partial => "tags/related_tags", :collection => @tags, :as => :tag)
+            - if(@found_posts && !@dont_show_scroll_to_top)
+              %hr.space
+              %a{:class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
           %h4.loud
             Календарь
-          - @calendar_posts = CalendarPosts::get_calendar_posts params, @date, false
-          .box= render :partial => 'calendar/index', :object => @calendar_posts
+          .box
+            - if (!@found_posts)
+              - @calendar = CalendarPosts::get_calendar_posts({}, @date)
+              - ignore_filters = true
+            - else
+              - ignore_filters = false
+            =render :partial => 'calendar/index', :object => @calendar, :locals => {:ignore_filters => ignore_filters}
+            -# Если посты были найдены, то значит отображаем календарь с учетом фильтров только в случае если
+            -# указан еще какой-то фильтр вне зависимости от даты, т.к. к примеру если найдены посты и фильтр только
+            -# по дате, то в календаре отображаются все равно все посты за месяц
+            - if(@found_posts && (params[:tags] || params[:category]))
+              %hr.space
+              %a{:class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
           %h4.loud
             Ссылки
           .box= render :partial => 'shared/links'
