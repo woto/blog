@@ -13,6 +13,15 @@
 
 
 body {
+  #tooltip {
+    background: $box;
+    padding: 4px;
+    margin: 0px;
+    line-height: 16px;
+    a {
+      font-size: 12px;
+    }
+  }
   a { 
     text-decoration: none;
     @include link-colors($normal, $hover, $active, $visited, $focus)
@@ -74,7 +83,11 @@ body {
 }
 
 #sidebar {
-
+  
+  .box {
+    font-size: 102%;
+    padding: 15px;
+  }
   ul { padding: 0; margin: 0; @include no-bullets; }
   li { padding: 2px 0; }
   li li { padding-left: 18px; }
@@ -82,8 +95,13 @@ body {
   .loud { @include text-shadow; }
 
   #search {
-    input.text {  width: 145px; }
-    input.button { vertical-align: baseline; }
+    input.text {  width: 150px; }
+    input.button { 
+      vertical-align: baseline;
+      width: 70px;
+      padding: 0;
+      margin: 0;
+    }
   }
 
   .tag_level_1 {font-size: 105%}
@@ -158,22 +176,13 @@ body {
     .not_empty_day {
       font-weight: bold;
     }
-
     .today {
       color: red;
       .not_empty_day > a {
         color: red;
       }
     }
-
   }
-
-  //#categories {
-  //  font-size: 140%;
-  //  ul li {
-  //    font-size: 80%;
-  //  }
-  //}
 }
 
 .footer {

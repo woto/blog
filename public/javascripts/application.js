@@ -9,7 +9,7 @@ var refresh_links = function(selector){
         if($(this).attr('href') == $(this).attr('rel')) return;
         event.preventDefault();
         //window.location.replace($(this).attr('rel'));
-        toolbox = $("<div class='box'></div>");
+        toolbox = $("<div id='tooltip' class='box'></div>");
         toolbox.css("position", "absolute");
         toolbox.css("top", $(this).position().top - 13);
         toolbox.css("background", "#EEEEEE");
@@ -18,12 +18,13 @@ var refresh_links = function(selector){
           "<a href='" + $(this).attr('href') + "'>" + "Без фильтра" + "</a>" +
           "<br />" +
           "<a href='" + $(this).attr('rel') + "'>" + "С фильтром" + "</a>");
-        $(this).parent().after(toolbox);
+        $(this).after(toolbox);
         
         toolbox.css("left", $(this).position().left + $(this).width()/2 - toolbox.width()/2);
         
         toolbox.mouseleave(function(){
           $(this).remove();
+          $(this).unbind('mouseleave')
         });
       }
     });
@@ -59,6 +60,7 @@ $(document).ready(function(){
       // уловка для Firefox и Google Chrome
       var fukc = 0
       var targetOffset = 0;
+      // todo сделать в зависимости от браузера, а то опера иначе себя ведет 
       $('html,body').animate({scrollTop: targetOffset}, 1000, function(){
         fukc++;
         if(fukc == 2)

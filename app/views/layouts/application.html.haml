@@ -39,14 +39,7 @@
           = filter
           = yield
         %div.column.last.span-7#sidebar
-          %hr.space
-          .box#search
-            - form_tag(sphinx_posts_path, :method => :get) do
-              = text_field_tag :q, params[:q], :class => "text"
-              = submit_tag "Поиск", :name => nil
-            <input type="checkbox" id="advanced_navigation" /> Гиковская навигация
-          %h4.loud
-            Категории
+          %h4.loud Категории
           = categories
           -# Проверка на tags.size нужна в случае если все таки посты найдены, но у постов отсутствуют теги
           - if(!@found_posts || @tags.size == 0)
@@ -60,6 +53,12 @@
             - if(@found_posts && !@dont_show_scroll_to_top)
               %hr.space
               %a{:class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
+          %h4.loud Поиск
+          .box#search
+            - form_tag(sphinx_posts_path, :method => :get) do
+              = text_field_tag :q, params[:q], :class => "text"
+              = submit_tag "Поиск", :name => :submit, :class => "button"
+            <input type="checkbox" id="advanced_navigation" /> Гиковская навигация
           %h4.loud
             Календарь
           .box
