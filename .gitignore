@@ -10,3 +10,4 @@ db/sphinx
 db/development.sqlite3
 public/stylesheets/all.css
 public/stylesheets/compiled/
+config/development.sphinx.conf
