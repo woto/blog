@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.resources :posts
 
   map.resources :categories, :collection => {:render_categories => :post}
-  map.resources :posts, :collection => {:search => [:get]}
+  map.resources :posts, :collection => {:search => [:get], :sphinx => [:get]}
 
   map.root :posts
   

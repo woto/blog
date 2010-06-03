@@ -1,0 +1,11 @@
+options: &options
+  morphology: 'stem_en, stem_ru'
+
+development:
+  <<: *options
+
+production:
+  <<: *options
+
+test:
+  <<: *options

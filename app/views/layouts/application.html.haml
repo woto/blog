@@ -41,9 +41,9 @@
         %div.column.last.span-7#sidebar
           %hr.space
           .box#search
-            %form{:action => "", :method => "post"}
-              = text_field_tag("keywords", nil, {:class => "text"})
-              = submit_tag("Поиск")
+            - form_tag(sphinx_posts_path, :method => :get) do
+              = text_field_tag :q, params[:q], :class => "text"
+              = submit_tag "Поиск", :name => nil
             <input type="checkbox" id="advanced_navigation" /> Гиковская навигация
           %h4.loud
             Категории

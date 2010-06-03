@@ -1,4 +1,5 @@
 log/*.log
+log/*.pid
 tmp/**/*
 .idea
 nbproject
@@ -7,5 +8,5 @@ nbproject
 public/assets/*
 db/sphinx
 db/development.sqlite3
-public/stylesheets/compiled/*
 public/stylesheets/all.css
+public/stylesheets/compiled/

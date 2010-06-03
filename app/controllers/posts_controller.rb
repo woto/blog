@@ -143,8 +143,12 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { render :action => "index" }
     end
+  end
 
-  end 
+  def sphinx
+    @posts = Post.search params[:q], :page => params[:page], :order => :date, :sort_mode => :desc
+    render :action => "index"
+  end
 
 #  def auto_complete_for_post_tag_list
 #    @tags = Tag.find(:all, :conditions => ['name LIKE ?', "#{params[:post][:tag_list]}%"]) 

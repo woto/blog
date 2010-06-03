@@ -48,11 +48,16 @@ class Post < ActiveRecord::Base
 
   define_index do
     indexes title
+    indexed intro
     indexes body
+    indexes :date, :sortable => true
 
-    has tags(:id), :as => :tag_ids
-
-    has user_id
+    # Поиск по тегам и категориям отключен принципиально
+    #indexes cached_tag_list
+    #
+    #has tags(:id), :as => :tag_ids
+    #has user_id
+    has comments(:id), :as => :comment_ids
 
     #where "visible = 1"
   end

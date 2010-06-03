@@ -14,7 +14,7 @@ module ApplicationHelper
   def categories
     out = ""
     cat = Category.find_by_sql('select c2.name, c2.id, count(*) as lvl from categories as c1, categories as c2 where c2.lft between c1.lft and c1.rgt group by c2.name order by c2.lft')
-    out << "<div class='box'>"
+    out << "<div class='box' id='categories'>"
     out << '<ul class="links">'
       counter = 0
       cat.each_with_index do |c, i|
