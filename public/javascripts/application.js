@@ -1,9 +1,14 @@
 var refresh_links = function(selector){
+
   selector.find('a').each(function(i, e){
     $(e).click(function(event){
-      if($(this).attr('rel') && $(this).attr('rel').match(/\/.*/i)) {
+      if($.cookie(window.COOKIE_NAME) &&
+        ($(this).attr('rel') && 
+        $(this).attr('rel').match(/\/.*/i)))
+      {
         if($(this).attr('href') == $(this).attr('rel')) return;
         event.preventDefault();
+        //window.location.replace($(this).attr('rel'));
         toolbox = $("<div class='box'></div>");
         toolbox.css("position", "absolute");
         toolbox.css("top", $(this).position().top - 13);
@@ -13,10 +18,10 @@ var refresh_links = function(selector){
           "<a href='" + $(this).attr('href') + "'>" + "Без фильтра" + "</a>" +
           "<br />" +
           "<a href='" + $(this).attr('rel') + "'>" + "С фильтром" + "</a>");
-        $(this).after(toolbox);
-
+        $(this).parent().after(toolbox);
+        
         toolbox.css("left", $(this).position().left + $(this).width()/2 - toolbox.width()/2);
-
+        
         toolbox.mouseleave(function(){
           $(this).remove();
         });
@@ -26,10 +31,26 @@ var refresh_links = function(selector){
 }
 
 $(document).ready(function(){
+
+    window.COOKIE_NAME = 'advanced_navigation';
+    window.options = { path: '/', expires: new Date().getTime() + (1 * 365 * 24 * 60 * 60 * 1000) };
+
+    $("#advanced_navigation").change(function()
+    { 
+        if($(this).is(":checked"))
+          $.cookie(window.COOKIE_NAME, true, options);
+        else
+          $.cookie(window.COOKIE_NAME, "", options);
+    });
+
+    $('#advanced_navigation').attr('checked', $.cookie(window.COOKIE_NAME));
+
     refresh_links($(document));
+
     $(".post").mouseover(function(){
       $(this).find('.control').show();
     })
+
     $(".post").mouseout(function(){
       $(this).find('.control').hide();
     })
