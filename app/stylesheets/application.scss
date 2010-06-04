@@ -13,72 +13,99 @@
 
 
 body {
-  #tooltip {
-    background: $box;
-    padding: 8px;
-    margin: 0px;
-    line-height: 18px;
-    a {
-      line-height: 18px;
-      font-size: 14px;
-      font-weight: normal;
-    }
-  }
+
+
+
   a { 
     text-decoration: none;
-    @include link-colors($normal, $hover, $active, $visited, $focus)
+    @include link-colors($normal, $hover, $active, $visited, $focus);
   }
-  .centered { text-align: center; margin-left: auto; margin-right: auto; }
+
+  .centered { 
+    text-align: center; 
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+
   .box { 
-    @include border-radius(8px);
+    @include border-radius(4px);
     background-color: $box;
-    border: 2px solid $border;
+    border: 1px solid $border;
   }
+
+  #filter {
+    background-color: $filter;
+  }
+
   .ajax {
     text-decoration: none;
     border-bottom: 1px dashed $normal;
   }
+
   .fieldWithErrors {
     background: red;
   }
+
   .errorExplanation {
     background: yellow;
   }
+
   .nospace {
     margin: 0;
     padding: 0;
   }
+
 }
 
 #header {
 
   @extend .append-bottom;
 
-  #title { 
+  #title {
+    a {
+      color: $title;
+      @include text-shadow;
+    }
     margin: 0;
     @include float-left;
   }
+
   ul#nav { 
     @include inline-list; 
     @include float-right;
     font-size: 16px;
     margin-top: 10px;
+
+    a {
+      color: $nav;
+    }
   }
+
 }
 
 #main {
+
   padding-top: 1.45em;
   extend: prepend-top;
+  // todo wtf? extend
+
+  h2.title {
+    @include text-shadow;
+  }
+
   .post {
     position: relative;
   }
+
   .control {
     display: none;
     position: absolute;
     top: -15px;
     right: 0;
   }
+
 }
+
 #wrapper
 {
   @extend .prepend-top;
@@ -86,15 +113,30 @@ body {
 
 #sidebar {
   
-  .box {
-    font-size: 14px;
-    padding: 15px;
+  #tooltip {
+
+    background: $filter;
+    padding: 5px;
+    margin: 0px;
+    line-height: 15px;
+    
+    a {
+      line-height: 15px;
+      font-size: 12px;
+      font-weight: normal;
+    }
   }
+
+  .box {
+    font-size: 13px;
+    padding: 14px;
+  }
+
   ul { padding: 0; margin: 0; @include no-bullets; }
   li { padding: 2px 0; }
   li li { padding-left: 18px; }
 
-  .loud { @include text-shadow; }
+  h4.loud { @include text-shadow; }
 
   #search {
     input.text {  width: 150px; }
@@ -175,9 +217,11 @@ body {
     .notmonth {
       color: #999;
     }
+
     .not_empty_day {
       font-weight: bold;
     }
+
     .today {
       color: red;
       .not_empty_day > a {
@@ -204,10 +248,10 @@ body {
   }
   span.current {
     color: $hover;
-    border: 2px solid $border;
+    border: 1px solid $border;
   }
   a {
-    border: 2px solid $border;
+    border: 1px solid $border;
     color: $active;
     text-decoration: none;
     background-color: $box;

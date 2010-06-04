@@ -12,8 +12,8 @@ var refresh_links = function(selector){
         toolbox = $("<div id='tooltip' class='box'></div>");
         toolbox.css("position", "absolute");
         toolbox.css("top", $(this).position().top - 13);
-        toolbox.css("background", "#EEEEEE");
-        toolbox.css("padding", "4px");
+        //toolbox.css("background", "#EEEEEE");
+        //toolbox.css("padding", "4px");
         toolbox.html( 
           "<a href='" + $(this).attr('href') + "'>" + "Без фильтра" + "</a>" +
           "<br />" +
