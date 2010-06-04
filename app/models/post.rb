@@ -53,13 +53,13 @@ class Post < ActiveRecord::Base
     indexed intro
     indexes body
     indexes :date, :sortable => true
-
+    has comments(:is), :as => :comment_ids
     # Поиск по тегам и категориям отключен принципиально
     #indexes cached_tag_list
     #
     #has tags(:id), :as => :tag_ids
     #has user_id
-    has comments(:body)
+    #has comments(:body)
     #indexes :comment
     #where "visible = 1"
   end
