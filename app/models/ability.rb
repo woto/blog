@@ -23,6 +23,7 @@ class Ability
       cannot :create, User
     end
    
+    can :sphinx, Post
     can :search, Post
     can :calendar, Post
 

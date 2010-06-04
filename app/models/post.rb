@@ -15,6 +15,8 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :category
 
   has_many :comments
+  #accepts_nested_attributes_for :comments
+
   validates_presence_of :title, :body
   validates_length_of :body, :minimum => 9
   # todo отказался в пользу delocalize
@@ -57,8 +59,8 @@ class Post < ActiveRecord::Base
     #
     #has tags(:id), :as => :tag_ids
     #has user_id
-    has comments(:id), :as => :comment_ids
-
+    has comments(:body)
+    #indexes :comment
     #where "visible = 1"
   end
 

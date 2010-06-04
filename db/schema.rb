@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100520121932) do
+ActiveRecord::Schema.define(:version => 20100603184929) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(:version => 20100520121932) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
   end
 
   create_table "posts", :force => true do |t|

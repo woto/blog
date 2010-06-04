@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  validates_captcha
+
   # GET /comments
   # GET /comments.xml
   def index
@@ -40,6 +43,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
+    @post = Post.find(params[:comment][:post_id])
+    @comments = Comments::getComments @post.id
     @comment = Comment.new(params[:comment])
 
     respond_to do |format|

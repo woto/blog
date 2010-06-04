@@ -42,6 +42,10 @@ ru:
       category:
         parent_id: Родительская категория
         name: Название категории
+      comment:
+        body: Сообщение
+        captcha: Капча
+        captcha_solution: Капча
   authlogic:
     error_messages:
       login_blank: не может быть пустым

@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :comments
 
-  map.resources :comments
-
   #map.filter '/browse/*params', :controller => 'posts', :action => 'index'
   #map.resources :posts
 

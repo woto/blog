@@ -1,0 +1,73 @@
+:javascript
+  $(document).ready(function(){
+    $('#comments').find('a').each( function(){
+      $(this).click(function(){
+        $('#comment_parent_id').val($(this).attr('id').split('_')[1]);
+      });
+    });
+  });
+
+%h2.title
+  =link_to h(@post.title), @post
+= @post.body
+%p
+  %b Date:
+  = h @post.date
+%p
+  %b Author:
+  - unless @post.user.nil?
+    = @post.user.login
+%p
+  %b Tags
+  = @post.tag_list
+%p
+  %b Category
+%p
+  = post_category(@post)
+%p
+  <div class='box' id='comments'>
+  <ul class="links">
+  - cat = @comments
+  - cat.each_with_index do |c, i|
+    - counter = 0
+    - if !cat[i+1].nil? && cat[i+1].lvl.to_i > c.lvl.to_i
+      - counter += 1
+      <li>
+      = link_to(c.body, link_category(c.body, false), :rel => link_category(c.body, true))
+      %a{:href => '#', :id => "reply_" + c.id.to_s} Ответить
+      <ul class="links">
+
+    - if !cat[i+1].nil? && cat[i+1].lvl.to_i == c.lvl.to_i
+      <li>
+      = link_to(c.body, link_category(c.body, false), :rel => link_category(c.body, true))
+      %a{:href => '#', :id => "reply_" + c.id.to_s} Ответить
+      </li>
+
+    - if !cat[i+1].nil? && cat[i+1].lvl.to_i < c.lvl.to_i
+      <li>
+      = link_to(c.body, link_category(c.body, false), :rel => link_category(c.body, true))
+      %a{:href => '#', :id => "reply_" + c.id.to_s} Ответить
+      </li>
+      - counter -= 1
+      - (c.lvl.to_i - cat[i+1].lvl.to_i).times do
+        </ul></li>
+        
+    - if (cat[i+1].nil?)
+      <li>
+      = link_to(c.body, link_category(c.body, false), :rel => link_category(c.body, true))
+      %a{:href => '#', :id => "reply_" + c.id.to_s} Ответить
+      </li>
+      - counter.times do
+        </ul></li>
+  </ul>
+  </div>
+
+-#- if(params[:controller] == 'post')
+= render :partial => 'comments/form'
+
+- if can? :update, @article
+  = link_to 'Edit', edit_post_path(@post)
+  |
+- if can? :destroy, @article
+  = link_to "Destroy", @article, :method => :delete, :confirm => "Are you sure?"
+= link_to 'Back', posts_path

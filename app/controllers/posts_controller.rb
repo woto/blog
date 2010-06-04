@@ -21,8 +21,8 @@ class PostsController < ApplicationController
     scope = Post
 
     @post = scope.find(params[:id])
-
     @comment = Comment.new(:post => @post)
+    @comments = Comments::getComments @post.id
 
     respond_to do |format|
       format.html # show.html.erb
