@@ -14,7 +14,19 @@
 
 body {
 
+  #tooltip.box {
 
+    background: $filter;
+    padding: 5px;
+    margin: 0px;
+    line-height: 16px;
+    
+    a {
+      line-height: 16px;
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
 
   a { 
     text-decoration: none;
@@ -113,19 +125,6 @@ body {
 
 #sidebar {
   
-  #tooltip {
-
-    background: $filter;
-    padding: 5px;
-    margin: 0px;
-    line-height: 15px;
-    
-    a {
-      line-height: 15px;
-      font-size: 12px;
-      font-weight: normal;
-    }
-  }
 
   .box {
     font-size: 13px;

@@ -95,6 +95,8 @@ module ApplicationHelper
         out << "</a>"
         out << "</div>"
       end
+
+      out << "<input type='checkbox' id='advanced_navigation' /> <span></span> <a href='#'>?</a>"
       out << "</div>"
     end
   end

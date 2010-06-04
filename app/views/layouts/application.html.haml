@@ -58,7 +58,6 @@
             - form_tag(sphinx_posts_path, :method => :get) do
               = text_field_tag :q, params[:q], :class => "text"
               = submit_tag "Поиск", :name => :submit, :class => "button"
-            <input type="checkbox" id="advanced_navigation" /> Гиковская навигация
           %h4.loud
             Календарь
           .box

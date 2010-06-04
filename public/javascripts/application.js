@@ -36,15 +36,34 @@ $(document).ready(function(){
     window.COOKIE_NAME = 'advanced_navigation';
     window.options = { path: '/', expires: new Date().getTime() + (1 * 365 * 24 * 60 * 60 * 1000) };
 
-    $("#advanced_navigation").change(function()
-    { 
-        if($(this).is(":checked"))
-          $.cookie(window.COOKIE_NAME, true, options);
-        else
-          $.cookie(window.COOKIE_NAME, "", options);
+    check_advanced_navigation = function(){
+      if($(this).is(":checked"))
+      {
+        $(this).next().html('Выключить гиковскую навигацию');
+        $.cookie(window.COOKIE_NAME, "", options);
+      }
+      else
+      {
+        $(this).next().html('Выключить гиковскую навигацию');
+        $.cookie(window.COOKIE_NAME, true, options);
+      }
+    }
+    
+    if($.cookie(window.COOKIE_NAME) == "true")
+    {
+      $('#advanced_navigation').next().html('Выключить гиковскую навигацию');
+      $('#advanced_navigation').attr('checked', true);
+    }
+    else
+    {
+      $('#advanced_navigation').next().html('Включить гиковскую навигацию');
+      $('#advanced_navigation').attr('checked', "");
+    }
+
+    $("#advanced_navigation").change(function(){
+      check_advanced_navigation($(this));
     });
 
-    $('#advanced_navigation').attr('checked', $.cookie(window.COOKIE_NAME));
 
     refresh_links($(document));
 
