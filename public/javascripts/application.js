@@ -12,8 +12,6 @@ var refresh_links = function(selector){
         toolbox = $("<div id='tooltip' class='box'></div>");
         toolbox.css("position", "absolute");
         toolbox.css("top", $(this).position().top - 13);
-        //toolbox.css("background", "#EEEEEE");
-        //toolbox.css("padding", "4px");
         toolbox.html( 
           "<a href='" + $(this).attr('href') + "'>" + "Без фильтра" + "</a>" +
           "<br />" +
@@ -36,32 +34,31 @@ $(document).ready(function(){
     window.COOKIE_NAME = 'advanced_navigation';
     window.options = { path: '/', expires: new Date().getTime() + (1 * 365 * 24 * 60 * 60 * 1000) };
 
-    check_advanced_navigation = function(){
-      if($(this).is(":checked"))
-      {
-        $(this).next().html('Выключить гиковскую навигацию');
-        $.cookie(window.COOKIE_NAME, "", options);
-      }
-      else
-      {
-        $(this).next().html('Выключить гиковскую навигацию');
-        $.cookie(window.COOKIE_NAME, true, options);
-      }
-    }
-    
-    if($.cookie(window.COOKIE_NAME) == "true")
+    advanced_on = 'Выключить гиковскую навигацию'
+    advanced_off = 'Включить гиковскую навигацию'
+
+    if($.cookie(window.COOKIE_NAME) == "1")
     {
-      $('#advanced_navigation').next().html('Выключить гиковскую навигацию');
+      $('#advanced_navigation').next().html(advanced_on);
       $('#advanced_navigation').attr('checked', true);
     }
     else
     {
-      $('#advanced_navigation').next().html('Включить гиковскую навигацию');
+      $('#advanced_navigation').next().html(advanced_off);
       $('#advanced_navigation').attr('checked', "");
     }
 
-    $("#advanced_navigation").change(function(){
-      check_advanced_navigation($(this));
+    $("#advanced_navigation").click(function(){
+      if($(this).is(":checked"))
+      {
+        $(this).next().html(advanced_on);
+        $.cookie(window.COOKIE_NAME, "1", options);
+      }
+      else
+      {
+        $(this).next().html(advanced_off);
+        $.cookie(window.COOKIE_NAME, "0", options);
+      }
     });
 
 

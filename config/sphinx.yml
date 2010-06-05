@@ -1,5 +1,5 @@
 options: &options
-  morphology: 'stem_en, stem_ru'
+#  morphology: 'stem_en, stem_ru'
 
 development:
   <<: *options
