@@ -10,7 +10,7 @@ class GithubController < ApplicationController
         p.intro = p.body
         p.date = entry.published
         p.remote_id = entry.entry_id
-        tag = URI::split(entry.links[0])[5].scan(/\A\/*(\w+)?\/(\w+)/)
+        tag = URI::split(entry.links[0])[5].scan(/\A\/*([^\/]+)?\/([^\/]+)/)
         p.tag_list = [tag[0], tag[1]]
         p.save
       end

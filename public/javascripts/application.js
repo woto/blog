@@ -64,11 +64,13 @@ $(document).ready(function(){
 
     refresh_links($(document));
 
-    $(".post").not('.remote').mouseover(function(){
+    // $(".post").not('.remote').mouseover(function(){
+    $(".post").mouseover(function(){
       $(this).find('.control').show();
     })
 
-    $(".post").not('.remote').mouseout(function(){
+    //$(".post").not('.remote').mouseout(function(){
+    $(".post").mouseout(function(){
       $(this).find('.control').hide();
     })
 

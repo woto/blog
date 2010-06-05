@@ -11,6 +11,8 @@ defaults: &defaults
     password: "qwer332"
   github: "http://github.com/woto.atom"
   google_reader: "http://www.google.com/reader/public/atom/user/03958211105266633351/state/com.google/broadcast"
+  vimeo: "http://vimeo.com/woto/videos/rss"
+  flickr: "http://api.flickr.com/services/feeds/photos_public.gne?id=48576382@N06&lang=en-us&format=rss_200"
 
 development:
   <<: *defaults

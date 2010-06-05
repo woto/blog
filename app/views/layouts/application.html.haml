@@ -49,6 +49,7 @@
           - else
             %h4.loud Родственные теги
           .box
+            -# :spacer_template делает пробелы переносы на новую строку, в результате получается пробел перед запятой, fukc :E
             =render(:partial => "tags/related_tags", :collection => @tags, :as => :tag)
             - if(@found_posts && !@dont_show_scroll_to_top)
               %hr.space
