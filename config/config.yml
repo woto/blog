@@ -1,4 +1,4 @@
-development: &defaults
+defaults: &defaults
   site_name: "Мегаблог"
   site_url: "http://localhost"
   noreply_email: "noreply@localhost"
@@ -6,6 +6,15 @@ development: &defaults
   default_url_options: "localhost:3000"
   rpx_app_name: "woto-netbook"
   rpx_api_key: "c61472630802726ce1faedc5a8ace1c50fa53994"
+  delicious:
+    login: "woto"
+    password: "qwer332"
+  github: "http://github.com/woto.atom"
+  google_reader: "http://www.google.com/reader/public/atom/user/03958211105266633351/state/com.google/broadcast"
+
+development:
+  <<: *defaults
+
 
 production:
   <<: *defaults

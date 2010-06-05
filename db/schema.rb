@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100603184929) do
+ActiveRecord::Schema.define(:version => 20100605130621) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -74,7 +74,10 @@ ActiveRecord::Schema.define(:version => 20100603184929) do
     t.integer  "comments_count",  :default => 0
     t.string   "cached_tag_list"
     t.text     "cached_category"
+    t.string   "remote_id"
   end
+
+  add_index "posts", ["remote_id"], :name => "index_posts_on_remote_id", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"

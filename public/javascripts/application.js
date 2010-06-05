@@ -2,7 +2,7 @@ var refresh_links = function(selector){
 
   selector.find('a').each(function(i, e){
     $(e).click(function(event){
-      if($.cookie(window.COOKIE_NAME) &&
+      if($.cookie(window.COOKIE_NAME) == '1' &&
         ($(this).attr('rel') && 
         $(this).attr('rel').match(/\/.*/i)))
       {
@@ -64,11 +64,11 @@ $(document).ready(function(){
 
     refresh_links($(document));
 
-    $(".post").mouseover(function(){
+    $(".post").not('.remote').mouseover(function(){
       $(this).find('.control').show();
     })
 
-    $(".post").mouseout(function(){
+    $(".post").not('.remote').mouseout(function(){
       $(this).find('.control').hide();
     })
 

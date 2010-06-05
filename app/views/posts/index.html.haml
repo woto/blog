@@ -1,6 +1,6 @@
 - if @posts.count > 0
   - @posts.each do |post|
-    .post
+    .post{:class => !post.remote_id.nil? && "remote"}
       %h2.title
         = link_to h(truncate(post.title, :length => 45)), post
       .control

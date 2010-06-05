@@ -55,11 +55,15 @@ body {
   }
 
   .fieldWithErrors {
-    background: red;
+    background: $box;
   }
 
   .errorExplanation {
-    background: yellow;
+    @include border-radius(4px);
+    background-color: $filter;
+    border: 1px solid $border;
+    padding: 10px;
+    margin-bottom: 10px;
   }
 
   .nospace {
@@ -103,6 +107,9 @@ body {
 
   h2.title {
     @include text-shadow;
+    a {
+      color: $title;
+    }
   }
 
   .post {
