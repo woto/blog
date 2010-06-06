@@ -118,7 +118,7 @@ class PostsController < ApplicationController
     scope = Post
 
     if params[:category]
-      scope = scope.with_category_ids(Post.get_cat_ids_tree_by_name(params[:category]))
+      scope = scope.with_category_ids(Category.find_by_name(params[:category]).self_and_descendants)
     end
     
     if params[:date] =~ /^\d+-\d+-00$/ 
@@ -146,7 +146,20 @@ class PostsController < ApplicationController
   end
 
   def sphinx
-    @posts = Post.search params[:q], :page => params[:page], :order => :date, :sort_mode => :desc
+    with_all = {}
+    with = {}
+
+    params[:date] = Date.today - 2.day
+
+    with[:category_id] = Category.find_by_name(params[:category]).self_and_descendants.map(&:id) if params[:category]
+    with_all[:tag_ids] = Tag.find(:all, :conditions => {:name => Array.[](params[:tags]).flatten.compact}).map(&:id) if params[:tags]
+    with[:created_at] = 1.day.ago.to_i..Time.now.to_i
+
+    puts with
+    puts with_all
+
+    #:conditions => {:created_at => 1.day.ago.to_i..Time.now.to_i }
+    @posts = Post.search params[:q], :with => with, :with_all => with_all, :page => params[:page], :order => :date, :sort_mode => :desc
     render :action => "index"
   end
 

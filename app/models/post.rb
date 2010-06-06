@@ -4,7 +4,9 @@ class Post < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true, :approximate_ascii => true
   
-  #validates_uniqueness_of :title
+  # не проверяем уникальность заголовка, 
+  # has_friendly_id корректно обрабатывает
+  # validates_uniqueness_of :title
 
   cattr_reader :per_page
   @@per_page = 10
@@ -18,6 +20,8 @@ class Post < ActiveRecord::Base
   #accepts_nested_attributes_for :comments
 
   validates_presence_of :title, :body
+  # из-за бага в ckeditor'e firefox даже при условии
+  # что текст не вводили забивает его небольшим мусором
   validates_length_of :body, :minimum => 9
   # todo отказался в пользу delocalize
   #validates_datetime :date
@@ -33,7 +37,8 @@ class Post < ActiveRecord::Base
   end
 
   def self.get_cat_ids_tree_by_name(category_name)
-    Category.find_by_name(category_name).self_and_descendants
+    raise "Obsolete model method"
+    # obsolete
   end
 
   named_scope :with_category_ids, lambda{|category_ids|
@@ -54,6 +59,12 @@ class Post < ActiveRecord::Base
     indexes body
     indexes :date, :sortable => true
     indexes comments.body
+
+    has tags(:id), :as => :tag_ids
+    has :category_id
+    has date
+    has created_at
+
     # Поиск по тегам и категориям отключен принципиально
     #indexes cached_tag_list
     #

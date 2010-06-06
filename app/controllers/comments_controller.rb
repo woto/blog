@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
 
-  validates_captcha
+  validates_captcha :if => :captcha_needed?
+
+  def captcha_needed?
+    !current_user
+  end
 
   # GET /comments
   # GET /comments.xml

@@ -7,11 +7,12 @@
     %br/
     = f.text_area :body
   %p
-    = f.label :captcha
-    %br/
-    = f.captcha_challenge 
-    %br/
-    = f.captcha_field
+    - if !current_user
+      = f.label :captcha
+      %br/
+      = f.captcha_challenge 
+      %br/
+      = f.captcha_field
     -# %br/
     -# = f.regenerate_captcha_challenge_link :text => 'Another captcha, please'
   %p

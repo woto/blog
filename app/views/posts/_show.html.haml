@@ -18,7 +18,6 @@
   = @post.body
   Опубликовано
   = link_to l(@post.date, :format => "%d %b %Y"), link_calendar(@post.date.strftime("%Y-%m") + "-" +"%02d" % @post.date.day.to_s, false), :rel => link_calendar(@post.date.strftime("%Y-%m") + "-" +"%02d" % @post.date.day.to_s, true)
-  %br
   = post_category(@post)
   - if !@post.cached_tag_list.nil? && !@post.cached_tag_list.empty?
     %br 

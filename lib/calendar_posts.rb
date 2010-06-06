@@ -4,7 +4,7 @@ module CalendarPosts
     scope = Post
 
     if params[:category]
-      scope = scope.with_category_ids(Post.get_cat_ids_tree_by_name(params[:category]))
+      scope = scope.with_category_ids(Category.find_by_name(params[:category]).self_and_descendants)
     end
     
     scope = scope.within_month(date)
