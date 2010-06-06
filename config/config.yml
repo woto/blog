@@ -1,5 +1,5 @@
 defaults: &defaults
-  site_name: "Мегаблог"
+  site_name: "Кладовочка программиста"
   site_url: "http://localhost"
   noreply_email: "noreply@localhost"
   noreply_name: "noreply"

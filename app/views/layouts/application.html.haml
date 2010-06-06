@@ -58,7 +58,7 @@
           .box#search
             - form_tag(sphinx_posts_path, :method => :get) do
               = text_field_tag :q, params[:q], :class => "text"
-              = submit_tag "Поиск", :name => :submit, :class => "button"
+              = submit_tag "Поиск", :name => nil, :class => "button"
           %h4.loud
             Календарь
           .box
