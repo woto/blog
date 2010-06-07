@@ -60,14 +60,11 @@
               = text_field_tag :q, params[:q], :class => "text"
               - if params[:tags]
                 - params[:tags].each do |tag|
-                  %br
-                  = text_field_tag "tags[]", tag
+                  = hidden_field_tag "tags[]", tag
               - if params[:category]
-                %br
-                = text_field_tag :category, params[:category]
+                = hidden_field_tag :category, params[:category]
               - if params[:date]
-                %br
-                = text_field_tag :date, params[:date]
+                = hidden_field_tag :date, params[:date]
               = submit_tag "Поиск", :name => nil, :class => "button"
               - if params[:tags] || params[:category] || params[:date]
                 %br
