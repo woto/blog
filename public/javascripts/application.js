@@ -34,18 +34,20 @@ $(document).ready(function(){
     window.COOKIE_NAME = 'advanced_navigation';
     window.options = { path: '/', expires: new Date().getTime() + (1 * 365 * 24 * 60 * 60 * 1000) };
 
-    advanced_on = 'Выключить гиковскую навигацию'
-    advanced_off = 'Включить гиковскую навигацию'
+    advanced_on = 'Выключить сложную навигацию'
+    advanced_off = 'Включить сложную навигацию'
 
     if($.cookie(window.COOKIE_NAME) == "1")
     {
       $('#advanced_navigation').next().html(advanced_on);
       $('#advanced_navigation').attr('checked', true);
+      $("#make_search_advanced").appendTo($("#search form"))
     }
     else
     {
       $('#advanced_navigation').next().html(advanced_off);
       $('#advanced_navigation').attr('checked', "");
+      $("#make_search_advanced").appendTo($("#search"))
     }
 
     $("#advanced_navigation").click(function(){
@@ -53,11 +55,13 @@ $(document).ready(function(){
       {
         $(this).next().html(advanced_on);
         $.cookie(window.COOKIE_NAME, "1", options);
+        $("#make_search_advanced").appendTo($("#search form"))
       }
       else
       {
         $(this).next().html(advanced_off);
         $.cookie(window.COOKIE_NAME, "0", options);
+        $("#make_search_advanced").appendTo($("#search"))
       }
     });
 

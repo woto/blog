@@ -96,7 +96,6 @@ module ApplicationHelper
         out << "</div>"
       end
       
-      out << "<br /><input type='checkbox' id='advanced_navigation' /> <label for='advanced_navigation'></label>"
       out << "</div>"
     end
   end
