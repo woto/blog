@@ -137,7 +137,7 @@ div.calendar { position: relative; }
   border-top: 1px solid #655;
   background: #dcb;
   color: #840;
-  font-size: 90%;
+  font-size: 85%;
 }
 
 .calendar tfoot .hilite { /* Hover style for buttons in footer */
