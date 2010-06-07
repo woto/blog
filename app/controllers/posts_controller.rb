@@ -149,15 +149,20 @@ class PostsController < ApplicationController
     with_all = {}
     with = {}
 
-    params[:date] = Date.today - 2.day
-
     with[:category_id] = Category.find_by_name(params[:category]).self_and_descendants.map(&:id) if params[:category]
     with_all[:tag_ids] = Tag.find(:all, :conditions => {:name => Array.[](params[:tags]).flatten.compact}).map(&:id) if params[:tags]
-    with[:created_at] = 1.day.ago.to_i..Time.now.to_i
+    #with[:created_at] = 1.day.ago.to_i..Time.now.to_i
+  
+    @time = Time.parse(@date.to_s)
 
-    puts with
-    puts with_all
-
+    # todo Обязательно здесь проверить на смещение во времени
+    # т.к. в оригинале для DateTime вызывался еще new_offset
+    if params[:date] =~ /^\d+-\d+-00$/ 
+      with[:date] = @time.beginning_of_month..@time.end_of_month
+    elsif params[:date] =~ /^\d+-\d+-\d+$/
+      with[:date] = @time.beginning_of_day..@time.end_of_day
+    end
+    
     #:conditions => {:created_at => 1.day.ago.to_i..Time.now.to_i }
     @posts = Post.search params[:q], :with => with, :with_all => with_all, :page => params[:page], :order => :date, :sort_mode => :desc
     render :action => "index"

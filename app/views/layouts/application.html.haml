@@ -58,14 +58,20 @@
           .box#search
             - form_tag(sphinx_posts_path, :method => :get) do
               = text_field_tag :q, params[:q], :class => "text"
-              %br теги
               - if params[:tags]
                 - params[:tags].each do |tag|
+                  %br
                   = text_field_tag "tags[]", tag
-              %br категория
               - if params[:category]
+                %br
                 = text_field_tag :category, params[:category]
+              - if params[:date]
+                %br
+                = text_field_tag :date, params[:date]
               = submit_tag "Поиск", :name => nil, :class => "button"
+              - if params[:tags] || params[:category] || params[:date]
+                %br
+                %a{:class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
           %h4.loud
             Календарь
           .box

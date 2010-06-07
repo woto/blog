@@ -49,6 +49,7 @@ class Post < ActiveRecord::Base
     {:conditions => ["posts.date > ? AND posts.date < ?", month.beginning_of_month, month.end_of_month]}
   }
 
+  # todo Проверить new_offset
   named_scope :within_day, lambda {|day|
     {:conditions => ["posts.date > ? AND posts.date < ?", day.beginning_of_day.new_offset, day.end_of_day.new_offset ]}
   }
@@ -57,12 +58,12 @@ class Post < ActiveRecord::Base
     indexes title
     indexed intro
     indexes body
-    indexes :date, :sortable => true
+    #indexes :date, :sortable => true
     indexes comments.body
 
     has tags(:id), :as => :tag_ids
     has :category_id
-    has date
+    has :date
     has created_at
 
     # Поиск по тегам и категориям отключен принципиально
