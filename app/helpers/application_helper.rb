@@ -48,10 +48,15 @@ module ApplicationHelper
   end
 
   def filter
-    if params[:category] || params[:tags] || params[:date]
+    if params[:category] || params[:tags] || params[:date] || params[:q]
       out = ""
       out << "<div id='filter' class='box' style='position: relative'>"
       out << "<div style='position: absolute; top: 0px; right: 6px'>" + link_to("x", posts_path) + "</div>"
+      if params[:q]
+          out << "<div>"
+          out << "&nbsp;&nbsp;Результат поиска по запросу: " + params[:q]
+          out << "</div>"
+      end
       if params[:category] and category = Category.find_by_name(params[:category])
           out << "<div>"
           out << link_to("-", link_category({}, true))

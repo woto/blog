@@ -134,7 +134,7 @@ class PostsController < ApplicationController
     @posts = scope.paginate(:page => params[:page], :order => 'date DESC')
 
     # Символизирует о том, что нам придется еще делать запросы с сброшенными фильтрами
-    unless @posts.size == 0
+    if (@posts.size != 0) && (params[:tags] || params[:category] || params[:date])
       @found_posts = true
       @calendar = CalendarPosts::get_calendar_posts params, @date
       @tags = Tags::getTagsCloud scope
