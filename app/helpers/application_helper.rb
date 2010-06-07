@@ -100,7 +100,12 @@ module ApplicationHelper
         out << "</a>"
         out << "</div>"
       end
-      
+      if params[:tags] || params[:category] || params[:date]
+        out << "<div>"
+        out << "<input type='checkbox' id='advanced_navigation'>&nbsp;"
+        out << "<label for='advanced_navigation'>#</label>"
+        out << "</div>"
+      end
       out << "</div>"
     end
   end

@@ -1,44 +1,47 @@
 - if @posts.count > 0
   - @posts.each do |post|
-    .post{:class => !post.remote_id.nil? && "remote"}
-      %h2.title
-        = link_to h(truncate(post.title, :length => 45)), post
-      .control
-        - if can? :edit, @post
-          = link_to t(:edit), edit_post_path(post)
-        - if can? :destroy, @post
-          = link_to t(:destroy), post, :confirm => t(:sure), :method => :delete
-      - if !post.intro.try(:empty?)
-        = post.intro
-      - else
-        = post.body
-      Опубликовано
-      = link_to l(post.date, :format => "%d %b %Y"), link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, false), :rel => link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true)
-      = post_category(post)
-      - if !post.cached_tag_list.nil? && !post.cached_tag_list.empty?
-        %br 
-        Теги:
-        - fukc = "&nbsp;"
-        - tags = Array.[](params[:tags]).flatten.compact
-        - post_tags = post.cached_tag_list.split(', ')
-        - post_tags.each do |tag|
-          - if(tags).include?(tag)
-            = link_to("-", link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, false), :rel => link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, true))
-            =fukc
-            %span>= link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
-            - if tag != post_tags.last
-              ,
-          - else
-            = link_to("+", link_tags(tags + Array(tag), false), :rel => link_tags(tags + Array(tag), true))
-            =fukc
-            %span>= link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
-            - if tag != post_tags.last
-              ,
-      %br
-      - if post.comments.size > 0 
-        =link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post)
-      - else
-        =link_to("нет комментариев", post)
+    -# Дополнительная проверка необходима в случае если сфинкс отдал результат, а в базе запись отсутсвуте
+    -# т.е. рассинхронизировались и требуется переиндексация
+    - unless post.nil?
+      .post{:class => !post.remote_id.nil? && "remote"}
+        %h2.title
+          = link_to h(truncate(post.title, :length => 45)), post
+        .control
+          - if can? :edit, @post
+            = link_to t(:edit), edit_post_path(post)
+          - if can? :destroy, @post
+            = link_to t(:destroy), post, :confirm => t(:sure), :method => :delete
+        - if !post.intro.try(:empty?)
+          = post.intro
+        - else
+          = post.body
+        Опубликовано
+        = link_to l(post.date, :format => "%d %b %Y"), link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, false), :rel => link_calendar(post.date.strftime("%Y-%m") + "-" +"%02d" % post.date.day.to_s, true)
+        = post_category(post)
+        - if !post.cached_tag_list.nil? && !post.cached_tag_list.empty?
+          %br 
+          Теги:
+          - fukc = "&nbsp;"
+          - tags = Array.[](params[:tags]).flatten.compact
+          - post_tags = post.cached_tag_list.split(', ')
+          - post_tags.each do |tag|
+            - if(tags).include?(tag)
+              = link_to("-", link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, false), :rel => link_tags(tags.reject{|tag_cmp| tag_cmp == tag}, true))
+              =fukc
+              %span>= link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
+              - if tag != post_tags.last
+                ,
+            - else
+              = link_to("+", link_tags(tags + Array(tag), false), :rel => link_tags(tags + Array(tag), true))
+              =fukc
+              %span>= link_to(h(tag), link_tags(tag, false), :rel => link_tags(tag, true))
+              - if tag != post_tags.last
+                ,
+        %br
+        - if post.comments.size > 0 
+          =link_to(post.comments.size.to_s + " " + Russian.p(post.comments.size, 'комментарий', 'комментария','комментариев'), post)
+        - else
+          =link_to("нет комментариев", post)
       %hr.prepend-top
   .footer#pagination= will_paginate @posts, :container => false
 - else

@@ -36,9 +36,35 @@
         %div.column.span-16.colborder
           - flash.each do |name, msg|
             .box#flash= content_tag :div, msg, :id => "flash_#{name}"
+
           = filter
+
           = yield
+
         %div.column.last.span-7#sidebar
+          
+          %h4.loud Поиск
+          .box#search
+            - form_tag(sphinx_posts_path, :method => :get) do
+              = text_field_tag :q, params[:q], :class => "text"
+
+              = submit_tag "Поиск", :name => nil, :class => "button"
+              
+              - if params[:tags] || params[:category] || params[:date]
+                #make_search_advanced{:style => "display: none"}
+                  - if params[:tags]
+                    - params[:tags].each do |tag|
+                      = hidden_field_tag "tags[]", tag
+
+                  - if params[:category]
+                    = hidden_field_tag :category, params[:category]
+
+                  - if params[:date]
+                    = hidden_field_tag :date, params[:date]
+
+                  %hr.space
+                  %a{:class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
+
           %h4.loud Категории
           = categories
           -# Проверка на tags.size нужна в случае если все таки посты найдены, но у постов отсутствуют теги
@@ -54,30 +80,6 @@
             - if(@found_posts && !@dont_show_scroll_to_top)
               %hr.space
               %a{:class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
-          %h4.loud Поиск
-          .box#search
-            - form_tag(sphinx_posts_path, :method => :get) do
-              = text_field_tag :q, params[:q], :class => "text"
-
-              = submit_tag "Поиск", :name => nil, :class => "button"
-
-            - if params[:tags] || params[:category] || params[:date]
-              = check_box_tag :advanced_navigation 
-              = label_tag :advanced_navigation, "#"
-          
-              #make_search_advanced{:style => "display: none"}
-                - if params[:tags]
-                  - params[:tags].each do |tag|
-                    = hidden_field_tag "tags[]", tag
-
-                - if params[:category]
-                  = hidden_field_tag :category, params[:category]
-
-                - if params[:date]
-                  = hidden_field_tag :date, params[:date]
-
-                %hr.space
-                %a{:style => "margin-left: 5px", :class => 'scroll_to_filter ajax', :href => "#"} С учетом фильтра
 
           %h4.loud
             Календарь

@@ -82,7 +82,8 @@ $(document).ready(function(){
       $(this).find('.control').hide();
     })
 
-    $(".scroll_to_filter").click(function(){
+    $(".scroll_to_filter").click(function(e){
+      e.preventDefault();
       // уловка для Firefox и Google Chrome
       var fukc = 0
       var targetOffset = 0;
