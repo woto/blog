@@ -13,7 +13,7 @@
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if lt IE 8]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-    = javascript_include_tag  'jquery.js',  'jquery-ui.js',  'jrails.js',  'application.js',  '/components/dyndatetime/src/jquery.dynDateTime.js',  '/components/dyndatetime/lang/calendar-ru.js',  'jquery.autocomplete.pack.js',  '/components/colorbox/colorbox/jquery.colorbox.js', 'jquery.cookie.js',  :cache => true
+    = javascript_include_tag  'jquery.min.js',  'jquery-ui.min.js',  'jrails.min.js',  'application.js',  '/components/dyndatetime/src/jquery.dynDateTime.js',  '/components/dyndatetime/lang/calendar-ru.js',  'jquery.autocomplete.pack.js',  '/components/colorbox/colorbox/jquery.colorbox-min.js', 'jquery.cookie.js'
     = javascript_include_tag :ckeditor
     = yield(:head)
   %body
