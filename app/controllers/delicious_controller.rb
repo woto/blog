@@ -2,7 +2,7 @@ class DeliciousController < ApplicationController
 
   def index
      d = WWW::Delicious.new(AppConfig.delicious['login'], AppConfig.delicious['password'])
-     l = d.posts_all
+     l = d.posts_recent
      l.each{|i|
        #p = Post.new
        p = Post.find_or_initialize_by_remote_id(i.uid)
