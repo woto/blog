@@ -18,7 +18,7 @@ puts local_from_utc = utc.new_offset(local.offset)
 puts local_from_utc.to_s           # => "2006-03-18T20:15:58-0500"
 puts local == local_from_utc       # => true
 
-todo убрать Rational!!!
+#TODO убрать Rational!!!
 =end
 
   def date

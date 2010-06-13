@@ -155,7 +155,7 @@ class PostsController < ApplicationController
   
     @time = Time.parse(@date.to_s)
 
-    # todo Обязательно здесь проверить на смещение во времени
+    #TODO Обязательно здесь проверить на смещение во времени
     # т.к. в оригинале для DateTime вызывался еще new_offset
     if params[:date] =~ /^\d+-\d+-00$/ 
       with[:date] = @time.beginning_of_month..@time.end_of_month

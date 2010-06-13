@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :posts
   
-  # todo заменить на member, или может вообще восстановить свой метод, чтобы
+  #TODO заменить на member, или может вообще восстановить свой метод, чтобы
   # теги автозаполнялись только с первой буквы, а не искались все вхождения символа
   # в назание тега
   map.connect 'tags/auto_complete_for_tag_name', :controller => 'tags', :action => 'auto_complete_for_tag_name', :format => 'json'

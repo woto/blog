@@ -23,7 +23,7 @@ class Post < ActiveRecord::Base
   # из-за бага в ckeditor'e firefox даже при условии
   # что текст не вводили забивает его небольшим мусором
   validates_length_of :body, :minimum => 9
-  # todo отказался в пользу delocalize
+  #TODO отказался в пользу delocalize
   #validates_datetime :date
   acts_as_taggable_on :tags
 

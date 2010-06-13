@@ -8,7 +8,7 @@ defaults: &defaults
   rpx_api_key: "c61472630802726ce1faedc5a8ace1c50fa53994"
   delicious:
     login: "woto"
-    password: "qwer332"
+    password: "qwer3322"
   github: "http://github.com/woto.atom"
   google_reader: "http://www.google.com/reader/public/atom/user/03958211105266633351/state/com.google/broadcast"
   vimeo: "http://vimeo.com/woto/videos/rss"
