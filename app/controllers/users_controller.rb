@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   
+  def single_access_allowed?
+    ["show", "create", "destroy"].include?(action_name)
+  end
+
   load_and_authorize_resource
 
   def new
@@ -9,11 +13,19 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      #@user.deliver_register_complete!
-      flash[:notice] = "Вы успешно зарегистрировались и вошли на сайт"
-      redirect_back_or_default user_url
+      respond_to do |format|
+        #@user.deliver_register_complete!
+        format.html do
+          flash[:notice] = "Вы успешно зарегистрировались и вошли на сайт"
+          redirect_back_or_default user_url
+        end
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      end
     else
-      render :action => :new
+      respond_to do |format|
+        format.html { render :action => "new.erb.haml" }
+        format.xml { render :xml => @user.errors }
+      end
     end
   end
   
@@ -40,8 +52,13 @@ class UsersController < ApplicationController
   def destroy
     current_user.destroy
     current_user_session.destroy
-    flash[:notice] = "Вы успешно удалили свой аккаунт"
-    redirect_back_or_default root_url
+    respond_to do |format|
+      format.html do
+        flash[:notice] = "Вы успешно удалили свой аккаунт"
+        redirect_back_or_default root_url
+      end
+      format.xml { head :ok }
+    end
   end
 
   def addrpxauth

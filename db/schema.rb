@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100605130621) do
+ActiveRecord::Schema.define(:version => 20100617202547) do
 
   create_table "assets", :force => true do |t|
     t.string   "data_file_name"
@@ -138,12 +138,13 @@ ActiveRecord::Schema.define(:version => 20100605130621) do
   create_table "users", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "login",             :null => false
+    t.string   "login",               :null => false
     t.string   "crypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token", :null => false
-    t.string   "perishable_token",  :null => false
+    t.string   "persistence_token",   :null => false
+    t.string   "perishable_token",    :null => false
     t.string   "email"
+    t.string   "single_access_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

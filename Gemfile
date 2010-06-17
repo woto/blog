@@ -22,3 +22,5 @@ gem 'www-delicious'
 # gem 'rails-footnotes'
 gem 'validates_captcha'
 gem 'auto_complete_jquery', :git => 'git://github.com/mreinsch/auto_complete_jquery.git'
+#TODO Перекинуть ruby-debug в development mode
+gem 'ruby-debug'
