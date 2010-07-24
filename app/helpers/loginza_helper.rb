@@ -1,0 +1,2 @@
+module LoginzaHelper
+end

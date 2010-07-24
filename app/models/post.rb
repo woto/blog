@@ -56,6 +56,7 @@ class Post < ActiveRecord::Base
 
   define_index do
     indexes title
+    #FIXME что за indexed
     indexed intro
     indexes body
     #indexes :date, :sortable => true

@@ -1,0 +1,9 @@
+<% tmp = <<HEREDOC
+<script src="http://loginza.ru/js/widget.js" type="text/javascript"></script>
+<iframe src="https://loginza.ru/api/widget?overlay=loginza&token_url=%token_url%"
+style="width:359px;height:300px;" scrolling="no" frameborder="no"></iframe>
+HEREDOC
+%>
+
+<%= Loginza.token_key(tmp.sub!("%token_url%", URI::encode(url_for(:only_path => false, :controller => 'loginza', :action => 'create')))) %>
+

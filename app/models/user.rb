@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   has_many :posts
 
   acts_as_authentic do |c|
-	  c.account_mapping_mode :internal
-	  c.account_merge_enabled true
+	c.account_mapping_mode :internal
+	c.account_merge_enabled true
     
     c.validate_login_field = false
     c.validate_email_field = false

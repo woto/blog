@@ -1,5 +1,7 @@
 class DeliciousController < ApplicationController
 
+  require 'www/delicious'
+
   def index
      d = WWW::Delicious.new(AppConfig.delicious['login'], AppConfig.delicious['password'])
      l = d.posts_recent
